@@ -1,0 +1,56 @@
+Unity Engine prototype of Golden City 
+
+The plan:
+Enemies spawn from several spawners and advance toward the wall player must defend. few at first and in groups as time goes on.
+Player controls a cannon, flinging projectiles at the enemies. 
+Projectile will "explode" on impact, doing an area effect.
+Enemies that get past player's primary defenses pile up at the gate. 
+Player's secondary defense is an "electrified" gate. Button press activates electric gate and kills enemies touching gate.
+Kills recharge the electric gate before it can be used again.
+If a large enough number of enemies are at the gate, the gate breaks and enemies pass, triggering GAME OVER.
+
+11/27/2012
++new scene to try out new cannon script
++cannon now trys to launch projectile so it will land where cursor points at ground
++added blob shadow to projectile
++added 'bullseye' to projectile placed where it expects to land
++made a script to change the camera with C key (cam must be tagged MainCamera for cannon script and added to array in CameraController)
+
+11/04/2012
++made a cannon script with a cool down time between firings
++made monster spawner increase spawnlings after time has past
++made Zap button kill enemies touching gate, recharges from kills
++too many enemies at gate will destroy gate
++putting GUI elements into a script atached to camera
++added "game over" screen
+
+10/30/2012
++added "exploding" projectile
++changed enemies to have "health points" -there's somthing about doing operations on arguments i do not understand
+-broke the enemy "at gate" counter- didnt really work anyway
+-tried making a monster spawner that would incease spawnlings at timed intervals- too sloppy, wouldnt work
++added show/hide cursor (C key)
++added global game options script
++added ZAP button to trigger electric fence- only does particle effect ATM
+
+10/28/2012
++added "charge shot" on mouse button press and "fire" on release
++added code to gate to count enemies touching directly and breaks. want to have enimies touching enemies that are touching the gates alse count
++made particle effect for electric gate
+
+10/27/2012
+currently impelmented:
++cannon's "pitch" and "yaw" are controlled by mouse position on screen
++cannon launches cannon ball on left mouse button click
++enemies spawn in groups from a spawner object on a timer.
++enemies move in a straight line
++enemies depawn when hit with a projectile moving above a set relative velocity
++projectiles despawn after collisions
+
+planned:
+-cannon ball area effect
+-cannon charge up time (hold down mouse bttn for stronger impulse)
+-change active camera so we can experiement with different views easily
+-target to selection on ground plane(this would work better with different camera views)
+-buttons for selecting different projectile types
+-more advanced monster spawner (spawn formations, a better timer...)

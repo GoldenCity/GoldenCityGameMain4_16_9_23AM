@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: 92d6a2ecb0923ec4dbecb0419b663d0b
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Armature
+    100002: base
+    100004: //RootNode
+    100006: Head
+    100008: Head_IK
+    100010: Neck
+    100012: Neck_IK
+    100014: Neck_lower
+    100016: pCylinder10
+    100018: pCylinder10_001
+    100020: pCylinder10_002
+    100022: pCylinder10_003
+    100024: pCylinder10_004
+    100026: pCylinder10_005
+    100028: Ram_Head
+    100030: Ram_Rocket
+    100032: WheelMount_L_0
+    100034: WheelMount_L_1
+    100036: WheelMount_L_2
+    100038: WheelMount_R_0
+    100040: WheelMount_R_1
+    100042: WheelMount_R_2
+    400000: Armature
+    400002: base
+    400004: //RootNode
+    400006: Head
+    400008: Head_IK
+    400010: Neck
+    400012: Neck_IK
+    400014: Neck_lower
+    400016: pCylinder10
+    400018: pCylinder10_001
+    400020: pCylinder10_002
+    400022: pCylinder10_003
+    400024: pCylinder10_004
+    400026: pCylinder10_005
+    400028: Ram_Head
+    400030: Ram_Rocket
+    400032: WheelMount_L_0
+    400034: WheelMount_L_1
+    400036: WheelMount_L_2
+    400038: WheelMount_R_0
+    400040: WheelMount_R_1
+    400042: WheelMount_R_2
+    2300000: pCylinder10
+    2300002: pCylinder10_001
+    2300004: pCylinder10_002
+    2300006: pCylinder10_003
+    2300008: pCylinder10_004
+    2300010: pCylinder10_005
+    2300012: Ram_Rocket
+    3300000: pCylinder10
+    3300002: pCylinder10_001
+    3300004: pCylinder10_002
+    3300006: pCylinder10_003
+    3300008: pCylinder10_004
+    3300010: pCylinder10_005
+    3300012: Ram_Rocket
+    4300000: pCylinder10_005
+    4300002: pCylinder10_004
+    4300004: pCylinder10_003
+    4300006: pCylinder10_002
+    4300008: pCylinder10_001
+    4300010: Ram_Head
+    4300012: Ram_Rocket
+    4300014: pCylinder10
+    7400000: Default Take
+    7400002: Aggro
+    7400004: ArmatureAction
+    7400006: PoseLib
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Ram_Head
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 2
+    clipAnimations:
+    - name: Default Take
+      takeName: Default Take
+      firstFrame: 20
+      lastFrame: 230
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      keepAdditionalBonesAnimation: 1
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      skeletonMaskElements: []
+    - name: Aggro
+      takeName: Aggro
+      firstFrame: -1
+      lastFrame: 88
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      keepAdditionalBonesAnimation: 1
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      skeletonMaskElements: []
+    - name: ArmatureAction
+      takeName: ArmatureAction
+      firstFrame: 0
+      lastFrame: 212
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      keepAdditionalBonesAnimation: 1
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      skeletonMaskElements: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 

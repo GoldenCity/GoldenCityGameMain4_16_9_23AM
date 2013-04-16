@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 1bf22daa2c882a14a90d11fb2af39802
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - projectile: {fileID: 400000, guid: f1042ef519358ce4ebfcb61ac7935c98, type: 2}
+  - projectileEmitter: {fileID: 400002, guid: 84abe72f695e19545a1149efb8f1d148, type: 2}
+  - powerBar: {fileID: 2800000, guid: a910095f474dc34409218adbb5c626ac, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

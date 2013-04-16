@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: cabb83ccceb53864ab12e9ae52bd959b
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - lightningOne: {fileID: 2800000, guid: ce5a649146c539a48892672232d83e83, type: 3}
+  - mineOne: {fileID: 2800000, guid: de61d8471ded03449bc3503d5b513c6e, type: 3}
+  - scorcherOne: {fileID: 2800000, guid: 52ee6e6fb227e6d4a83e87f9b9a2f900, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
