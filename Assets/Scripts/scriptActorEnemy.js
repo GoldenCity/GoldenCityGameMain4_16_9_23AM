@@ -76,7 +76,7 @@ function OnCollisionEnter (other : Collision)
 	
 	if(other.gameObject.tag == "Enemy") {
 		 Physics.IgnoreCollision(other.collider, collider); 
-	}
+	}	
 }
 
 function OnTriggerEnter (other : Collider)
@@ -105,6 +105,10 @@ function OnTriggerEnter (other : Collider)
 // 			atGateCount++;
 // 		}
  	}
+ 	
+ 	if(other.gameObject.tag == "Wall") {
+		 Destroy(gameObject);
+	}
 
 }
 
