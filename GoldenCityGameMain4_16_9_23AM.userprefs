@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RamAI.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AreaDamage.js">
     <Files>
-      <File FileName="Assets\Scripts\CyclopsAI.js" Line="6" Column="1" />
-      <File FileName="Assets\Scripts\RamAI.js" Line="17" Column="2" />
+      <File FileName="Assets\Scripts\AreaDamage.js" Line="4" Column="24" />
+      <File FileName="Assets\Defenses\MiniCannon\ScanHorizontal.js" Line="10" Column="87" />
+      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="11" Column="58" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

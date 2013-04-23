@@ -21,6 +21,7 @@ function SpawnNovaMine()
 		Instantiate(novaMine, target.position, Quaternion.identity);
 	}
 	c.normalCannonOn = true;
+	c.mineOn = false;
 	spawned = true;
 	yield WaitForSeconds(60);
 	spawned = false;

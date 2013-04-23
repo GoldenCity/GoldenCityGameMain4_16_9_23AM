@@ -23,6 +23,7 @@ function SpawnSolarbeam()
 		Instantiate(solarBeamBottom, target.position, Quaternion.identity);
 	}
 	c.normalCannonOn = true;
+	c.scorcherFireOn = false;
 	spawned = true;
 	yield WaitForSeconds(60);
 	spawned = false;
