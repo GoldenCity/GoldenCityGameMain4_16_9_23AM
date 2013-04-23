@@ -2,8 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptActorEnemy.js">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="78" Column="54" />
       <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
+=======
+      <File FileName="Assets\Scripts\AreaDamage.js" Line="5" Column="2" />
+      <File FileName="Assets\Defenses\MiniCannon\ScanHorizontal.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="1" Column="1" />
+>>>>>>> Harpy Missile Fix on Specials, Nova Mine Model Import.
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
