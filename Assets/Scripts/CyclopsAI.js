@@ -1,11 +1,29 @@
 #pragma strict
 
-function Start () {
+var smogSource1 : Transform;
+var smogSource2 : Transform;
+var smogPrefab  : GameObject;
+private var moveTime = 0.0;
 
+function Start () {
+  //  animation["Moving"].layer = 1;
+   /// animation["SmogAttack"].layer = 1;
+   // animation["exhaust_normal"].layer = 0;
+   // animation["exhaust_smog_attack"].layer = 0;
+    
+	animation.Play("Moving");
+	animation.Blend("exhaust_normal",1,.5);
 }
 
 function Update () {
 
+	if(!isSmogging){
+		moveTime += Time.deltaTime;
+		if(moveTime >= 10){
+			moveTime = 0;
+			SmogOfWar();		
+		}
+	}
 }
 
 function OnTriggerEnter(objColl : Collider) {
@@ -13,5 +31,33 @@ function OnTriggerEnter(objColl : Collider) {
 	if(objColl.gameObject.tag == "MovingWall") {			
 		Physics.IgnoreCollision(objColl.collider, collider);
 	}
+	
+}
+
+////
+//Smog animation
+////
+private var isSmogging = false;
+function SmogOfWar () {
+	
+	if(!isSmogging){
+		
+	    
+		animation.CrossFade("SmogAttack",.3);
+		//animation.Blend("exhaust_smog_attack",1,.3);
+		
+		var a = Instantiate(smogPrefab, smogSource1.position,  smogSource1.rotation);
+		var b = Instantiate(smogPrefab, smogSource2.position,  smogSource2.rotation);
+			a.transform.parent = gameObject.transform;	
+			b.transform.parent = gameObject.transform;
+			isSmogging = true;
+	}	
+	yield WaitForSeconds(3) ;
+		animation.CrossFade("Moving",3);
+		animation.Blend("exhaust_normal",1,.5);
+		isSmogging = false;
+		b.transform.parent = null;
+		a.transform.parent = null;
+
 	
 }
