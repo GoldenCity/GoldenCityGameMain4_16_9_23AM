@@ -69,8 +69,9 @@ function OnCollisionEnter (other : Collision)
 {
 	var collidedWith : String = other.gameObject.tag;
 	//print(collidedWith);
-	
-	if(collidedWith == "Projectile") TakeDamage(2);
+	if(collidedWith == "MiniBullet") TakeDamage(1);
+	if(collidedWith == "TankBullet") TakeDamage(5);
+	if(collidedWith == "Projectile") TakeDamage(5);
 	
 	//if(collidedWith == "Explosion") TakeDamage(2);
 	

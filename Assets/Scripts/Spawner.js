@@ -60,6 +60,8 @@ function SpawnEnemy ()
 	}
 	if (cyclopsTimer >= ramTime) {
 		Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+		WaitForSeconds(1);
+		Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
 		cyclopsTimer = 0.0;
 	}
 	
