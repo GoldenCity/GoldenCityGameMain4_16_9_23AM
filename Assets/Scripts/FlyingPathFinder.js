@@ -3,12 +3,12 @@
 var speed : float = 5;
 var finalTargetList = new Transform[5];
 var hit : RaycastHit;
-var delayTime = 1;
+var delayTime = 1.0;
 
-private var finalTarget 	: Transform;
+//private var finalTarget 	: Transform;
 private var currentTarget   : Transform;
 private var vectorToPoint 	: Vector3 = Vector3.forward;
-private var countTimer = 1;
+private var countTimer = 4.1;
 
 function Start () {
 	finalTargetList[0] = GameObject.Find("WallTargetPointA").transform;
@@ -19,7 +19,7 @@ function Start () {
 	
 	
 	currentTarget = GetFinalTarget();
-	vectorToPoint = currentTarget.position - this.transform.position;
+	vectorToPoint = currentTarget.position - transform.position;
 	vectorToPoint.Normalize();
 }
 
@@ -38,24 +38,25 @@ function FixedUpdate() {
 function OnTriggerEnter(objColl : Collider) {	
 	if(objColl.gameObject.tag == "MovingWall") { 		
 			currentTarget = GetFinalTarget();
-			vectorToPoint = currentTarget.position - this.transform.position;
+			vectorToPoint = currentTarget.position - transform.position;
 			vectorToPoint.Normalize();					
 	}	
 }
 
 function GetFinalTarget() : Transform {
-	finalTarget = finalTargetList[Random.Range(0.0, 5.0)];
-	return finalTarget;
+	return finalTargetList[Random.Range(0.0, 4.0)]; 
 }
 
 function ReaquireVector() {
 	countTimer += Time.deltaTime;
-
 	if(countTimer >= delayTime)
 	{	
 		// Calculate the vector between the player and the enemy
-		vectorToPoint = currentTarget.position - this.transform.position;
+		vectorToPoint = currentTarget.position - transform.position;
 		vectorToPoint.Normalize();
+		//transform.LookAt(currentTarget);
+		this.rigidbody.velocity = Vector3.zero;
+		this.rigidbody.angularVelocity = Vector3.zero;
 		countTimer = 0.0;	
 	}	
 }

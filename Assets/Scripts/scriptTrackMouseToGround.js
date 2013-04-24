@@ -8,6 +8,7 @@
 //inspector variables
 
 var cannonIsOn = true;
+var mask : LayerMask = -1;
 
 //private variables
 var target				: Transform;
@@ -44,12 +45,13 @@ function Update ()
 	var ray = Camera.main.ScreenPointToRay (Input.mousePosition); //active camera must be tagged MainCamera!
 	var hit : RaycastHit;
 	
-	cannonIsOn = c.cannonOn;	
+	cannonIsOn = true; //c.cannonOn;	
 	//print("CannonON is: " + cannonIsOn);
-	if (Physics.Raycast (ray, hit, 1000)) 
+	if (Physics.Raycast (ray, hit, 1000, mask.value)) 
 	{
+
     	hitPoint = hit.point;
-    	
+    	    	
     	info = "";
 		info += "HitPoint: (" + hitPoint.x + ", " + hitPoint.y + ", " + hitPoint.z + ")";
     	
@@ -109,7 +111,7 @@ function Update ()
 		}
 	} else {
 	//target.active = false;
-		print("deactivate cannon");
+		//print("deactivate cannon");
 		target.gameObject.SetActive(false);
 	}
 	//info = "";
