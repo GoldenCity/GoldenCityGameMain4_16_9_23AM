@@ -95,9 +95,12 @@ var mineOn = false;
 	var customSkin : GUISkin;
 	var customSkinUpgrades : GUISkin;
 	
+	//var guiRectArray : Rect[];
 
 function Start ()
 	{
+		//guiRectArray[0] = new ...;
+		
 		camera_GameMenu.enabled = false;
 		//-------------------Cannon
 		ul = GameObject.Find("Globals").GetComponent(UpgradeVariables);
@@ -134,7 +137,16 @@ function Update()
 function OnGUI() 
 {	
 	//trackOnGui++;
-
+	
+//		if(Event.current.type == EventType.Repaint))
+//		{
+//			for(var i = 0 ; i < guiRecdtArray.length ; i++)
+//				cannonOn = !guiRectArray[i].Contains(Event.current.mousePosition);
+//		}
+//		else {
+//			cannOn = true;
+//		}
+		
 GUI.skin = customSkinUpgrades;
 GUI.skin = customSkin;
 
@@ -145,6 +157,7 @@ GUI.skin = customSkin;
 	
 	//-------------Show Souls
 
+//guiRectArray[0] = new Rect (Screen.width-(Screen.width/5),Screen.height/80, Screen.width/4, Screen.height/4)
 	GUI.Label(new Rect (Screen.width-(Screen.width/5),Screen.height/80, Screen.width/4, Screen.height/4),("Souls Collected: " + totalSouls));
 		
 
@@ -176,10 +189,13 @@ GUI.skin = customSkin;
 		if (showCannonButtons){showCannonButtons = false;}
 		else{showCannonButtons = true;}
 		}
-		if (GUI.tooltip == "hoverCannonButton")
-			{
-				//cannonOn = false;
-			}
+//		if (GUI.tooltip == "hoverCannonButton")
+//			{
+//				//cannonOn = false;
+//			}
+
+
+
 	if (GUI.Button(Rect((Screen.width/20)*18.5,(Screen.height/8)*3,Screen.width/15,Screen.height/10),GUIContent(wallBtnTexture, "hoverWallButton")))
 		{
 		showCannonButtons = false;

@@ -6,36 +6,42 @@
 static var destination : String = "abc";
 //Main Menu
 
+var quit : Texture;
+var credits : Texture;
+var startGame : Texture;
+var background : Texture;
+
+var menuSkin : GUISkin;
+
 function OnGUI() 
 {
+	GUI.skin = menuSkin;
+	
 	//Make Group
-	GUI.BeginGroup(Rect((Screen.width/2)-200, (Screen.height/4)-100,400,400));
+	//GUI.BeginGroup(Rect((Screen.width/2)-200, (Screen.height/4)-100,400,400));
 	
 	//MakeBox to see group
-	GUI.Box(Rect(0,0,400,400),"GOLDEN CITY");
+	GUI.DrawTexture(Rect(0,0,Screen.width,Screen.height), background);
+	
+	//GUI.Box(Rect(0,0,400,400),"GOLDEN CITY");
 	
 	//Make Start Game Button
-	if (GUI.Button(Rect(80,40,90,80),"Campaign"))
+	if (GUI.Button(Rect((Screen.width/2)-(Screen.width/8),(Screen.height/2)+(Screen.height/8),Screen.width/4,Screen.height/3),startGame))
 	{
 		destination = "Campaign";
 		Application.LoadLevel("Screen_GoldenCityLoad");
 	}
 	
-	if (GUI.Button(Rect(240,40,90,80),"Arcade Mode"))
+	if (GUI.Button(Rect((Screen.width)-(Screen.width/8),(Screen.height)-(Screen.height/6),Screen.width/8,Screen.height/6),credits))
 	{
-		destination = "Arcade";
-		Application.LoadLevel("Screen_GoldenCityLoad");
+		//add credits here
 	}
 	
-	if (GUI.Button(Rect(160,140,90,80),"Game Info"))
+	if (GUI.Button(Rect(0,(Screen.height)-(Screen.height/6),Screen.width/8,Screen.height/6),quit))
 	{
-		Application.LoadLevel("Screen_GoldenCityLoad");
+		 //Application.Quit();
 	}
-	
-	if (GUI.Button(Rect(160,240,90,80),"Credits"))
-	{
-		Application.LoadLevel("Screen_GoldenCityLoad");
-	}
+
 	
 	
 	
@@ -61,6 +67,6 @@ function OnGUI()
 	}
 	*/
 
-	GUI.EndGroup();
+	//GUI.EndGroup();
 	
 }

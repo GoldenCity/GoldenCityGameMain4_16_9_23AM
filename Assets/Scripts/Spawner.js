@@ -2,6 +2,7 @@
 
 var enemyList = new Transform[6];
 var pathList = new Transform[4];
+var harpySpawnList = new Transform[4];
 
 private var enemyNum : int = 1;
 private var num = 0;
@@ -51,7 +52,7 @@ function SpawnEnemy ()
 	cyclopsTimer += Time.deltaTime;
 	
 	if (harpyTimer >= harpyTime) {
-		Instantiate(enemyList[1], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+		Instantiate(enemyList[1], harpySpawnList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
 		harpyTimer = 0.0;
 	}
 	if (ramTimer >= ramTime) {
