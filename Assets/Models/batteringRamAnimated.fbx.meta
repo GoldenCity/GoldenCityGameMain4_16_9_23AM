@@ -69,9 +69,9 @@ ModelImporter:
     4300010: Ram_Head
     4300012: Ram_Rocket
     4300014: pCylinder10
-    7400000: Default Take
-    7400002: Aggro
-    7400004: ArmatureAction
+    7400000: Ram_Idle
+    7400002: Ram_Aggro
+    7400004: Ram_Idle
     7400006: PoseLib
     9500000: //RootNode
     11100000: //RootNode
@@ -87,35 +87,13 @@ ModelImporter:
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
-    animationWrapMode: 2
+    animationWrapMode: 0
     clipAnimations:
-    - name: Default Take
-      takeName: Default Take
-      firstFrame: 20
-      lastFrame: 230
-      wrapMode: 2
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      keepAdditionalBonesAnimation: 1
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      skeletonMaskElements: []
-    - name: Aggro
+    - name: Ram_Aggro
       takeName: Aggro
-      firstFrame: -1
-      lastFrame: 88
-      wrapMode: 0
+      firstFrame: 0
+      lastFrame: 89.0000076
+      wrapMode: 8
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
@@ -133,7 +111,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       skeletonMaskElements: []
-    - name: ArmatureAction
+    - name: Ram_Idle
       takeName: ArmatureAction
       firstFrame: 0
       lastFrame: 212
@@ -190,5 +168,5 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   additionalBone: 1
-  animationType: 2
+  animationType: 1
   userData: 
