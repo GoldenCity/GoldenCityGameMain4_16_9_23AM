@@ -155,7 +155,7 @@ ModelImporter:
       skeletonMaskElements: []
     - name: Agro
       takeName: Agro
-      firstFrame: -1
+      firstFrame: 0
       lastFrame: 139
       wrapMode: 0
       orientationOffsetY: 0
@@ -177,7 +177,7 @@ ModelImporter:
       skeletonMaskElements: []
     - name: exhaust_normal
       takeName: exhaust_normal
-      firstFrame: -2
+      firstFrame: 0
       lastFrame: 25
       wrapMode: 2
       orientationOffsetY: 0
@@ -199,7 +199,7 @@ ModelImporter:
       skeletonMaskElements: []
     - name: exhaust_smog_attack
       takeName: exhaust_smog_attack
-      firstFrame: -2
+      firstFrame: 0
       lastFrame: 23
       wrapMode: 2
       orientationOffsetY: 0
@@ -221,7 +221,7 @@ ModelImporter:
       skeletonMaskElements: []
     - name: Moving
       takeName: Moving
-      firstFrame: -1
+      firstFrame: 0
       lastFrame: 178
       wrapMode: 2
       orientationOffsetY: 0
@@ -243,7 +243,7 @@ ModelImporter:
       skeletonMaskElements: []
     - name: SmogAttack
       takeName: SmogAttack
-      firstFrame: -1
+      firstFrame: 0
       lastFrame: 146
       wrapMode: 0
       orientationOffsetY: 0

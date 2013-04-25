@@ -17,7 +17,7 @@ function Start () {
 
 function Update () {
 
-	if(!isSmogging){
+	if(!isSmogging && !isRaging){
 		moveTime += Time.deltaTime;
 		if(moveTime >= 10){
 			moveTime = 0;
@@ -34,6 +34,16 @@ function OnTriggerEnter(objColl : Collider) {
 	
 }
 
+function OnCollisionEnter (other : Collision) {
+	if(other.gameObject.tag == "Projectile" || 
+	   other.gameObject.tag == "MiniBullet" || 
+	   other.gameObject.tag == "TankBullet")
+	{
+		if(Random.value < .15) //small chance to "rage" when hit
+			Rage ();
+	}   
+}
+
 ////
 //Smog animation
 ////
@@ -46,12 +56,14 @@ function SmogOfWar () {
 		animation.CrossFade("SmogAttack",.3);
 		//animation.Blend("exhaust_smog_attack",1,.3);
 		
+		yield WaitForSeconds(.75);
 		var a = Instantiate(smogPrefab, smogSource1.position,  smogSource1.rotation);
 		var b = Instantiate(smogPrefab, smogSource2.position,  smogSource2.rotation);
 			a.transform.parent = gameObject.transform;	
 			b.transform.parent = gameObject.transform;
 			isSmogging = true;
 	}	
+	//end smog attack
 	yield WaitForSeconds(3) ;
 		animation.CrossFade("Moving",3);
 		animation.Blend("exhaust_normal",1,.5);
@@ -60,4 +72,24 @@ function SmogOfWar () {
 		a.transform.parent = null;
 
 	
+}
+
+////
+//rage/aggro animation
+////
+private var isRaging = false;
+function Rage (){
+	
+	if(!animation.IsPlaying("Moving") ){
+		return;
+	}
+	isRaging = true;
+	animation.CrossFade("Agro",.3);
+	var s = gameObject.GetComponent(PathFinder).speed;
+	gameObject.GetComponent(PathFinder).speed = 0.1;
+	yield WaitForSeconds(3);
+	gameObject.GetComponent(PathFinder).speed = s;
+	animation.CrossFade("Moving",3);
+	animation.Blend("exhaust_normal",1,.5);
+	isRaging = false;
 }
