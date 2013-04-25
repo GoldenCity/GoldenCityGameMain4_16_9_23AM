@@ -1,22 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Spawner.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Lightning.js">
     <Files>
-      <File FileName="Assets\Scripts\RamAI.js" Line="22" Column="17" />
-      <File FileName="Assets\Defenses\MiniCannon\ScriptProjectile_MiniCannon.js" Line="1" Column="1" />
-      <File FileName="Assets\Defenses\MiniCannon\MiniCannonBulletBoom.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="74" Column="47" />
-      <File FileName="Assets\Scripts\Spawner.js" Line="64" Column="93" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_Hud.js">
-    <Files>
-      <File FileName="Assets\Scripts\FlyingPathFinder.js" Line="59" Column="49" />
-      <File FileName="Assets\Scripts\scriptGate.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="108" Column="3" />
-      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="82" Column="2" />
-      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="121" Column="12" />
->>>>>>> Added Raycast layers
+      <File FileName="Assets\Scripts\Lightning.js" Line="18" Column="73" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
