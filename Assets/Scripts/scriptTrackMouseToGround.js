@@ -16,6 +16,13 @@ var arcX				: float	= 60.0; 	//cannon degrees of freedom on X axis (point up/dow
 var arcXOffset 			: float = 90; 		//elevation of cannon when mouseY is center
 var projectile 			: Transform;		//Transforms added to projectile on its instantiation
 var projectileEmitter 	: Transform;		//Transforms added to the emitter object
+var smokeRing		 	: GameObject;
+var smokePillow		 	: GameObject;
+var muzzleEmitter 		: Transform;
+var muzzleFlash 		: GameObject;
+var muzzleSmoke 		: GameObject;
+var muzzleSmoke2 		: GameObject; 
+var cannonBoom 			: AudioClip;
 var mine : Transform;
 
 static var hitPoint 	: Vector3;			//point where mouse 'touches' ground
@@ -38,6 +45,8 @@ function Start()
 	
 	spawnSolarbeamScript = GameObject.Find("Globals").GetComponent(spawnSolarbeam);
 	spawnMineScript = GameObject.Find("Globals").GetComponent(NovaMineSpawn);
+
+
 }
 
 function Update () 
@@ -101,12 +110,16 @@ function Update ()
 			}
 		}
 		
+		/////
+		// FIRING CANNON
+		/////
 		if(c.normalCannonOn)
 		//if (cannonIsOn) 
 		{
 			if (Input.GetMouseButtonDown(0) && target.gameObject.active == true)//fire cannon
 			{
 				Instantiate(projectile, projectileEmitter.position, projectileEmitter.rotation); //create a projectile object at the emitter position and rotation			
+				CannonFireFX();
 			}
 		}
 	} else {
@@ -149,4 +162,24 @@ function GetTheta(hitPoint : Vector3) //
 
 function OnGUI() {
 	//GUI.Label(Rect (500,10,300,100), info);
+}
+
+function CannonFireFX () {
+		//SMOKEY POOFS
+		if(Random.value > .3) {
+			Instantiate(smokePillow, muzzleEmitter.position, projectileEmitter.rotation ); 			
+		}	
+		else
+			Instantiate(smokeRing, muzzleEmitter.position, projectileEmitter.rotation ); 
+					
+		//FLASH	
+		muzzleFlash.GetComponent(MuzzleFlash).enabled = true;
+		//SMOKE
+		muzzleSmoke.GetComponent(ParticleSystem).Play();
+		muzzleSmoke2.GetComponent(ParticleSystem).Play();
+		//SOUND
+		gameObject.audio.clip = cannonBoom;
+		gameObject.audio.Play();
+		
+		
 }

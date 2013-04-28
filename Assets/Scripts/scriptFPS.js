@@ -147,6 +147,29 @@ function GetTheta(hitPoint : Vector3) //
 	return theta ;
 }
 
+function GetHitPoint() //
+{ //See http://en.wikipedia.org/wiki/Trajectory_of_a_projectile#Angle_required_to_hit_coordinate_.28x.2Cy.29
+
+	var v = launchVelocity;
+	var d = Mathf.Sqrt(Mathf.Pow(hitPoint.z-transform.position.z,2)+Mathf.Pow(hitPoint.x-transform.position.z,2));//the hypotenuse of a right triangle shall be d
+	var y = transform.position.y-hitPoint.y-0.7; //altitude of target
+	var g = Mathf.Abs(Physics.gravity.y); //assume gravity is a positive
+	var partA = Mathf.Pow(v,2); //trying to break it up to be easier to read
+	var partB = Mathf.Pow(v,4)-g*(g*d*d+2*y*v*v); //and so if this part is <0 we wont square root it
+	
+	if (partB<0) //equation will choke on irrational number if target is outside max range of cannon, need better way to deal with this
+	{
+		partB=0;
+		//print ("irrational number warning!");
+	}
+	
+	var theta = Mathf.Atan((partA+Mathf.Sqrt(partB))/(g*d)); //complete the calculation
+		theta = theta*Mathf.Rad2Deg; //convert result from radians to degrees
+		
+	//print (theta);
+	return theta ;
+}
+
 function OnGUI() {
 	//GUI.Label(Rect (500,10,300,100), info);
 }
