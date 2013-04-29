@@ -1,8 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptTrackMouseToGround.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Spawner.js">
     <Files>
-      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="181" Column="38" />
+      <File FileName="Assets\Scripts\Spawner.js" Line="102" Column="66" />
+      <File FileName="Assets\Scripts\PathFinder.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SpawnPoint.js" Line="4" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

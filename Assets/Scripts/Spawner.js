@@ -10,10 +10,10 @@ private var num = 0;
 var harpyTime = 3;
 private var harpyTimer = 4.1;
 
-var ramTime = 5;
+var ramTime = 20;
 private var ramTimer = 4.1;
 
-var cyclopsTime = 5;
+var cyclopsTime = 25;
 private var cyclopsTimer = 4.1;
 
 
@@ -56,13 +56,25 @@ function SpawnEnemy ()
 		harpyTimer = 0.0;
 	}
 	if (ramTimer >= ramTime) {
-		Instantiate(enemyList[0], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+		Spawn(0);
+	
+		//Instantiate(enemyList[0], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
 		ramTimer = 0.0;
 	}
-	if (cyclopsTimer >= ramTime) {
-		Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
-		WaitForSeconds(1);
-		Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+	
+	//if (cyclopsTimer >= ramTime) {	
+	//	Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+	//	WaitForSeconds(1);
+	//	Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+	//	cyclopsTimer = 0.0;
+	//}
+	
+	if (cyclopsTimer >= cyclopsTime) {
+		Spawn(2);
+	
+		//Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+		//WaitForSeconds(1);
+		//Instantiate(enemyList[2], pathList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
 		cyclopsTimer = 0.0;
 	}
 	
@@ -86,4 +98,16 @@ function SpawnEnemy ()
 	//Instantiate(enemyList[0], pathList[num % pathList.Length].position, Quaternion.identity);//Quaternion.Euler ( 270, 180, 0 ));	
 	//Instantiate(enemyList[0], pathList[Random.Range(0.0, 4.0)].position, Quaternion.Euler ( 270, 180, 0 ));
 	*/
+}
+
+function Spawn(num : int) {
+	var path = pathList[Random.Range(0.0, 4.0)];
+	if (path.GetComponent(SpawnPoint).valid == true) {
+		Instantiate(enemyList[num], path.position, Quaternion.identity);
+	}else {
+	print("Respawning");
+	WaitForSeconds(3);
+	Instantiate(enemyList[num], path.position, Quaternion.identity);
+	//Spawn(num);
+	}	
 }

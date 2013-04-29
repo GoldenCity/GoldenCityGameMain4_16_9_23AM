@@ -9,7 +9,7 @@ var moveNum : int;
 var frameCount : int = 0;
 
 private var finalTarget 	: Transform;
-private var currentTarget   : Transform;
+var currentTarget   : Transform;
 private var vectorToPoint 	: Vector3 = Vector3.forward;
 private var countTimer = 4.1;
 
@@ -51,27 +51,36 @@ function FixedUpdate() {
 	ReaquireVector();
 }
 
-function OnTriggerEnter(objColl : Collider) {
+function OnTriggerEnter(other : Collider) {
 	
-	if(objColl.gameObject.tag == "MovingWall") {			
+	if(other.gameObject.tag == "MovingWall") {			
 	//	Physics.IgnoreCollision(objColl.collider, collider);
 	}
-	if(objColl.gameObject.tag == "Ground") {			
+	if(other.gameObject.tag == "Ground") {			
 		//gravity = 0;
-	}
-	if(objColl.gameObject.tag == "WayPoint") {
-		currentTarget = objColl.transform.Find("GameObject");
+	}	
+	if(other.gameObject.tag == "WayPoint") {		
+		currentTarget = other.transform.Find("GameObject");		
 		if (currentTarget == null) {
 			currentTarget = GetFinalTarget();
-		}		
+		}				
 	}
 	vectorToPoint = currentTarget.position - this.transform.position;
 	vectorToPoint.Normalize();
 	transform.LookAt(currentTarget);
+	
+	if(other.gameObject.tag == "Respawn") {	
+		other.gameObject.transform.parent.gameObject.GetComponent(SpawnPoint).valid = false;		
+	}
 }
 
-function OnTriggerExit(objColl : Collider) {
-	if(objColl.gameObject.tag == "Ground") {			
+function OnTriggerExit(other : Collider) {
+	if(other.gameObject.tag == "Respawn") {
+		other.gameObject.transform.parent.gameObject.GetComponent(SpawnPoint).valid = false;
+		//currentTarget.transform.parent.gameObject.GetComponent(SpawnPoint).valid = true;		
+	}
+	
+	if(other.gameObject.tag == "Ground") {			
 		//gravity = -9.8;
 	}
 }

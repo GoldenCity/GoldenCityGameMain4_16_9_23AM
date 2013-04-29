@@ -77,7 +77,7 @@ function OnCollisionEnter (other : Collision)
 	
 	if(other.gameObject.tag == "Enemy") {
 		 Physics.IgnoreCollision(other.collider, collider); 
-	}	
+	}		
 }
 
 function OnTriggerEnter (other : Collider)
@@ -110,7 +110,6 @@ function OnTriggerEnter (other : Collider)
  	if(other.gameObject.tag == "Wall") {
 		 Destroy(gameObject);
 	}
-
 }
 
 function TakeDamage (damage:float)
@@ -136,38 +135,3 @@ function GameOver ()
 	yield WaitForSeconds(5.0);
 	Application.LoadLevel("sceneGameOver");
 }
-/*
-var speed = 4.0;
-var delayTime = 1.0;
-
-private var p : GameObject;
-private var countTimer = 4.1;
-private var vectorToPlayer : Vector3;
-
-function Awake() {
-	// Find the player
-	p = GameObject.FindGameObjectWithTag("Player");
-}
-
-function Update () {
-	FindAndChase();
-}
-
-function FindAndChase() {
-	
-	countTimer += Time.deltaTime;
-
-	if(countTimer >= delayTime)
-	{
-	
-		// Calculate the vector between the player and the enemy
-		vectorToPlayer = p.transform.position - this.transform.position;
-		vectorToPlayer.Normalize();
-		countTimer = 0.0;
-		//transform.LookAt(vectorToPlayer);
-	}
-	
-	transform.position = transform.position + (vectorToPlayer * (speed * Time.deltaTime));
-
-}
-*/
