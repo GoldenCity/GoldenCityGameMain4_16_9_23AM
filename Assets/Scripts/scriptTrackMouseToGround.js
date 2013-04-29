@@ -41,20 +41,21 @@ var c : Script_Hud;
 var spawnSolarbeamScript : spawnSolarbeam;
 var spawnMineScript : NovaMineSpawn;
 
+var basicCooldown = 1.0;
+
+var shotsLeft = 4;
+var shotsMax = 4;
+
 function Start()
 {
 	c = GameObject.Find("Camera_Main").GetComponent(Script_Hud);
 	
 	spawnSolarbeamScript = GameObject.Find("Globals").GetComponent(spawnSolarbeam);
 	spawnMineScript = GameObject.Find("Globals").GetComponent(NovaMineSpawn);
-
-
 }
 
 function Update () 
 { 
-	delay += Time.deltaTime;
-	
 	var ray = Camera.main.ScreenPointToRay (Input.mousePosition); //active camera must be tagged MainCamera!
 	var hit : RaycastHit;
 	
@@ -114,21 +115,18 @@ function Update ()
 			}
 		}
 		
-		/////
-		// FIRING CANNON
-		/////
 		if(c.normalCannonOn)
 		//if (cannonIsOn) 
 		{
 			if (Input.GetMouseButtonDown(0) && target.gameObject.active == true)//fire cannon
 			{
-				if (delay >= shotDelay) 
+				if(shotsLeft > 0)
 				{
-					Instantiate(projectile, projectileEmitter.position, projectileEmitter.rotation); //create a projectile object at the emitter position and rotation			
-					CannonFireFX();
-					delay = 0.0;
-				}
-				
+				CannonFireFX();
+				Instantiate(projectile, projectileEmitter.position, projectileEmitter.rotation); //create a projectile object at the emitter position and rotation			
+				shotsLeft--;
+				basicAttackCooldown();
+				} 
 			}
 		}
 	} else {
@@ -145,6 +143,14 @@ function Update ()
     
 }
 
+function basicAttackCooldown()
+{	
+	if(shotsLeft == 0)
+	{
+		yield WaitForSeconds(basicCooldown);
+		shotsLeft = shotsMax;
+	}
+}
 
 function GetTheta(hitPoint : Vector3) //
 { //See http://en.wikipedia.org/wiki/Trajectory_of_a_projectile#Angle_required_to_hit_coordinate_.28x.2Cy.29

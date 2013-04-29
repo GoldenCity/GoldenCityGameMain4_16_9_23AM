@@ -147,8 +147,9 @@ function OnGUI()
 //			cannOn = true;
 //		}
 		
-GUI.skin = customSkinUpgrades;
 GUI.skin = customSkin;
+GUI.color = Color.yellow;
+GUI.skin.label.fontSize = ( (Screen.width * 20) / 1132 );
 
 	GUI.backgroundColor = Color.blue;
 	
@@ -158,8 +159,10 @@ GUI.skin = customSkin;
 	//-------------Show Souls
 
 //guiRectArray[0] = new Rect (Screen.width-(Screen.width/5),Screen.height/80, Screen.width/4, Screen.height/4)
-	GUI.Label(new Rect (Screen.width-(Screen.width/5),Screen.height/80, Screen.width/4, Screen.height/4),("Souls Collected: " + totalSouls));
+	GUI.Label(new Rect (Screen.width-(Screen.width/4),Screen.height/80, Screen.width/4, Screen.height/4),("Souls Collected: " + totalSouls));
 		
+GUI.color = Color.white;
+GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 
 	//Top-Right Menu
 	if (GUI.Button(Rect((Screen.width/20)*19,0,Screen.width/18,Screen.height/16),GUIContent(arrow, "hoverMenue")))
@@ -271,7 +274,7 @@ GUI.skin = customSkin;
 		}
 		if (GUI.tooltip == "hoverHealthUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.25,(Screen.height/8)*3.25,(Screen.width/10)*2,(Screen.height/10)*2), "Increase Wall Health");
+				GUI.Label(new Rect((Screen.width/20)*14.2,(Screen.height/8)*3.25,(Screen.width/10)*2,(Screen.height/10)*2), "Increase Wall Health");
 				//cannonOn = false;
 			}
 		}
@@ -286,13 +289,13 @@ GUI.skin = customSkin;
 			}
 		}*/
 	if (regenUpgrade == 0){
-	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*2.5,Screen.width/20,Screen.height/20),GUIContent(regenOne, "hoverRegenUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*2.5,Screen.width/20,Screen.height/12),GUIContent(regenOne, "hoverRegenUpgrade")))
 		{
 				if (regenUpgrade < 3){regenUpgrade++;}
 		}
 		if (GUI.tooltip == "hoverRegenUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.5,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites");
 				//cannonOn = false;
 			}
 		}
@@ -313,7 +316,7 @@ GUI.skin = customSkin;
 		}
 		if (GUI.tooltip == "hoverHealthUpgrade2")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.25,(Screen.height/8)*3.25,(Screen.width/10)*2,(Screen.height/10)*2), "Increase Wall Health II");
+				GUI.Label(new Rect((Screen.width/20)*14.2,(Screen.height/8)*3.25,(Screen.width/10)*2,(Screen.height/10)*2), "Increase Wall Health II");
 				//cannonOn = false;
 			}
 		}
@@ -328,13 +331,13 @@ GUI.skin = customSkin;
 			}
 		}*/
 	if (regenUpgrade == 1){
-	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*2.5,Screen.width/20,Screen.height/20),GUIContent(regenTwo, "hoverRegenUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*2.5,Screen.width/20,Screen.height/12),GUIContent(regenTwo, "hoverRegenUpgrade")))
 		{
 				if (regenUpgrade < 3){regenUpgrade++;}
 		}
 		if (GUI.tooltip == "hoverRegenUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.5,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites II");
 				//cannonOn = false;
 			}
 		}
@@ -355,7 +358,7 @@ GUI.skin = customSkin;
 		}
 		if (GUI.tooltip == "hoverHealthUpgrade3")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.25,(Screen.height/8)*3.25,(Screen.width/10)*2,(Screen.height/10)*2), "Increase Wall Health III");
+				GUI.Label(new Rect((Screen.width/20)*14.2,(Screen.height/8)*3.25,(Screen.width/10)*2,(Screen.height/10)*2), "Increase Wall Health III");
 				//cannonOn = false;
 			}
 		}
@@ -369,14 +372,14 @@ GUI.skin = customSkin;
 				GUI.Label(new Rect((Screen.width/20)*13,(Screen.height/8)*2,(Screen.width/10)*2,(Screen.height/10)*2), "Decrease Ability Cooldowns");
 			}
 		}*/
-	if (regenUpgrade > 1){
-	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*2.5,Screen.width/20,Screen.height/20),GUIContent(regenThree, "hoverRegenUpgrade")))
+	if (regenUpgrade == 2){
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*2.5,Screen.width/20,Screen.height/12),GUIContent(regenThree, "hoverRegenUpgrade")))
 		{
 				if (regenUpgrade < 3){regenUpgrade++;}
 		}
 		if (GUI.tooltip == "hoverRegenUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.5,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites III");
 				//cannonOn = false;
 			}
 		}
@@ -396,7 +399,7 @@ GUI.skin = customSkin;
 		}
 		if (GUI.tooltip == "hoverBoltUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.75,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack");
+				GUI.Label(new Rect((Screen.width/20)*14.35,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack");
 				//cannonOn = false;
 			}
 		}
@@ -462,7 +465,7 @@ GUI.skin = customSkin;
 		}
 		if (GUI.tooltip == "hoverBoltUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.75,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack II");
+				GUI.Label(new Rect((Screen.width/20)*14.35,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack II");
 				//cannonOn = false;
 			}
 		}
@@ -528,7 +531,7 @@ GUI.skin = customSkin;
 		}
 		if (GUI.tooltip == "hoverBoltUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.75,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack III");
+				GUI.Label(new Rect((Screen.width/20)*14.5,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack III");
 				//cannonOn = false;
 			}
 		}
@@ -559,7 +562,7 @@ GUI.skin = customSkin;
 		}
 		if (GUI.tooltip == "hoverMiniCannonUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.75,(Screen.height/8)*6.0,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses III");
+				GUI.Label(new Rect((Screen.width/20)*14.9,(Screen.height/8)*6.0,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses III");
 				//cannonOn = false;
 			}
 		}
@@ -687,7 +690,10 @@ GUI.skin = customSkin;
 		GUI.skin = customSkin;
 		if (GUI.Button(Rect((Screen.width/10)*3.25,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),lightningThree))
 		{
-			//Use lightning shot - ADD LIGHTNING ATTACK CODE HERE
+			lightningOn = true;
+			scorcherFireOn = false;
+			normalCannonOn = false;
+			mineOn = false;
 		}
 	}
 	if (mineUpgrade == 4)
@@ -695,7 +701,10 @@ GUI.skin = customSkin;
 		GUI.skin = customSkin;
 		if (GUI.Button(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineThree))
 		{
-			//Use Mine - ADD MINE ATTACK CODE HERE
+			lightningOn = false;
+			scorcherFireOn = false;
+			normalCannonOn = false;
+			mineOn = true;
 		}
 	}
 	if (scorcherUpgrade == 4)
@@ -703,7 +712,10 @@ GUI.skin = customSkin;
 		GUI.skin = customSkin;
 		if (GUI.Button(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherThree))
 		{
-			//Use Scorcher - ADD SCORCHER ATTACK CODE HERE
+			lightningOn = false;
+			scorcherFireOn = true;
+			normalCannonOn = false;
+			mineOn = false;
 		}
 	}
 	

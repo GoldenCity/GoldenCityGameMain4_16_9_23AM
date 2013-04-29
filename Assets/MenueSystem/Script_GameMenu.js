@@ -7,30 +7,30 @@ var camera_Main : Camera;
 var screenWidth : int = Screen.width;
 var screenHeight : int = Screen.height;
 
-
+var logo : Texture;
+var resume : Texture;
+var quit : Texture;
 
 
 function OnGUI() 
 {
 	if (camera_GameMenu.enabled == true)
 	{
-		GUI.BeginGroup(Rect((Screen.width/2)-200, (Screen.height/4)-100,400,400));
-		
-		GUI.Box(Rect(0,0,400,400),"GOLDEN CITY");
 	
-		if (GUI.Button(Rect(100,80,180,80),"Resume Game"))
+		GUI.DrawTexture(Rect((Screen.width/8)*3,(Screen.height/6)*3,Screen.width/4,Screen.height/3), logo);
+
+		if (GUI.Button(Rect(Screen.width/8,Screen.height/6,Screen.width/4,Screen.height/3), resume))
 		{
 			camera_GameMenu.enabled = false;
 			camera_Main.enabled = true;
 		}
 		
-		if (GUI.Button(Rect(100,260,180,80),"Quit Game"))
+		if (GUI.Button(Rect((Screen.width/8)*5,Screen.height/6,Screen.width/4,Screen.height/3), quit))
 		{
 			Screen_GCMainMenu.destination = "MainMenu";
 			Application.LoadLevel("Screen_GoldenCityLoad");
 		}
 		
-		GUI.EndGroup();
 	}
 	
 	

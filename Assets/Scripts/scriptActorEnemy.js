@@ -4,15 +4,9 @@
 
 // Inspector variables
 static var enemyList = new Array();	//List to keep of enemies
-
-var _soulEffect : GameObject;
-
 var enemyID			: int;	//unique ID for this enemy instance
 var moveNum			: int;
 var soulsWorth : int = 40;
-//static variables
-static var atGateCount	: int = 0;		//global count of enemies at gate
-static var killCount 	: int = 0;		//global count of enemies killed
 
 var speed 			: float = 6.0; 	//moving speed
 var damageVelocity 	: float = 0.0; 	//relative velocity of collision with cannon ball to kill
@@ -22,14 +16,25 @@ var atGate			: boolean = false;	//is enemy touching gate?
 
 var gateScript		: scriptGate;
 
+var h : wallState;
+
 //MasterLog
 var s : Script_Hud;
+
+//static variables
+static var atGateCount	: int = 0;		//global count of enemies at gate
+static var killCount 	: int = 0;		//global count of enemies killed
+
+var suicideParticle : Transform;
 
 // Private variables
 private var moveDirection : Vector3; //vector describing the direction of movment
 
+var _soulEffect : GameObject;
+
 function Start ()
 {	
+	h = GameObject.Find("Wall").GetComponent(wallState);
 	s = GameObject.Find("Camera_Main").GetComponent(Script_Hud);
 	//movePoint = movePoint.GetComponentInChildren("WallTargetPointC");
 	//enemyList.Push(enemyID);
@@ -80,7 +85,7 @@ function OnCollisionEnter (other : Collision)
 	
 	if(other.gameObject.tag == "Enemy") {
 		 Physics.IgnoreCollision(other.collider, collider); 
-	}		
+	}	
 }
 
 function OnTriggerEnter (other : Collider)
@@ -110,9 +115,13 @@ function OnTriggerEnter (other : Collider)
 // 		}
  	}
  	
- 	if(other.gameObject.tag == "Wall") {
-		 Destroy(gameObject);
+ 	if(other.gameObject.tag == "Wall") 
+ 	{
+		Destroy(gameObject);
+		Instantiate(suicideParticle, transform.position, transform.rotation);
+ 		h.wallHealth -= 100;
 	}
+
 }
 
 function TakeDamage (damage:float)
@@ -138,3 +147,38 @@ function GameOver ()
 	yield WaitForSeconds(5.0);
 	Application.LoadLevel("sceneGameOver");
 }
+/*
+var speed = 4.0;
+var delayTime = 1.0;
+
+private var p : GameObject;
+private var countTimer = 4.1;
+private var vectorToPlayer : Vector3;
+
+function Awake() {
+	// Find the player
+	p = GameObject.FindGameObjectWithTag("Player");
+}
+
+function Update () {
+	FindAndChase();
+}
+
+function FindAndChase() {
+	
+	countTimer += Time.deltaTime;
+
+	if(countTimer >= delayTime)
+	{
+	
+		// Calculate the vector between the player and the enemy
+		vectorToPlayer = p.transform.position - this.transform.position;
+		vectorToPlayer.Normalize();
+		countTimer = 0.0;
+		//transform.LookAt(vectorToPlayer);
+	}
+	
+	transform.position = transform.position + (vectorToPlayer * (speed * Time.deltaTime));
+
+}
+*/
