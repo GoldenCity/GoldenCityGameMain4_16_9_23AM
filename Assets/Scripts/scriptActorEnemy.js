@@ -4,23 +4,26 @@
 
 // Inspector variables
 static var enemyList = new Array();	//List to keep of enemies
+
+var _soulEffect : GameObject;
+
 var enemyID			: int;	//unique ID for this enemy instance
 var moveNum			: int;
-var speed 			: float = 6.0; 	//moving speed
-var damageVelocity 	: float = 0.0; 	//relative velocity of collision with cannon ball to kill
-var atGate			: boolean = false;	//is enemy touching gate?
-var gateScript		: scriptGate;
-var healthPoints	: float = 1.0;	//health of the enemy
-
 var soulsWorth : int = 40;
-
-//MasterLog
-var s : Script_Hud;
-
 //static variables
 static var atGateCount	: int = 0;		//global count of enemies at gate
 static var killCount 	: int = 0;		//global count of enemies killed
 
+var speed 			: float = 6.0; 	//moving speed
+var damageVelocity 	: float = 0.0; 	//relative velocity of collision with cannon ball to kill
+var healthPoints	: float = 1.0;	//health of the enemy
+
+var atGate			: boolean = false;	//is enemy touching gate?
+
+var gateScript		: scriptGate;
+
+//MasterLog
+var s : Script_Hud;
 
 // Private variables
 private var moveDirection : Vector3; //vector describing the direction of movment
@@ -123,7 +126,7 @@ function TakeDamage (damage:float)
 		if(atGate) 
 			atGateCount--;
 		
-		
+		Instantiate(_soulEffect, gameObject.transform.position, Quaternion.Euler(-90,0,0));
 		Destroy(gameObject);
 		enemyList[enemyID] = -1; //represent a dead enemy as -1 in list
 		killCount++;
