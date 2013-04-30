@@ -1,10 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptActorEnemy.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptGate.js">
     <Files>
       <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="138" Column="77" />
-      <File FileName="Assets\Scripts\Movement.js" Line="6" Column="31" />
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="658" Column="28" />
+      <File FileName="Assets\MenueSystem\healthTest.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\spawnSolarbeam.js" Line="40" Column="1" />
+      <File FileName="Assets\Scripts\NovaMineSpawn.js" Line="38" Column="1" />
+      <File FileName="Assets\Scripts\scriptGate.js" Line="62" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

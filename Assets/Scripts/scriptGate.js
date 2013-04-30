@@ -35,27 +35,27 @@ function Zap ()
 	zap = false;			//turn off signal
 }
 
-function OnGUI () //show some on screen info
-{
-	if (scriptActorEnemy.killCount >= zapReadyAt) GUI.enabled = true; //enable the button if needed number of kills is met
-	else GUI.enabled = false;
-	
-	if (GUI.Button(Rect(Screen.width *0.01*xButtonPos,		//button X position scaled to 100ths of screen size
-						Screen.height*0.01*yButtonPos,		//button Y position scaled to 100ths ofscreen size
-						Screen.width *0.01 *buttonSize,		//button width scaled to 100ths of screen size
-						Screen.height*0.01 *buttonHeight),	//button width scaled to 100ths of screen size
-						"ZAP!"))	//Button Lable
-
-	{	//ZAP Button effect
-		Zap();
-	}
-	
-	GUI.enabled = true;
-	GUI.Label(Rect(100,10,300,20), "atGate: " + enemyScript.atGateCount);
-	
-//	if(gameOver)
-//	{
-//		GUI.Box(Rect(300,100,600,400),"Game Over!");
+//function OnGUI () //show some on screen info
+//{
+//	if (scriptActorEnemy.killCount >= zapReadyAt) GUI.enabled = true; //enable the button if needed number of kills is met
+//	else GUI.enabled = false;
+//	
+//	if (GUI.Button(Rect(Screen.width *0.01*xButtonPos,		//button X position scaled to 100ths of screen size
+//						Screen.height*0.01*yButtonPos,		//button Y position scaled to 100ths ofscreen size
+//						Screen.width *0.01 *buttonSize,		//button width scaled to 100ths of screen size
+//						Screen.height*0.01 *buttonHeight),	//button width scaled to 100ths of screen size
+//						"ZAP!"))	//Button Lable
+//
+//	{	//ZAP Button effect
+//		Zap();
 //	}
-
-}
+//	
+//	GUI.enabled = true;
+//	GUI.Label(Rect(100,10,300,20), "atGate: " + enemyScript.atGateCount);
+//	
+////	if(gameOver)
+////	{
+////		GUI.Box(Rect(300,100,600,400),"Game Over!");
+////	}
+//
+//}

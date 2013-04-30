@@ -17,7 +17,7 @@
 		uv = GameObject.Find("Wall").GetComponent(wallState);
 		healthBarLength = uv.wallHealth/5;
 		
-		pos = new Vector2(Screen.width/17,0);
+		pos = new Vector2(Screen.width/12,0);
 	   	size = new Vector2(Screen.width/20,Screen.height/20);
 	}
   
@@ -55,7 +55,10 @@
     function Update()
     {
     	healthBarLength = uv.wallHealth/5;
+  		if (healthBarLength >= 0)
+  		{
   		size.x = healthBarLength;
+  		}
   		//HealthFull.Resize(size.x,size.y);
   		//print("Size.x: " + size.x);
     }

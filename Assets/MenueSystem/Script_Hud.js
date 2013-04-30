@@ -6,7 +6,8 @@
 
 //SMALL VERSION
 //UPGRADES
-var arrow : Texture;
+var store : Texture;
+var menuMain : Texture;
 var cannonBtnTexture : Texture;
 var wallBtnTexture : Texture;
 var abilityBtnTexture : Texture;
@@ -22,6 +23,11 @@ var healthThree : Texture;
 var lightningOne : Texture;
 var lightningTwo : Texture;
 var lightningThree : Texture;
+
+var miniCannonsOne : Texture;
+var miniCannonsTwo : Texture;
+var miniCannonsThree : Texture;
+var miniCannonsFour : Texture;
 
 var cannonsOne : Texture;
 var cannonsTwo : Texture;
@@ -90,6 +96,12 @@ var mineOn = false;
 	
 	var cannonStateScript : cannonState;
 	
+	var sb : spawnSolarbeam;
+	var solarUsed;
+	
+	var nm : NovaMineSpawn;
+	var mineUsed;
+	
 //----------------------------------------
 
 	var customSkin : GUISkin;
@@ -105,6 +117,14 @@ function Start ()
 		//-------------------Cannon
 		ul = GameObject.Find("Globals").GetComponent(UpgradeVariables);
 		lightningUpgrade = ul.upgradeLightning;
+		
+		//----------------
+		sb = GameObject.Find("Globals").GetComponent(spawnSolarbeam);
+		solarUsed = sb.spawned;
+		
+		nm = GameObject.Find("Globals").GetComponent(NovaMineSpawn);
+		mineUsed = nm.spawned;
+		//----------------
 		
 		mineUpgrade = ul.upgradeMine;
 		
@@ -130,7 +150,8 @@ function Update()
 //	else {
 //		cannonOn = true;
 //	}
-
+	solarUsed = sb.spawned;
+	mineUsed = nm.spawned;
 }
 
 
@@ -165,7 +186,7 @@ GUI.color = Color.white;
 GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 
 	//Top-Right Menu
-	if (GUI.Button(Rect((Screen.width/20)*19,0,Screen.width/18,Screen.height/16),GUIContent(arrow, "hoverMenue")))
+	if (GUI.Button(Rect((Screen.width/20)*19,0,Screen.width/18,Screen.height/16),GUIContent(store, "hoverMenue")))
 		{
 			showCannonButtons = false;
 			showWallButtons = false;
@@ -278,6 +299,22 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 				//cannonOn = false;
 			}
 		}
+		if (miniCannonsUpgrade == 1){
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*3.75,Screen.width/20,Screen.height/12),GUIContent(miniCannonsOne, "hoverMiniCannonUpgrade")))
+		{
+				if (totalSouls >= soulCost)
+				{
+					MinusSouls(soulCost);
+					MiniCannons();
+					miniCannonsUpgrade++;
+				}	
+		}
+		if (GUI.tooltip == "hoverMiniCannonUpgrade")
+			{
+				GUI.Label(new Rect((Screen.width/20)*15.25,(Screen.height/8)*3.9,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses");
+				//cannonOn = false;
+			}
+		}
 	/*if (energyUpgrade == 0){
 	if (GUI.Button(Rect((Screen.width/20)*17,(Screen.height/8)*2,Screen.width/20,Screen.height/20),GUIContent(cannonBtnTexture, "hoverEnergyUpgrade")))
 		{
@@ -295,7 +332,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverRegenUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.65,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites");
 				//cannonOn = false;
 			}
 		}
@@ -320,6 +357,22 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 				//cannonOn = false;
 			}
 		}
+		if (miniCannonsUpgrade == 2){
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*3.75,Screen.width/20,Screen.height/12),GUIContent( miniCannonsTwo, "hoverMiniCannonUpgrade")))
+		{
+				if (totalSouls >= soulCost)
+				{
+					MinusSouls(soulCost);
+					MiniCannons();
+					miniCannonsUpgrade++;
+				}	
+		}
+		if (GUI.tooltip == "hoverMiniCannonUpgrade")
+			{
+				GUI.Label(new Rect((Screen.width/20)*15.25,(Screen.height/8)*3.9,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses II");
+				//cannonOn = false;
+			}
+		}
 	/*if (energyUpgrade == 1){
 	if (GUI.Button(Rect((Screen.width/20)*17,(Screen.height/8)*2,Screen.width/20,Screen.height/20),GUIContent(cannonBtnTexture, "hoverEnergyUpgrade")))
 		{
@@ -337,7 +390,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverRegenUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites II");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.65,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites II");
 				//cannonOn = false;
 			}
 		}
@@ -362,6 +415,22 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 				//cannonOn = false;
 			}
 		}
+		if (miniCannonsUpgrade == 3){
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*3.75,Screen.width/20,Screen.height/12),GUIContent(miniCannonsThree, "hoverMiniCannonUpgrade")))
+		{
+				if (totalSouls >= soulCost)
+				{
+					MinusSouls(soulCost);
+					MiniCannons();
+					miniCannonsUpgrade++;
+				}	
+		}
+		if (GUI.tooltip == "hoverMiniCannonUpgrade")
+			{
+				GUI.Label(new Rect((Screen.width/20)*15.25,(Screen.height/8)*3.9,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses III");
+				//cannonOn = false;
+			}
+		}
 	/*if (energyUpgrade > 1){
 	if (GUI.Button(Rect((Screen.width/20)*17,(Screen.height/8)*2,Screen.width/20,Screen.height/20),GUIContent(cannonBtnTexture, "hoverEnergyUpgrade")))
 		{
@@ -379,17 +448,35 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverRegenUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.5,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites III");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*2.65,(Screen.width/10)*2,(Screen.height/10)*2), "Regenerative Nanites III");
 				//cannonOn = false;
 			}
 		}
 		
 	}
+	//-----------------------------------------miniCannonLevel4--------------------------
+	if (miniCannonsUpgrade == 4){
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*3.75,Screen.width/20,Screen.height/12),GUIContent(miniCannonsFour, "hoverMiniCannonUpgrade")))
+		{
+				if (totalSouls >= soulCost)
+				{
+					MinusSouls(soulCost);
+					MiniCannons();
+					miniCannonsUpgrade++;
+				}	
+		}
+		if (GUI.tooltip == "hoverMiniCannonUpgrade")
+			{
+				GUI.Label(new Rect((Screen.width/20)*15.25,(Screen.height/8)*3.9,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses IV");
+				//cannonOn = false;
+			}
+		}
+	
 	//------------------SHOW ABILITY BUTTONS LEVEL 1--------------------------
 
 	if (showAbilityButtons){
 	if (lightningUpgrade == 1){
-	if (GUI.Button(Rect((Screen.width/20)*17,Screen.height/2.0,Screen.width/20,Screen.height/12),GUIContent(lightningOne, "hoverBoltUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/18),Screen.width/20,Screen.height/12),GUIContent(lightningOne, "hoverBoltUpgrade")))
 		{
 			if (totalSouls >= soulCost)
 			{
@@ -399,12 +486,12 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverBoltUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.35,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*4.5,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack");
 				//cannonOn = false;
 			}
 		}
 	if (mineUpgrade == 1){
-	if (GUI.Button(Rect((Screen.width/20)*16.5,Screen.height/1.6,Screen.width/20,Screen.height/12),GUIContent(mineOne, "hoverMineUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*16.5,(Screen.height/2)+(Screen.height/7.5),Screen.width/20,Screen.height/12),GUIContent(mineOne, "hoverMineUpgrade")))
 		{
 				if (totalSouls >= soulCost)
 				{
@@ -418,24 +505,8 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 				//cannonOn = false;
 			}
 		}
-	if (miniCannonsUpgrade == 1){
-	if (GUI.Button(Rect((Screen.width/20)*17,Screen.height/1.35,Screen.width/20,Screen.height/12),GUIContent(lightningOne, "hoverMiniCannonUpgrade")))
-		{
-				if (totalSouls >= soulCost)
-				{
-					MinusSouls(soulCost);
-					MiniCannons();
-					miniCannonsUpgrade++;
-				}	
-		}
-		if (GUI.tooltip == "hoverMiniCannonUpgrade")
-			{
-				GUI.Label(new Rect((Screen.width/20)*14.75,(Screen.height/8)*6.0,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses");
-				//cannonOn = false;
-			}
-		}
 	if (scorcherUpgrade == 1){
-	if (GUI.Button(Rect((Screen.width/20)*18.5,Screen.height/1.25,Screen.width/20,Screen.height/12),GUIContent(scorcherOne, "hoverSunScorcherUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/4.8),Screen.width/20,Screen.height/12),GUIContent(scorcherOne, "hoverSunScorcherUpgrade")))
 		{
 				if (totalSouls >= soulCost)
 				{
@@ -445,7 +516,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverSunScorcherUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*16.25,(Screen.height/10)*8.25,(Screen.width/10)*2,(Screen.height/10)*2), "Sun-Scorcher Attack");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/10)*7.35,(Screen.width/10)*2,(Screen.height/10)*2), "Sun-Scorcher Attack");
 				//cannonOn = false;
 			}
 		}
@@ -455,7 +526,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (showAbilityButtons){
 	
 	if (lightningUpgrade == 2){
-	if (GUI.Button(Rect((Screen.width/20)*17,Screen.height/2.0,Screen.width/20,Screen.height/12),GUIContent(lightningTwo, "hoverBoltUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/18),Screen.width/20,Screen.height/12),GUIContent(lightningTwo, "hoverBoltUpgrade")))
 		{
 			if (totalSouls >= soulCost)
 			{
@@ -465,12 +536,12 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverBoltUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.35,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack II");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*4.5,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack II");
 				//cannonOn = false;
 			}
 		}
 	if (mineUpgrade == 2){
-	if (GUI.Button(Rect((Screen.width/20)*16.5,Screen.height/1.6,Screen.width/20,Screen.height/12),GUIContent(mineTwo, "hoverMineUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*16.5,(Screen.height/2)+(Screen.height/7.5),Screen.width/20,Screen.height/12),GUIContent(mineTwo, "hoverMineUpgrade")))
 		{
 				if (totalSouls >= soulCost)
 				{
@@ -484,24 +555,8 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 				//cannonOn = false;
 			}
 		}
-	if (miniCannonsUpgrade == 2){
-	if (GUI.Button(Rect((Screen.width/20)*17,Screen.height/1.35,Screen.width/20,Screen.height/12),GUIContent(lightningTwo, "hoverMiniCannonUpgrade")))
-		{
-				if (totalSouls >= soulCost)
-				{
-					MinusSouls(soulCost);
-					MiniCannons();
-					miniCannonsUpgrade++;
-				}	
-		}
-		if (GUI.tooltip == "hoverMiniCannonUpgrade")
-			{
-				GUI.Label(new Rect((Screen.width/20)*14.75,(Screen.height/8)*6.0,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses II");
-				//cannonOn = false;
-			}
-		}
 	if (scorcherUpgrade == 2){
-	if (GUI.Button(Rect((Screen.width/20)*18.5,Screen.height/1.25,Screen.width/20,Screen.height/12),GUIContent(scorcherTwo, "hoverSunScorcherUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/4.8),Screen.width/20,Screen.height/12),GUIContent(scorcherTwo, "hoverSunScorcherUpgrade")))
 		{
 				if (totalSouls >= soulCost)
 				{
@@ -511,7 +566,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverSunScorcherUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*16.25,(Screen.height/10)*8.25,(Screen.width/10)*2,(Screen.height/10)*2), "Sun-Scorcher Attack II");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/10)*7.35,(Screen.width/10)*2,(Screen.height/10)*2), "Sun-Scorcher Attack II");
 				//cannonOn = false;
 			}
 		}
@@ -521,7 +576,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (showAbilityButtons){
 	
 	if (lightningUpgrade == 3){
-	if (GUI.Button(Rect((Screen.width/20)*17,Screen.height/2.0,Screen.width/20,Screen.height/12),GUIContent(lightningThree, "hoverBoltUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/18),Screen.width/20,Screen.height/12),GUIContent(lightningThree, "hoverBoltUpgrade")))
 		{
 			if (totalSouls >= soulCost)
 			{
@@ -531,12 +586,12 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverBoltUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*14.5,(Screen.height/8)*4.25,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack III");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/8)*4.5,(Screen.width/10)*2,(Screen.height/10)*2), "Lightning Bolt Attack III");
 				//cannonOn = false;
 			}
 		}
 	if (mineUpgrade == 3){
-	if (GUI.Button(Rect((Screen.width/20)*16.5,Screen.height/1.6,Screen.width/20,Screen.height/12),GUIContent(mineThree, "hoverMineUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*16.5,(Screen.height/2)+(Screen.height/7.5),Screen.width/20,Screen.height/12),GUIContent(mineThree, "hoverMineUpgrade")))
 		{
 				if (totalSouls >= soulCost)
 				{
@@ -550,24 +605,8 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 				//cannonOn = false;
 			}
 		}
-	if (miniCannonsUpgrade == 3){
-	if (GUI.Button(Rect((Screen.width/20)*17,Screen.height/1.35,Screen.width/20,Screen.height/12),GUIContent(lightningThree, "hoverMiniCannonUpgrade")))
-		{
-				if (totalSouls >= soulCost)
-				{
-					MinusSouls(soulCost);
-					MiniCannons();
-					miniCannonsUpgrade++;
-				}	
-		}
-		if (GUI.tooltip == "hoverMiniCannonUpgrade")
-			{
-				GUI.Label(new Rect((Screen.width/20)*14.9,(Screen.height/8)*6.0,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses III");
-				//cannonOn = false;
-			}
-		}
 	if (scorcherUpgrade == 3){
-	if (GUI.Button(Rect((Screen.width/20)*18.5,Screen.height/1.25,Screen.width/20,Screen.height/12),GUIContent(scorcherThree, "hoverSunScorcherUpgrade")))
+	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/4.8),Screen.width/20,Screen.height/12),GUIContent(scorcherThree, "hoverSunScorcherUpgrade")))
 		{
 				if (totalSouls >= soulCost)
 				{
@@ -577,39 +616,19 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverSunScorcherUpgrade")
 			{
-				GUI.Label(new Rect((Screen.width/20)*16.25,(Screen.height/10)*8.25,(Screen.width/10)*2,(Screen.height/10)*2), "Sun-Scorcher Attack III");
+				GUI.Label(new Rect((Screen.width/20)*15,(Screen.height/10)*7.35,(Screen.width/10)*2,(Screen.height/10)*2), "Sun-Scorcher Attack III");
 				//cannonOn = false;
 			}
 		}
 		
 	}
-	//-----------------------------------------miniCannonLevel4--------------------------
-	if (miniCannonsUpgrade == 4){
-	if (GUI.Button(Rect((Screen.width/20)*17,Screen.height/1.35,Screen.width/20,Screen.height/12),GUIContent(lightningThree, "hoverMiniCannonUpgrade")))
-		{
-				if (totalSouls >= soulCost)
-				{
-					MinusSouls(soulCost);
-					MiniCannons();
-					miniCannonsUpgrade++;
-				}	
-		}
-		if (GUI.tooltip == "hoverMiniCannonUpgrade")
-			{
-				GUI.Label(new Rect((Screen.width/20)*14.75,(Screen.height/8)*6.0,(Screen.width/10)*2,(Screen.height/10)*2), "Add Auto Defenses IV");
-				//cannonOn = false;
-			}
-		}
-	
 	//////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////USE ABILITY BUTTONS LEVEL ONE//////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////
 	
 
-	
 	if (lightningUpgrade == 2)
 	{	
-		GUI.skin = customSkin;
 		if (GUI.Button(Rect((Screen.width/10)*3.25,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),lightningOne))
 		{
 			lightningOn = true;
@@ -620,24 +639,44 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	}
 	if (mineUpgrade == 2)
 	{	
-		GUI.skin = customSkin;
-		if (GUI.Button(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineOne))
+		if (mineUsed == false)
 		{
-			lightningOn = false;
-			scorcherFireOn = false;
-			normalCannonOn = false;
-			mineOn = true;
+			if (GUI.Button(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineOne))
+			{
+				lightningOn = false;
+				scorcherFireOn = false;
+				normalCannonOn = false;
+				mineOn = true;
+			}
+		}
+		if (mineUsed == true)
+		{
+			GUI.Label(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineOne);
+			GUI.color = Color.magenta;
+			GUI.skin.label.fontSize = ( (Screen.width * 50) / 1132 );
+			GUI.Label(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6), "" + nm.mineCooldownTimer);
+			GUI.color = Color.white;
 		}
 	}
 	if (scorcherUpgrade == 2)
 	{	
-		GUI.skin = customSkin;
-		if (GUI.Button(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherOne))
+		if (solarUsed == false)
 		{
-			lightningOn = false;
-			scorcherFireOn = true;
-			normalCannonOn = false;
-			mineOn = false;
+			if (GUI.Button(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherOne))
+			{
+				lightningOn = false;
+				scorcherFireOn = true;
+				normalCannonOn = false;
+				mineOn = false;
+			}
+		}
+		if (solarUsed == true)
+		{
+			GUI.Label(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherOne);
+			GUI.color = Color.magenta;
+			GUI.skin.label.fontSize = ( (Screen.width * 50) / 1132 );
+			GUI.Label(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6), "" + sb.solarCooldownTimer);
+			GUI.color = Color.white;
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////////////
@@ -648,7 +687,6 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	
 	if (lightningUpgrade == 3)
 	{	
-		GUI.skin = customSkin;
 		if (GUI.Button(Rect((Screen.width/10)*3.25,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),lightningTwo))
 		{
 			lightningOn = true;
@@ -659,24 +697,44 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	}
 	if (mineUpgrade == 3)
 	{	
-		GUI.skin = customSkin;
-		if (GUI.Button(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineTwo))
+		if (mineUsed == false)
 		{
-			lightningOn = false;
-			scorcherFireOn = false;
-			normalCannonOn = false;
-			mineOn = true;
+			if (GUI.Button(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineTwo))
+			{
+				lightningOn = false;
+				scorcherFireOn = false;
+				normalCannonOn = false;
+				mineOn = true;
+			}
+		}
+		if (mineUsed == true)
+		{
+			GUI.Label(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineTwo);
+			GUI.color = Color.magenta;
+			GUI.skin.label.fontSize = ( (Screen.width * 50) / 1132 );
+			GUI.Label(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6), "" + nm.mineCooldownTimer);
+			GUI.color = Color.white;
 		}
 	}
 	if (scorcherUpgrade == 3)
 	{	
-		GUI.skin = customSkin;
-		if (GUI.Button(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherTwo))
+		if (solarUsed == false)
 		{
-			lightningOn = false;
-			scorcherFireOn = true;
-			normalCannonOn = false;
-			mineOn = false;
+			if (GUI.Button(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherTwo))
+			{
+				lightningOn = false;
+				scorcherFireOn = true;
+				normalCannonOn = false;
+				mineOn = false;
+			}
+		}
+		if (solarUsed == true)
+		{
+			GUI.Label(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherTwo);
+			GUI.color = Color.magenta;
+			GUI.skin.label.fontSize = ( (Screen.width * 50) / 1132 );
+			GUI.Label(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6), "" + sb.solarCooldownTimer);
+			GUI.color = Color.white;
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////////////
@@ -687,7 +745,6 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	
 	if (lightningUpgrade == 4)
 	{	
-		GUI.skin = customSkin;
 		if (GUI.Button(Rect((Screen.width/10)*3.25,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),lightningThree))
 		{
 			lightningOn = true;
@@ -698,31 +755,51 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	}
 	if (mineUpgrade == 4)
 	{	
-		GUI.skin = customSkin;
-		if (GUI.Button(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineThree))
+		if (mineUsed == false)
 		{
-			lightningOn = false;
-			scorcherFireOn = false;
-			normalCannonOn = false;
-			mineOn = true;
+			if (GUI.Button(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineThree))
+			{
+				lightningOn = false;
+				scorcherFireOn = false;
+				normalCannonOn = false;
+				mineOn = true;
+			}
+		}
+		if (mineUsed == true)
+		{
+			GUI.Label(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),mineThree);
+			GUI.color = Color.magenta;
+			GUI.skin.label.fontSize = ( (Screen.width * 50) / 1132 );
+			GUI.Label(Rect((Screen.width/2)-40,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6), "" + nm.mineCooldownTimer);
+			GUI.color = Color.white;
 		}
 	}
 	if (scorcherUpgrade == 4)
 	{	
-		GUI.skin = customSkin;
-		if (GUI.Button(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherThree))
+		if (solarUsed == false)
 		{
-			lightningOn = false;
-			scorcherFireOn = true;
-			normalCannonOn = false;
-			mineOn = false;
+			if (GUI.Button(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherThree))
+			{
+				lightningOn = false;
+				scorcherFireOn = true;
+				normalCannonOn = false;
+				mineOn = false;
+			}
+		}
+		if (solarUsed == true)
+		{
+			GUI.Label(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6),scorcherThree);
+			GUI.color = Color.magenta;
+			GUI.skin.label.fontSize = ( (Screen.width * 50) / 1132 );
+			GUI.Label(Rect((Screen.width/10)*6,(Screen.height/10)*8.5,Screen.height/6,Screen.height/6), "" + sb.solarCooldownTimer);
+			GUI.color = Color.white;
 		}
 	}
-	
 	//////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////MAIN MENU////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////
-	if (GUI.Button(Rect(0,0,Screen.width/20,Screen.height/20),GUIContent(arrow,"hoverGameMenue")))
+	GUI.color = Color.white;
+	if (GUI.Button(Rect(0,0,Screen.width/20,Screen.height/20),GUIContent(menuMain,"hoverGameMenue")))
 		{
     		camera_Main.enabled = false;
     		camera_GameMenu.enabled = true;

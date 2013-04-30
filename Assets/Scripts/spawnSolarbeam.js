@@ -4,6 +4,9 @@ var solarBeamBottom : GameObject;
 var target : Transform;
 var spawned : boolean = false;
 
+var solarCooldownTimer : int = 60;
+var solarCooldown : int = 60;
+
 var c : Script_Hud;
 
 function Start()
@@ -12,7 +15,7 @@ function Start()
 }
 function Update()
 {
-	
+	//solarCooldownTimer -= Time.deltaTime;
 }
 
 function SpawnSolarbeam()
@@ -25,6 +28,19 @@ function SpawnSolarbeam()
 	c.normalCannonOn = true;
 	c.scorcherFireOn = false;
 	spawned = true;
-	yield WaitForSeconds(60);
+	solarCooldownTimer = solarCooldown;
+	solarCooldownCount();
+	yield WaitForSeconds(solarCooldown);
 	spawned = false;
+}
+
+function solarCooldownCount()
+{
+	solarCooldownTimer = solarCooldown;
+	for(var i=solarCooldown; i>0; i--)
+	{
+		yield WaitForSeconds(1);
+		solarCooldownTimer--;
+	}
+	solarCooldownTimer = solarCooldown;
 }

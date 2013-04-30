@@ -16,8 +16,12 @@ function Start ()
 	instanceScript_Hud = GameObject.Find("Globals").GetComponent(Script_Hud);
 }
 
-function Update () {
-
+function Update ()
+{
+	if (wallHealth < 0)
+  		{
+  		wallHealth = 0;
+  		}
 }
 
 function UpgradeWall()
