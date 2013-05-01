@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SoulFocus.js">
     <Files>
-      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="183" Column="123" />
-      <File FileName="Assets\SoulFocus.js" Line="13" Column="70" />
+      <File FileName="Assets\SoulFocus.js" Line="20" Column="14" />
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Movement.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
