@@ -218,8 +218,6 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 //				//cannonOn = false;
 //			}
 
-
-
 	if (GUI.Button(Rect((Screen.width/20)*18.5,(Screen.height/8)*3,Screen.width/15,Screen.height/10),GUIContent(wallBtnTexture, "hoverWallButton")))
 		{
 		showCannonButtons = false;
@@ -246,7 +244,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	//------------------ CANNON BUTTONS
 	if (showCannonButtons){
 	
-	if (cannonUpgrade == 1){
+	if (cannonUpgrade < 6){
 	if (GUI.Button(Rect((Screen.width/20)*16.5,Screen.height/7.5,Screen.width/20,Screen.height/12),GUIContent(cannonBtnTexture, "hoverCannonUpgrades")))
 		{
 				if (totalSouls >= soulCost)
@@ -258,7 +256,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverCannonUpgrades")
 			{
-				GUI.Label(new Rect((Screen.width/10)*7,(Screen.height/10)*1.5,(Screen.width/10)*2,(Screen.height/10)*2), "CANNON UPGRADES");
+				GUI.Label(new Rect((Screen.width/10)*6.9,(Screen.height/10)*1.5,(Screen.width/10)*2,(Screen.height/10)*2), "Increase Cannon Clip Size");
 				//cannonOn = false;
 			}
 			}

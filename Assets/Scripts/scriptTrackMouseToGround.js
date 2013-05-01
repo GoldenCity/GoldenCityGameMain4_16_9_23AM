@@ -41,7 +41,8 @@ var c : Script_Hud;
 var spawnSolarbeamScript : spawnSolarbeam;
 var spawnMineScript : NovaMineSpawn;
 
-var basicCooldown = 1.0;
+var basicCooldown = 2.0;
+var basicCooldownTimer = 2.0;
 
 var shotsLeft = 4;
 var shotsMax = 4;
@@ -125,7 +126,8 @@ function Update ()
 				CannonFireFX();
 				Instantiate(projectile, projectileEmitter.position, projectileEmitter.rotation); //create a projectile object at the emitter position and rotation			
 				shotsLeft--;
-				basicAttackCooldown();
+				basicCooldownTimer = basicCooldown;
+				//basicAttackCooldown();
 				} 
 			}
 		}
@@ -141,16 +143,27 @@ function Update ()
 	//angle = Mathf.Clamp( angle, 0, 180 ); 
     //transform.localRotation = Quaternion.AngleAxis(angle, Vector3.right);   
     
+    
+    //----------------------------------COOLDOWN CONSTANT------------
+    basicCooldownTimer -= Time.deltaTime;
+    //print(basicCooldownTimer);
+    if(basicCooldownTimer <= 0)
+    { 
+    	shotsLeft = shotsMax;
+    	basicCooldownTimer = basicCooldown;
+    }
+    //----------------------------------------------------------------
+    
 }
 
-function basicAttackCooldown()
-{	
-	if(shotsLeft == 0)
-	{
-		yield WaitForSeconds(basicCooldown);
-		shotsLeft = shotsMax;
-	}
-}
+//function basicAttackCooldown()
+//{	
+//	if(shotsLeft == 0)
+//	{
+//		yield WaitForSeconds(basicCooldown);
+//		shotsLeft = shotsMax;
+//	}
+//}
 
 function GetTheta(hitPoint : Vector3) //
 { //See http://en.wikipedia.org/wiki/Trajectory_of_a_projectile#Angle_required_to_hit_coordinate_.28x.2Cy.29

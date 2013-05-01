@@ -1,14 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 <<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptGate.js">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptTrackMouseToGround.js">
+>>>>>>> Cannon Cooldown and Cannon Upgrade!!!!!
     <Files>
-      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="1" Column="1" />
-      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="658" Column="28" />
+      <File FileName="Assets\Scripts\cannonState.js" Line="8" Column="1" />
+      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="149" Column="7" />
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="259" Column="45" />
       <File FileName="Assets\MenueSystem\healthTest.js" Line="1" Column="1" />
       <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\spawnSolarbeam.js" Line="40" Column="1" />
+      <File FileName="Assets\Scripts\spawnSolarbeam.js" Line="18" Column="2" />
       <File FileName="Assets\Scripts\NovaMineSpawn.js" Line="38" Column="1" />
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\scriptGate.js" Line="62" Column="1" />
 =======
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\destroyParticleEffect.js">
@@ -18,6 +24,8 @@
       <File FileName="Assets\Scripts\Movement.js" Line="8" Column="2" />
       <File FileName="Assets\Scripts\destroyParticleEffect.js" Line="1" Column="1" />
 >>>>>>> More About Souls.
+=======
+>>>>>>> Cannon Cooldown and Cannon Upgrade!!!!!
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
