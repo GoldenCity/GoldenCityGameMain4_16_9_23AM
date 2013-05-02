@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: fdf56ac479e1a94449bec475c759358d
+guid: fcf89ed1fb2eb21449d09dd3078d684d
 ModelImporter:
   serializedVersion: 15
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
-    2300000: default
-    3300000: default
-    4300000: default
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: modSectionConcept_polySurface1
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -31,7 +29,7 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     secondaryUVAngleDistortion: 8
@@ -41,7 +39,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 1
   importAnimation: 0
   copyAvatar: 0
