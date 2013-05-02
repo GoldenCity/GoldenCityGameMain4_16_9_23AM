@@ -105,9 +105,9 @@ ModelImporter:
       skeletonMaskElements: []
     - name: Death
       takeName: Death
-      firstFrame: -1
+      firstFrame: 0
       lastFrame: 35
-      wrapMode: 0
+      wrapMode: 8
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0

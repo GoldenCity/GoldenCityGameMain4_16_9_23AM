@@ -11,11 +11,11 @@ private var vectorToPoint 	: Vector3 = Vector3.forward;
 private var countTimer = 4.1;
 
 function Start () {
-	finalTargetList[0] = GameObject.Find("WallTargetPointA").transform;
-	finalTargetList[1] = GameObject.Find("WallTargetPointB").transform;
-	finalTargetList[2] = GameObject.Find("WallTargetPointC").transform;
-	finalTargetList[3] = GameObject.Find("WallTargetPointD").transform;
-	finalTargetList[4] = GameObject.Find("WallTargetPointE").transform;
+	finalTargetList[0] = GameObject.Find("WallAirTargetPointA").transform;
+	finalTargetList[1] = GameObject.Find("WallAirTargetPointB").transform;
+	finalTargetList[2] = GameObject.Find("WallAirTargetPointC").transform;
+	finalTargetList[3] = GameObject.Find("WallAirTargetPointD").transform;
+	finalTargetList[4] = GameObject.Find("WallAirTargetPointE").transform;
 	
 	
 	currentTarget = GetFinalTarget();
@@ -41,6 +41,7 @@ function OnTriggerEnter(objColl : Collider) {
 			vectorToPoint = currentTarget.position - transform.position;
 			vectorToPoint.Normalize();					
 	}	
+	
 }
 
 function GetFinalTarget() : Transform {

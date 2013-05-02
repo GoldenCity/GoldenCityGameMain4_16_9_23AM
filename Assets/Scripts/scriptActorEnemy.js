@@ -11,12 +11,15 @@ var soulsWorth : int = 40;
 var speed 			: float = 6.0; 	//moving speed
 var damageVelocity 	: float = 0.0; 	//relative velocity of collision with cannon ball to kill
 var healthPoints	: float = 1.0;	//health of the enemy
+var alive 			: boolean = true; //to prevent multi deaths
 
 var atGate			: boolean = false;	//is enemy touching gate?
 
 var gateScript		: scriptGate;
 
 var h : wallState;
+
+
 
 //MasterLog
 var s : Script_Hud;
@@ -117,10 +120,11 @@ function OnTriggerEnter (other : Collider)
  	
  	if(other.gameObject.tag == "Wall") 
  	{
-		Destroy(gameObject);
-		Instantiate(suicideParticle, transform.position, transform.rotation);
+		Suicide ();
  		h.wallHealth -= 100;
 	}
+	
+
 
 }
 
@@ -128,17 +132,15 @@ function TakeDamage (damage:float)
 {
 	healthPoints -= damage;
 	
-	if (healthPoints <= 0)	//Enemy has died
+	if (alive && healthPoints <= 0)	//Enemy has died
 	{	
 		s.AddSouls(soulsWorth);
 		
+		Die();
+		
 		if(atGate) 
 			atGateCount--;
-		
-		Instantiate(_soulEffect, gameObject.transform.position, Quaternion.Euler(-90,0,0));
-		Destroy(gameObject);
-		enemyList[enemyID] = -1; //represent a dead enemy as -1 in list
-		killCount++;
+			
 	}
 }
 
@@ -146,6 +148,43 @@ function GameOver ()
 {
 	yield WaitForSeconds(5.0);
 	Application.LoadLevel("sceneGameOver");
+}
+
+function Die () 
+{
+	alive = false; 
+			
+	//Turn off all meshs
+	var mySkins : Component[];
+	mySkins = GetComponentsInChildren(SkinnedMeshRenderer);
+	for (var skin : SkinnedMeshRenderer in mySkins){
+		skin.renderer.enabled = false;
+	}
+	var myMeshs : Component[];
+	myMeshs = GetComponentsInChildren(MeshRenderer);
+	for (var mesh : MeshRenderer in myMeshs){
+		mesh.renderer.enabled = false;
+	}
+	collider.enabled = false;
+	if (gameObject.GetComponent(FlyingPathFinder) != null)
+		gameObject.GetComponent(FlyingPathFinder).enabled = false;
+	if (gameObject.GetComponent(PathFinder) != null)
+		gameObject.GetComponent(PathFinder).enabled = false;	
+		
+	Instantiate(suicideParticle, transform.position, transform.rotation);
+	Instantiate(_soulEffect, gameObject.transform.position, Quaternion.Euler(-90,0,0));
+	
+	yield WaitForSeconds(.75); //delay to allow sound effect to play
+	Destroy(gameObject);
+	enemyList[enemyID] = -1; //represent a dead enemy as -1 in list
+	killCount++;
+}
+
+function Suicide () 
+{
+		alive = false;
+		Destroy(gameObject);
+		Instantiate(suicideParticle, transform.position, transform.rotation);
 }
 /*
 var speed = 4.0;
