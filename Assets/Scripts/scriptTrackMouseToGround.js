@@ -194,11 +194,13 @@ function OnGUI() {
 
 function CannonFireFX () {
 		//SMOKEY POOFS
-		if(Random.value > .3) {
-			Instantiate(smokePillow, muzzleEmitter.position, projectileEmitter.rotation ); 			
-		}	
-		else
-			Instantiate(smokeRing, muzzleEmitter.position, projectileEmitter.rotation ); 
+		if(Random.value < .1) { //make it somewhat rare
+			if(Random.value > .3) {
+				Instantiate(smokePillow, muzzleEmitter.position, projectileEmitter.rotation ); 			
+			}	
+			else
+				Instantiate(smokeRing, muzzleEmitter.position, projectileEmitter.rotation ); 
+		}
 					
 		//FLASH	
 		muzzleFlash.GetComponent(MuzzleFlash).enabled = true;
@@ -209,5 +211,5 @@ function CannonFireFX () {
 		gameObject.audio.clip = cannonBoom;
 		gameObject.audio.Play();
 		
-		
+		globalFog.fogNear -= 1;
 }

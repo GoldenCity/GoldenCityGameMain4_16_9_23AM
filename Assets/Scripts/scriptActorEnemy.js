@@ -1,4 +1,4 @@
-#pragma strict
+#pragma downcast
 // Enemy Actor Script
 //most of this mess isnt used
 
@@ -165,12 +165,14 @@ function Die ()
 	for (var mesh : MeshRenderer in myMeshs){
 		mesh.renderer.enabled = false;
 	}
+	//turn off other components
 	collider.enabled = false;
 	if (gameObject.GetComponent(FlyingPathFinder) != null)
 		gameObject.GetComponent(FlyingPathFinder).enabled = false;
 	if (gameObject.GetComponent(PathFinder) != null)
 		gameObject.GetComponent(PathFinder).enabled = false;	
-		
+	
+	//make generic death fx
 	Instantiate(suicideParticle, transform.position, transform.rotation);
 	Instantiate(_soulEffect, gameObject.transform.position, Quaternion.Euler(-90,0,0));
 	
