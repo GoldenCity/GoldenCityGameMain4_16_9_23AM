@@ -52,7 +52,18 @@ function OnGUI()
 
 function WaitTime()
 {
+	if(Screen_GCMainMenu.destination == "MainMenu")
+	{
+		stopMusic();
+	}
 	yield WaitForSeconds(waitTime);
 	if(Screen_GCMainMenu.destination == "MainMenu"){Application.LoadLevel("Scene_MainMenu");}
 	if(Screen_GCMainMenu.destination == "Campaign"){Application.LoadLevel("Scene_Campaign");}
+}
+
+
+function stopMusic()
+{
+	yield WaitForSeconds(2);
+	Destroy(GameObject.FindWithTag("AudioPlayer"));
 }

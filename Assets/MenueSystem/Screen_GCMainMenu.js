@@ -13,6 +13,13 @@ var background : Texture;
 
 var menuSkin : GUISkin;
 
+var soundTrack : SoundtrackMainMenu;
+
+function Start()
+{
+	soundTrack = GameObject.Find("MusicBox").GetComponent(SoundtrackMainMenu);
+}
+
 function OnGUI() 
 {
 	GUI.skin = menuSkin;
@@ -29,6 +36,7 @@ function OnGUI()
 	if (GUI.Button(Rect((Screen.width/2)-(Screen.width/8),(Screen.height/2)+(Screen.height/8),Screen.width/4,Screen.height/3),startGame))
 	{
 		destination = "Campaign";
+		soundTrack.fadeOutReady = true;
 		Application.LoadLevel("Screen_GoldenCityLoad");
 	}
 	
@@ -43,8 +51,7 @@ function OnGUI()
 	}
 
 	
-	
-	
+
 	
 	
 	/*
