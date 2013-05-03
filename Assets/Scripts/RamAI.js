@@ -29,6 +29,8 @@ function OnTriggerEnter(objColl : Collider)
 		
 		GetComponent(PathFinder).speed = GetComponent(scriptActorEnemy).speed * 10;		
 		
+		globalFog.fogFarTarget -= 5;
+		
 	}
 	
 }

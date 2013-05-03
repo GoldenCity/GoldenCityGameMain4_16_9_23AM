@@ -20,6 +20,8 @@ function Update ()
 		alive = false;
 		gameObject.audio.clip = deathSound;
 		gameObject.audio.Play();
+		
+		globalFog.fogFarTarget -= 5;
 	}
 
 }
@@ -33,6 +35,9 @@ function OnTriggerEnter (t : Collider)
 		gameObject.rigidbody.useGravity = true;
 		gameObject.audio.clip = attackSound;
 		gameObject.audio.Play();
+		
+		globalFog.fogNearTarget -= 5;
+		
 		yield WaitForSeconds(5.0);
 	}
 	

@@ -211,5 +211,5 @@ function CannonFireFX () {
 		gameObject.audio.clip = cannonBoom;
 		gameObject.audio.Play();
 		
-		globalFog.fogNear -= 1;
+		globalFog.fogNearTarget -= 5;
 }

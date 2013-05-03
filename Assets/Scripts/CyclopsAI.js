@@ -62,6 +62,8 @@ function SmogOfWar () {
 			a.transform.parent = gameObject.transform;	
 			b.transform.parent = gameObject.transform;
 			isSmogging = true;
+		
+		globalFog.fogFarTarget -= 15;
 	}	
 	//end smog attack
 	yield WaitForSeconds(1.5) ;
