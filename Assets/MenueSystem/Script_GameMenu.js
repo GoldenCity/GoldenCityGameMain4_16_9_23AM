@@ -11,13 +11,12 @@ var logo : Texture;
 var resume : Texture;
 var quit : Texture;
 
-
 function OnGUI() 
 {
 	if (camera_GameMenu.enabled == true)
 	{
 	
-		GUI.DrawTexture(Rect((Screen.width/8)*3,(Screen.height/6)*3,Screen.width/4,Screen.height/3), logo);
+		//GUI.DrawTexture(Rect((Screen.width/8)*3,(Screen.height/6)*3,Screen.width/4,Screen.height/3), logo);
 
 		if (GUI.Button(Rect(Screen.width/8,Screen.height/6,Screen.width/4,Screen.height/3), resume))
 		{

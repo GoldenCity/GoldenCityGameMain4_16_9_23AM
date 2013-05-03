@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\wallFX.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\tankWheelPlace.js">
     <Files>
-      <File FileName="Assets\Scripts\tankWheelPlace.js" Line="14" Column="1" />
+      <File FileName="Assets\Scripts\tankWheelPlace.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Spawner.js" Line="1" Column="1" />
-      <File FileName="Assets\wallFX.js" Line="24" Column="4" />
       <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
