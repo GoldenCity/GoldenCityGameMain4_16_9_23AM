@@ -12,7 +12,7 @@ function Start () {
    // animation["exhaust_smog_attack"].layer = 0;
     
 	animation.Play("Moving");
-	animation.Blend("exhaust_normal",1,.5);
+	//animation.Blend("exhaust_normal",1,.5);
 }
 
 function Update () {
@@ -64,9 +64,9 @@ function SmogOfWar () {
 			isSmogging = true;
 	}	
 	//end smog attack
-	yield WaitForSeconds(3) ;
-		animation.CrossFade("Moving",3);
-		animation.Blend("exhaust_normal",1,.5);
+	yield WaitForSeconds(1.5) ;
+		animation.CrossFade("Moving",.5);
+		//animation.Blend("exhaust_normal",1,.5);
 		isSmogging = false;
 		b.transform.parent = null;
 		a.transform.parent = null;
@@ -90,6 +90,6 @@ function Rage (){
 	yield WaitForSeconds(3);
 	gameObject.GetComponent(PathFinder).speed = s;
 	animation.CrossFade("Moving",3);
-	animation.Blend("exhaust_normal",1,.5);
+	//animation.Blend("exhaust_normal",1,.5);
 	isRaging = false;
 }
