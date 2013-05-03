@@ -8,8 +8,6 @@ function Start () {
 		var w = Instantiate(wheelModel, wheelMount[i].position, wheelMount[i].rotation);
 		w.transform.parent = gameObject.transform; //parent wheel to tank object
 	}
-}
-
-function Update () {
-
+	wheelModel.gameObject.renderer.enabled = false;
+	this.enabled = false;
 }
