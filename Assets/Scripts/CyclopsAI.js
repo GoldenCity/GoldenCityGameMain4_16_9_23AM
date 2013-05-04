@@ -3,6 +3,7 @@
 var smogSource1 : Transform;
 var smogSource2 : Transform;
 var smogPrefab  : GameObject;
+var coG 		: Transform; //Center of Gravity
 private var moveTime = 0.0;
 
 function Start () {
@@ -13,10 +14,12 @@ function Start () {
     
 	animation.Play("Moving");
 	//animation.Blend("exhaust_normal",1,.5);
+	
+	rigidbody.centerOfMass = coG.localPosition; //set the center of gravity 
+	
 }
 
 function Update () {
-
 	if(!isSmogging && !isRaging){
 		moveTime += Time.deltaTime;
 		if(moveTime >= 10){
@@ -81,10 +84,11 @@ function SmogOfWar () {
 ////
 private var isRaging = false;
 function Rage (){
-	rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | 
-							//RigidbodyConstraints.FreezeRotationY | 
-							RigidbodyConstraints.FreezeRotationZ;
-							
+	if(Random.value > .3) { //small chance the rotation will not be frozen so theres a chance clops could be knocked on his ass
+		rigidbody.constraints = RigidbodyConstraints.FreezeRotationX |   	//lock rigidbody rotations
+								//RigidbodyConstraints.FreezeRotationY | 
+								RigidbodyConstraints.FreezeRotationZ;
+	}						
 	if(!animation.IsPlaying("Moving") ){
 		return;
 	}
@@ -96,6 +100,6 @@ function Rage (){
 	gameObject.GetComponent(PathFinder).speed = s;
 	animation.CrossFade("Moving",3);
 	//animation.Blend("exhaust_normal",1,.5);
-	rigidbody.constraints = RigidbodyConstraints.None;
+	rigidbody.constraints = RigidbodyConstraints.None; //unlock rigidbody constraints
 	isRaging = false;
 }
