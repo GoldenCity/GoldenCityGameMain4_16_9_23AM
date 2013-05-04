@@ -54,11 +54,14 @@ private var nemeanLion 		: int = 5;
 var harpyTime = 3;
 private var harpyTimer = 4.1;
 
+var cyclopsTime = 25;
+private var cyclopsTimer = 4.1;
+
 var ramTime = 20;
 private var ramTimer = 4.1;
 
-var cyclopsTime = 25;
-private var cyclopsTimer = 4.1;
+var lionTime = 10;
+private var lionTimer = 4.1;
 
 var spawnAsWaves : boolean = false;
 
@@ -117,19 +120,25 @@ function StartWave(wave:Wave) {
 function Update () {
 	if(Input.GetKeyUp("p")) {
 		//SpawnEnemy();
-		Spawn(harpy);
+		Spawn(enemyNum);
 	}
 	if(Input.GetKey("0") || Input.GetKey("[0]")) {
-		enemyNum = 0;
+		enemyNum = harpy;
 	}
 	if(Input.GetKey("1") || Input.GetKey("[1]")) {
-		enemyNum = 1;
+		enemyNum = cyclops;
 	}
 	if(Input.GetKey("2") || Input.GetKey("[2]")) {
-		enemyNum = 2;
+		enemyNum = batteringRam;
 	}
 	if(Input.GetKey("3") || Input.GetKey("[3]")) {
-		enemyNum = 3;
+		enemyNum = manticore;
+	}
+	if(Input.GetKey("4") || Input.GetKey("[4]")) {
+		enemyNum = gruntBoar;
+	}
+	if(Input.GetKey("5") || Input.GetKey("[5]")) {
+		enemyNum = nemeanLion;
 	}
 			
 	
@@ -159,8 +168,9 @@ function SpawnEnemy () {
 	
 	
 	harpyTimer += Time.deltaTime;
-	ramTimer += Time.deltaTime;
 	cyclopsTimer += Time.deltaTime;
+	ramTimer += Time.deltaTime;
+	lionTimer += Time.deltaTime;
 	
 	if (harpyTimer >= harpyTime) {
 		Instantiate(enemyList[harpy], harpySpawnList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
@@ -175,6 +185,11 @@ function SpawnEnemy () {
 	if (ramTimer >= ramTime) {
 		Spawn(batteringRam);		
 		ramTimer = 0.0;
+	}
+	
+	if (lionTimer >= lionTime) {
+		Spawn(nemeanLion);		
+		lionTimer = 0.0;
 	}
 	
 	}	
