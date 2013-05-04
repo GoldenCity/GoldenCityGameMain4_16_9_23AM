@@ -1,13 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptTrackMouseToGround.js">
-    <Files>
-      <File FileName="Assets\Scripts\globalFog.js" Line="5" Column="22" />
-      <File FileName="Assets\Scripts\PathFinder.js" Line="105" Column="6" />
-      <File FileName="Assets\Standard Assets\Scripts\Camera Scripts\SmoothLookAt.js" Line="13" Column="98" />
-      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="214" Column="32" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
