@@ -81,7 +81,10 @@ function SmogOfWar () {
 ////
 private var isRaging = false;
 function Rage (){
-	
+	rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | 
+							//RigidbodyConstraints.FreezeRotationY | 
+							RigidbodyConstraints.FreezeRotationZ;
+							
 	if(!animation.IsPlaying("Moving") ){
 		return;
 	}
@@ -93,5 +96,6 @@ function Rage (){
 	gameObject.GetComponent(PathFinder).speed = s;
 	animation.CrossFade("Moving",3);
 	//animation.Blend("exhaust_normal",1,.5);
+	rigidbody.constraints = RigidbodyConstraints.None;
 	isRaging = false;
 }

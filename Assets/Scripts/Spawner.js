@@ -18,12 +18,16 @@ private var cyclopsTimer = 4.1;
 
 
 function Start () {
-	
+	pathList[0] = GameObject.Find("PathA").transform;
+	pathList[1] = GameObject.Find("PathB").transform;
+	pathList[2] = GameObject.Find("PathC").transform;
+	pathList[3] = GameObject.Find("PathD").transform;	
 }
 
 function Update () {
 	if(Input.GetKeyUp("p")) {
-		SpawnEnemy();
+		//SpawnEnemy();
+		Spawn(0);
 	}
 	if(Input.GetKey("0") || Input.GetKey("[0]")) {
 		enemyNum = 0;

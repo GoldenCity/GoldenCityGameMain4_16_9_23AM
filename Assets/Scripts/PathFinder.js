@@ -5,6 +5,116 @@ var finalTargetList = new Transform[5];
 var hit : RaycastHit;
 var delayTime = 1;
 var gravity : float;
+
+private var finalTarget 	: Transform;
+var currentTarget   : Transform;
+private var vectorToPoint 	: Vector3 = Vector3.forward;
+private var countTimer = 4.1;
+
+private var moveDirection : Vector3 = Vector3.zero;
+
+function Start () {
+	var pathList = [GameObject.Find("PathA").transform, GameObject.Find("PathB").transform,
+		GameObject.Find("PathC").transform, GameObject.Find("PathD").transform];
+		
+	var closest : Transform; 
+    var closestDist = Mathf.Infinity;
+	for(var i = 0; i < pathList.length; i++) {
+		var path = pathList[i];
+        var dist = (transform.position - path.position).sqrMagnitude;
+        
+        if (dist < closestDist) { 
+	    	closestDist = dist; 
+    	   	closest = path;
+    	}	
+	}
+	currentTarget = closest;
+    currentTarget = currentTarget.Find("GameObject");
+	 
+	finalTargetList[0] = GameObject.Find("WallTargetPointA").transform;
+	finalTargetList[1] = GameObject.Find("WallTargetPointB").transform;
+	finalTargetList[2] = GameObject.Find("WallTargetPointC").transform;
+	finalTargetList[3] = GameObject.Find("WallTargetPointD").transform;
+	finalTargetList[4] = GameObject.Find("WallTargetPointE").transform;	
+	
+	vectorToPoint = currentTarget.position - this.transform.position;
+	vectorToPoint.Normalize();			
+}
+
+function Update () {	
+	var velocity = rigidbody.velocity;
+	velocity = vectorToPoint*speed;
+	rigidbody.velocity = velocity;
+	
+	if (Physics.Raycast (transform.localPosition, Vector3.down, hit)) { 
+		//transform.up = hit.normal;			
+		
+		var lookAt = currentTarget.position - transform.position;
+    	lookAt.y = 0;
+    	var rotate = Quaternion.LookRotation(lookAt);//target.position - transform.position
+    	transform.rotation = Quaternion.Slerp(transform.rotation, rotate, Time.deltaTime * speed);		
+		//transform.rotation = Quaternion.Lerp (transform.rotation, hit.transform.rotation, Time.deltaTime * speed);				
+    }    	
+}
+
+function FixedUpdate() {	 
+	ReaquireVector();
+}
+
+function OnTriggerEnter(other : Collider) {
+			
+	if(other.gameObject.tag == "WayPoint") {		
+		currentTarget = other.transform.Find("GameObject");		
+		if (currentTarget == null) {
+			currentTarget = GetFinalTarget();
+		}
+		vectorToPoint = currentTarget.position - this.transform.position;
+		vectorToPoint.Normalize();				
+	}
+		
+	if(other.gameObject.tag == "Respawn") {	
+		other.gameObject.transform.parent.gameObject.GetComponent(SpawnPoint).valid = false;		
+	}
+}
+
+function OnTriggerStay(other : Collider) {
+	if(other.gameObject.tag == "WayPoint") {		
+		currentTarget = other.transform.Find("GameObject");		
+		if (currentTarget == null) {
+			currentTarget = GetFinalTarget();
+		}
+		vectorToPoint = currentTarget.position - this.transform.position;
+		vectorToPoint.Normalize();				
+	}
+}
+
+function OnTriggerExit(other : Collider) {
+	if(other.gameObject.tag == "Respawn") {
+		other.gameObject.transform.parent.gameObject.GetComponent(SpawnPoint).valid = false;				
+	}
+}
+
+function GetFinalTarget() : Transform {
+	finalTarget = finalTargetList[Random.Range(0.0, 5.0)];
+	return finalTarget;
+}
+
+function ReaquireVector() {
+	countTimer += Time.deltaTime;
+
+	if(countTimer >= delayTime)	{		
+		vectorToPoint = currentTarget.position - this.transform.position;		
+		vectorToPoint.Normalize();
+		countTimer = 0.0;		    		
+	}
+}
+
+/*
+var speed : float = 5;
+var finalTargetList = new Transform[5];
+var hit : RaycastHit;
+var delayTime = 1;
+var gravity : float;
 var moveNum : int;
 var frameCount : int = 0;
 
@@ -105,3 +215,5 @@ function ReaquireVector() {
     	transform.LookAt(currentTarget);    		
 	}
 }
+
+*/
