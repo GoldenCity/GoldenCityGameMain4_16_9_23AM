@@ -39,6 +39,5 @@ function OnTriggerEnter (t : Collider)
 		globalFog.fogNearTarget -= 5;
 		
 		yield WaitForSeconds(5.0);
-	}
-	
+	}	
 }

@@ -1,7 +1,9 @@
 #pragma strict
 
 var speed : float = 5;
+var firstTargetList = new Transform[5];
 var finalTargetList = new Transform[5];
+
 var hit : RaycastHit;
 var delayTime = 1.0;
 
@@ -11,14 +13,20 @@ private var vectorToPoint 	: Vector3 = Vector3.forward;
 private var countTimer = 4.1;
 
 function Start () {
-	finalTargetList[0] = GameObject.Find("WallAirTargetPointA").transform;
-	finalTargetList[1] = GameObject.Find("WallAirTargetPointB").transform;
-	finalTargetList[2] = GameObject.Find("WallAirTargetPointC").transform;
-	finalTargetList[3] = GameObject.Find("WallAirTargetPointD").transform;
-	finalTargetList[4] = GameObject.Find("WallAirTargetPointE").transform;
+	firstTargetList[0] = GameObject.Find("WallAirTargetPoint1A").transform;
+	firstTargetList[1] = GameObject.Find("WallAirTargetPoint1B").transform;
+	firstTargetList[2] = GameObject.Find("WallAirTargetPoint1C").transform;
+	firstTargetList[3] = GameObject.Find("WallAirTargetPoint1D").transform;
+	firstTargetList[4] = GameObject.Find("WallAirTargetPoint1E").transform;
+	
+	finalTargetList[0] = GameObject.Find("WallAirTargetPoint2A").transform;
+	finalTargetList[1] = GameObject.Find("WallAirTargetPoint2B").transform;
+	finalTargetList[2] = GameObject.Find("WallAirTargetPoint2C").transform;
+	finalTargetList[3] = GameObject.Find("WallAirTargetPoint2D").transform;
+	finalTargetList[4] = GameObject.Find("WallAirTargetPoint2E").transform;
 	
 	
-	currentTarget = GetFinalTarget();
+	currentTarget = GetFirstTarget();
 	vectorToPoint = currentTarget.position - transform.position;
 	vectorToPoint.Normalize();
 }
@@ -37,11 +45,19 @@ function FixedUpdate() {
 
 function OnTriggerEnter(objColl : Collider) {	
 	if(objColl.gameObject.tag == "MovingWall") { 		
-			currentTarget = GetFinalTarget();
+			currentTarget = GetFirstTarget();
 			vectorToPoint = currentTarget.position - transform.position;
 			vectorToPoint.Normalize();					
-	}	
+	}
 	
+	if(objColl.gameObject.tag == "AirTarget") {	
+		currentTarget = GetFinalTarget();
+		speed = speed *3;
+	}	
+}
+
+function GetFirstTarget() : Transform {
+	return firstTargetList[Random.Range(0.0, 4.0)]; 
 }
 
 function GetFinalTarget() : Transform {
