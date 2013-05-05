@@ -1,6 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Illumin-Glossy-NoCull.shader">
+    <Files>
+      <File FileName="Assets\Scripts\FlyingPathFinder.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\cannonState.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\UpgradeVariables.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HarpyAI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Illumin-Glossy-NoCull.shader" Line="12" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

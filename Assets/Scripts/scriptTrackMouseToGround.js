@@ -42,7 +42,7 @@ var spawnSolarbeamScript : spawnSolarbeam;
 var spawnMineScript : NovaMineSpawn;
 
 var basicCooldown = 2.0;
-var basicCooldownTimer = 2.0;
+private var basicCooldownTimer = 2.0;
 
 var shotsLeft = 4;
 var shotsMax = 4;
@@ -149,8 +149,10 @@ function Update ()
     //print(basicCooldownTimer);
     if(basicCooldownTimer <= 0)
     { 
-    	shotsLeft = shotsMax;
+    	//shotsLeft = shotsMax;
     	basicCooldownTimer = basicCooldown;
+    	if (shotsLeft < shotsMax)
+    		shotsLeft++;
     }
     //----------------------------------------------------------------
     
