@@ -52,7 +52,7 @@ function OnTriggerEnter(objColl : Collider) {
 	
 	if(objColl.gameObject.tag == "AirTarget") {	
 		currentTarget = GetFinalTarget();
-		speed = speed *3;
+		//speed = speed *3;
 	}	
 }
 
