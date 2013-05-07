@@ -342,9 +342,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (wallLevel == 2){
 	if (GUI.Button(Rect((Screen.width/20)*16.5,Screen.height/2.6,Screen.width/20,Screen.height/12),GUIContent(healthTwo, "hoverHealthUpgrade2")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 1.5))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 1.5));
 					uh.UpgradeWall();
 					wallLevel++;
 				}
@@ -358,9 +358,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		if (miniCannonsUpgrade == 2){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*3.75,Screen.width/20,Screen.height/12),GUIContent( miniCannonsTwo, "hoverMiniCannonUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 1.5))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 1.5));
 					MiniCannons();
 					miniCannonsUpgrade++;
 				}	
@@ -400,9 +400,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (wallLevel == 3){
 	if (GUI.Button(Rect((Screen.width/20)*16.5,Screen.height/2.6,Screen.width/20,Screen.height/12),GUIContent(healthThree, "hoverHealthUpgrade3")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 3))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 3));
 					uh.UpgradeWall();
 					wallLevel++;
 				}
@@ -416,9 +416,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		if (miniCannonsUpgrade == 3){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*3.75,Screen.width/20,Screen.height/12),GUIContent(miniCannonsThree, "hoverMiniCannonUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 3))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 3));
 					MiniCannons();
 					miniCannonsUpgrade++;
 				}	
@@ -456,9 +456,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (miniCannonsUpgrade == 4){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/8)*3.75,Screen.width/20,Screen.height/12),GUIContent(miniCannonsFour, "hoverMiniCannonUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 3.5))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 3.5));
 					MiniCannons();
 					miniCannonsUpgrade++;
 				}	
@@ -476,9 +476,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (lightningUpgrade == 1){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/18),Screen.width/20,Screen.height/12),GUIContent(lightningOne, "hoverBoltUpgrade")))
 		{
-			if (totalSouls >= soulCost)
+			if (totalSouls >= (soulCost * 2))
 			{
-				MinusSouls(soulCost);
+				MinusSouls((soulCost * 2));
 				lightningUpgrade++;
 			}
 		}
@@ -491,9 +491,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (mineUpgrade == 1){
 	if (GUI.Button(Rect((Screen.width/20)*16.5,(Screen.height/2)+(Screen.height/7.5),Screen.width/20,Screen.height/12),GUIContent(mineOne, "hoverMineUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 2))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 2));
 					mineUpgrade++;
 				}	
 		}
@@ -506,9 +506,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (scorcherUpgrade == 1){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/4.8),Screen.width/20,Screen.height/12),GUIContent(scorcherOne, "hoverSunScorcherUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 2))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 2));
 					scorcherUpgrade++;
 				}
 		}
@@ -526,9 +526,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (lightningUpgrade == 2){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/18),Screen.width/20,Screen.height/12),GUIContent(lightningTwo, "hoverBoltUpgrade")))
 		{
-			if (totalSouls >= soulCost)
+			if (totalSouls >= (soulCost * 3))
 			{
-				MinusSouls(soulCost);
+				MinusSouls((soulCost * 3));
 				lightningUpgrade++;
 			}
 		}
@@ -541,9 +541,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (mineUpgrade == 2){
 	if (GUI.Button(Rect((Screen.width/20)*16.5,(Screen.height/2)+(Screen.height/7.5),Screen.width/20,Screen.height/12),GUIContent(mineTwo, "hoverMineUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 3))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 3));
 					mineUpgrade++;
 				}	
 		}
@@ -556,9 +556,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (scorcherUpgrade == 2){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/4.8),Screen.width/20,Screen.height/12),GUIContent(scorcherTwo, "hoverSunScorcherUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 3))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 3));
 					scorcherUpgrade++;
 				}
 		}
@@ -576,9 +576,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (lightningUpgrade == 3){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/18),Screen.width/20,Screen.height/12),GUIContent(lightningThree, "hoverBoltUpgrade")))
 		{
-			if (totalSouls >= soulCost)
+			if (totalSouls >= (soulCost * 3.5))
 			{
-				MinusSouls(soulCost);
+				MinusSouls((soulCost * 3.5));
 				lightningUpgrade++;
 			}
 		}
@@ -591,9 +591,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (mineUpgrade == 3){
 	if (GUI.Button(Rect((Screen.width/20)*16.5,(Screen.height/2)+(Screen.height/7.5),Screen.width/20,Screen.height/12),GUIContent(mineThree, "hoverMineUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 3.5))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 3.5));
 					mineUpgrade++;
 				}	
 		}
@@ -606,9 +606,9 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (scorcherUpgrade == 3){
 	if (GUI.Button(Rect((Screen.width/20)*17.5,(Screen.height/2)+(Screen.height/4.8),Screen.width/20,Screen.height/12),GUIContent(scorcherThree, "hoverSunScorcherUpgrade")))
 		{
-				if (totalSouls >= soulCost)
+				if (totalSouls >= (soulCost * 3.5))
 				{
-					MinusSouls(soulCost);
+					MinusSouls((soulCost * 3.5));
 					scorcherUpgrade++;
 				}
 		}
