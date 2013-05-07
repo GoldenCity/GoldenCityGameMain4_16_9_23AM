@@ -1,14 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Illumin-Glossy-NoCull.shader">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FlyingPathFinder.js">
     <Files>
-      <File FileName="Assets\Scripts\FlyingPathFinder.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\wallFX.js" Line="114" Column="40" />
+      <File FileName="Assets\Scripts\FlyingPathFinder.js" Line="46" Column="20" />
       <File FileName="Assets\Scripts\cannonState.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="1" Column="1" />
       <File FileName="Assets\MenueSystem\UpgradeVariables.js" Line="1" Column="1" />
       <File FileName="Assets\MenueSystem\Script_Hud.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HarpyAI.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Illumin-Glossy-NoCull.shader" Line="12" Column="9" />
+      <File FileName="Assets\Scripts\HarpyAI.js" Line="47" Column="1" />
+      <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="179" Column="64" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
