@@ -43,16 +43,18 @@ function FixedUpdate() {
 	ReaquireVector();
 }
 
+private var stayOnTarget = false; //After final target is aquired do not change course
 function OnTriggerEnter(objColl : Collider) {	
-	if(objColl.gameObject.tag == "MovingWall") { 		
+	if(objColl.gameObject.tag == "MovingWall" && !stayOnTarget) { 		
 			currentTarget = GetFirstTarget();
 			vectorToPoint = currentTarget.position - transform.position;
 			vectorToPoint.Normalize();					
 	}
 	
 	if(objColl.gameObject.tag == "AirTarget") {	
+		stayOnTarget = true;
 		currentTarget = GetFinalTarget();
-		speed = speed *3;
+		//speed = speed *3;
 	}	
 }
 

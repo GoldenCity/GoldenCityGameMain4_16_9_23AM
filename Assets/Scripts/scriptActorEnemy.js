@@ -29,6 +29,7 @@ static var atGateCount	: int = 0;		//global count of enemies at gate
 static var killCount 	: int = 0;		//global count of enemies killed
 
 var suicideParticle : Transform;
+var splosion : Transform;
 
 // Private variables
 private var moveDirection : Vector3; //vector describing the direction of movment
@@ -175,6 +176,7 @@ function Die ()
 	//make generic death fx
 	Instantiate(suicideParticle, transform.position, transform.rotation);
 	Instantiate(_soulEffect, gameObject.transform.position, Quaternion.Euler(-90,0,0));
+	Instantiate(splosion, transform.position, transform.rotation);
 	
 	yield WaitForSeconds(.75); //delay to allow sound effect to play
 	Destroy(gameObject);
@@ -187,6 +189,7 @@ function Suicide ()
 		alive = false;
 		Destroy(gameObject);
 		Instantiate(suicideParticle, transform.position, transform.rotation);
+		Instantiate(splosion, transform.position, transform.rotation);
 }
 /*
 var speed = 4.0;
