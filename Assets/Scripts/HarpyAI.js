@@ -2,7 +2,7 @@
 var startTrans : Transform;
 var deathSound		: AudioClip;
 var attackSound		: AudioClip;
-
+var boomSound		: AudioClip;
 
 function Start () 
 {
@@ -33,11 +33,14 @@ function OnTriggerEnter (t : Collider)
 		animation.CrossFade("Death", 0.2);
 		gameObject.GetComponent(FlyingPathFinder).enabled = false;
 		gameObject.rigidbody.useGravity = true;
-		gameObject.audio.clip = attackSound;
-		gameObject.audio.Play();
+		gameObject.audio.PlayOneShot(attackSound);
 		
-		globalFog.fogNearTarget -= 5;
+	}	
+		if(t.gameObject.tag == "Wall")
+	{
+		gameObject.audio.PlayOneShot(boomSound);
 		
-		yield WaitForSeconds(5.0);
+		globalFog.fogNearTarget -= 10;
 	}	
 }
+

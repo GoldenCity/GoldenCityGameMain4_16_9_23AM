@@ -12,6 +12,15 @@ var allowRotate: boolean = false;
 var wallState: wallState;
 var wallHealthLast: int;
 
+var wallPieces : GameObject[];
+var wallMat : Material;
+var wallMatDmg1 : Material;
+var wallMatDmg2 : Material;
+var wallMatDmg3 : Material;
+
+var damageSound : AudioClip;
+private var hitPoint : Vector3;
+
 private var shake_decay: float;
 private var shake_intensity: float;
 
@@ -34,6 +43,7 @@ function Update(){
 		var amt =  wallHealthLast - wallState.wallHealth;
 		wallHealthLast = wallState.wallHealth;
 		Shake(amt);
+		Damage();
 	}
 	
 	//WALL HEALTH UP
@@ -79,4 +89,31 @@ function Shake(amount : int){
 
 function HealthUp (amount : int) {
 	//something for here
+}
+
+function Damage () {
+	/////////////////
+	//Set Material
+	/////////////////
+	var mat : Material;
+	if(wallState.wallHealth <= 250)
+		mat = wallMatDmg3;
+	else if(wallState.wallHealth <= 500)
+		mat = wallMatDmg2;
+	else if(wallState.wallHealth <= 750)
+		mat = wallMatDmg1;
+	else 
+		mat = wallMat;
+		
+	for(var wall in wallPieces){
+		wall.renderer.material = mat;
+	}
+	//////////////////
+	//Play Sound
+	//////////////////
+	gameObject.audio.PlayOneShot(damageSound);
+}
+
+function OnTriggerEnter (other : Collider) {
+ 	hitPoint = other.gameObject.transform.position;
 }
