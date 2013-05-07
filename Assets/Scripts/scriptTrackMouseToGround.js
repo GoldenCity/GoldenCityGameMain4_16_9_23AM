@@ -41,8 +41,8 @@ var c : Script_Hud;
 var spawnSolarbeamScript : spawnSolarbeam;
 var spawnMineScript : NovaMineSpawn;
 
-var basicCooldown = 2.0;
-private var basicCooldownTimer = 2.0;
+var basicCooldown = 1.0;
+private var basicCooldownTimer = 1.0;
 
 var shotsLeft = 4;
 var shotsMax = 4;
