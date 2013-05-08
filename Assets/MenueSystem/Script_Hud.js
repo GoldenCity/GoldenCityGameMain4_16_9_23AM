@@ -810,6 +810,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	if (GUI.Button(Rect(0,0,Screen.width/20,Screen.height/20),GUIContent(menuMain,"hoverGameMenue")))
 		{
     		camera_Main.enabled = false;
+    		Time.timeScale = 0;
     		camera_GameMenu.enabled = true;
 		}
 	if (GUI.tooltip == "hoverGameMenue")

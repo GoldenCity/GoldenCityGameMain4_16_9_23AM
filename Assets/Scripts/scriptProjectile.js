@@ -1,12 +1,11 @@
-#pragma strict
-
-//Projectile Script
-
-//Inspector variables
 var impulse			: float = 50; 	//amount of force applied at spawn
 var despawnTime		: float = 10.0; //maximum lifetime of projectile in seconds
+
 var cannonScript	: scriptTrackMouseToGround; //to pull the lauchVelocuty var from cannon script
-var splosion 		: Transform;	//object that does explode effect and does area damage
+
+var splosion 		: GameObject;	//object that does explode effect and does area damage
+var groundSplosion 	: GameObject;
+
 var blowUp 			: boolean = false; //should I be blowing up?
 
 //
@@ -36,9 +35,16 @@ function Update ()
 function OnCollisionEnter (other : Collision)
 {
 	//check for enemy collision
-	if(other.gameObject.tag == "Enemy")		blowUp=true; //invoke blowUp on enemy collision
+	if(other.gameObject.tag == "Enemy")
+	{
+		blowUp=true; //invoke blowUp on enemy collision
+	}		
 	//check for ground collision
- 	if(other.gameObject.tag == "Ground")	blowUp=true; //invoke blowUp on ground collision	
+ 	if(other.gameObject.tag == "Ground")
+ 	{
+ 		Instantiate(groundSplosion, Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z), Quaternion.identity);
+ 		Despawn(0.1);
+ 	}	//blowUp=true; //invoke blowUp on ground collision	
 }
 
 function Despawn (waitFor:float)

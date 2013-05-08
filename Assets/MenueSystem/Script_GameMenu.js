@@ -21,6 +21,7 @@ function OnGUI()
 		if (GUI.Button(Rect(Screen.width/8,Screen.height/6,Screen.width/4,Screen.height/3), resume))
 		{
 			camera_GameMenu.enabled = false;
+			Time.timeScale = 1;
 			camera_Main.enabled = true;
 		}
 		

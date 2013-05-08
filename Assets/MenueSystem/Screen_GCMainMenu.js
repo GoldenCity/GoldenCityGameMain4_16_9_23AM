@@ -47,7 +47,7 @@ function OnGUI()
 	
 	if (GUI.Button(Rect(0,(Screen.height)-(Screen.height/6),Screen.width/8,Screen.height/6),quit))
 	{
-		 //Application.Quit();
+		 Application.Quit();
 	}
 
 	
