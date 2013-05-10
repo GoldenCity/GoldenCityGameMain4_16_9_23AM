@@ -77,14 +77,14 @@ var mineOn = false;
 
 //---------------------------------------
 
-var low : double = 1.5; 		//150
-var mid : double = 2.75; 		//270
-var high : double = 3.5; 		//150
+var low : double = 1.5;
+var mid : double = 2.75;
+var high : double = 3.5;
 
-var lowPwrUp : double = 2.5; 	//250
-var midPwrUp : double = 3.5; 	//350
-var highPwrUp : double = 4.25; 	//425
- 
+var lowPwrUp : double = 2.5;
+var midPwrUp : double = 3.5;
+var highPwrUp : double = 4.25;
+
 //----------------------------------------
 
 	var lightningUpgrade : int = 1;
@@ -223,10 +223,10 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		if (showCannonButtons){showCannonButtons = false;}
 		else{showCannonButtons = true;}
 		}
-		if (GUI.tooltip == "hoverCannonButton")
-			{
-				GUI.Label(new Rect((Screen.width/20)*18,(Screen.height/8)*2,Screen.width/10,Screen.height/10), ("Current Cost: " + ((soulCost * cannonUpgrade) * .75)));
-			}
+//		if (GUI.tooltip == "hoverCannonButton")
+//			{
+//				//cannonOn = false;
+//			}
 
 	if (GUI.Button(Rect((Screen.width/20)*18.5,(Screen.height/8)*3,Screen.width/15,Screen.height/10),GUIContent(wallBtnTexture, "hoverWallButton")))
 		{
@@ -237,9 +237,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverWallButton")
 			{
-				GUI.Label(new Rect((Screen.width/20)*18,(Screen.height/8)*2,Screen.width/10,Screen.height/10), ("Level I Cost: " + soulCost * low));//150
-				GUI.Label(new Rect((Screen.width/20)*18,(Screen.height/8)*2.3,Screen.width/10,Screen.height/10), ("Level II Cost: " + soulCost * mid));//270
-				GUI.Label(new Rect((Screen.width/20)*18,(Screen.height/8)*2.6,Screen.width/10,Screen.height/10), ("Level III Cost: " + soulCost * high));//150
+				//cannonOn = false;
 			}
 	if (GUI.Button(Rect((Screen.width/20)*18.5,(Screen.height/8)*5,Screen.width/15,Screen.height/10),GUIContent(abilityBtnTexture, "hoverAbilityButton")))
 		{
@@ -250,9 +248,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 		}
 		if (GUI.tooltip == "hoverAbilityButton")
 			{
-				GUI.Label(new Rect((Screen.width/20)*18,(Screen.height/8)*4,Screen.width/10,Screen.height/10), ("Level I Cost: " + soulCost * lowPwrUp));//250
-				GUI.Label(new Rect((Screen.width/20)*18,(Screen.height/8)*4.3,Screen.width/10,Screen.height/10), ("Level II Cost: " + soulCost * midPwrUp));//350
-				GUI.Label(new Rect((Screen.width/20)*18,(Screen.height/8)*4.6,Screen.width/10,Screen.height/10), ("Level III Cost: " + soulCost * highPwrUp));//425
+				//cannonOn = false;
 			}
 	}
 	//------------------ CANNON BUTTONS---------upgrade cannon clip size
