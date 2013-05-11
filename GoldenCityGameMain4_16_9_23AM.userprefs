@@ -1,8 +1,31 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptProjectile.js">
     <Files>
       <File FileName="Assets\Scripts\scriptProjectile.js" Line="53" Column="2" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wallState.js">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_Hud.js">
+>>>>>>> Revert "RegenNanites Work Again!!! Upgrade"
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wallState.js">
+>>>>>>> Revert "Revert "RegenNanites Work Again!!! Upgrade""
+    <Files>
+      <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="1" Column="1" />
+>>>>>>> RegenNanites Work Again!!! Upgrade
+=======
+      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="1" Column="1" />
+>>>>>>> Revert "RegenNanites Work Again!!! Upgrade"
+=======
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="1" Column="1" />
+>>>>>>> Revert "Revert "RegenNanites Work Again!!! Upgrade""
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
