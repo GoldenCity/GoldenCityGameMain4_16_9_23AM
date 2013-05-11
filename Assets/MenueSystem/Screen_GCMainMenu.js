@@ -7,21 +7,27 @@ static var destination : String = "abc";
 //Main Menu
 
 var quit : Texture;
-var credits : Texture;
+var creditsTex : Texture;
 var startGame : Texture;
 var background : Texture;
 
 var menuSkin : GUISkin;
 
 var soundTrack : SoundtrackMainMenu;
+var credits : Credits;
 
 function Start()
 {
 	soundTrack = GameObject.Find("MusicBox").GetComponent(SoundtrackMainMenu);
+	
+	credits = GameObject.Find("Main Camera").GetComponent(Credits);
+	
 }
 
 function OnGUI() 
 {
+	if (credits.creditsOn == false)
+	{
 	GUI.skin = menuSkin;
 	
 	//Make Group
@@ -40,9 +46,10 @@ function OnGUI()
 		Application.LoadLevel("Screen_GoldenCityLoad");
 	}
 	
-	if (GUI.Button(Rect((Screen.width)-(Screen.width/8),(Screen.height)-(Screen.height/6),Screen.width/8,Screen.height/6),credits))
+	if (GUI.Button(Rect((Screen.width)-(Screen.width/8),(Screen.height)-(Screen.height/6),Screen.width/8,Screen.height/6),creditsTex))
 	{
-		//add credits here
+		credits.creditsOn = true;
+		credits.StopCredits();
 	}
 	
 	if (GUI.Button(Rect(0,(Screen.height)-(Screen.height/6),Screen.width/8,Screen.height/6),quit))
@@ -75,5 +82,6 @@ function OnGUI()
 	*/
 
 	//GUI.EndGroup();
+	}
 	
 }
