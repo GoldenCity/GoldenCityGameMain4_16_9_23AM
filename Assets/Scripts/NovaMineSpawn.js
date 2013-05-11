@@ -1,5 +1,7 @@
 var novaMine : GameObject;
+
 var target : Transform;
+
 var spawned : boolean = false;
 
 var mineCooldownTimer : int = 60;
