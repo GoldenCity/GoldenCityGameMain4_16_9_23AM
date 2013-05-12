@@ -87,9 +87,9 @@ function OnCollisionEnter (other : Collision)
 	
 	//if(collidedWith == "Explosion") TakeDamage(2);
 	
-	if(other.gameObject.tag == "Enemy") {
-		 Physics.IgnoreCollision(other.collider, collider); 
-	}	
+	//if(other.gameObject.tag == "Enemy") {
+	//	 Physics.IgnoreCollision(other.collider, collider); 
+	//}	
 }
 
 function OnTriggerEnter (other : Collider)
@@ -108,8 +108,8 @@ function OnTriggerEnter (other : Collider)
 		TakeDamage(2);	
  	}
  	
- 	if(other.gameObject.CompareTag ("Enemy")) //learn about null reference exceptions and 
- 	{
+ 	//if(other.gameObject.CompareTag ("Enemy")) //learn about null reference exceptions and 
+ 	//{
 // 		var buddy = GetComponent.Get; 
 // 		print("touching buddy");
 // 		if (other.gameObject.GetInstanceID() != GetInstanceID() && other.gameObject.GetComponent(scriptActorEnemy).atGate == true)
@@ -117,7 +117,7 @@ function OnTriggerEnter (other : Collider)
 // 			atGate = true;
 // 			atGateCount++;
 // 		}
- 	}
+ 	//}
  	
  	if(other.gameObject.tag == "Wall") 
  	{
@@ -167,7 +167,9 @@ function Die ()
 		mesh.renderer.enabled = false;
 	}
 	//turn off other components
-	collider.enabled = false;
+	
+	//collider.enabled = false; //I removed all of the colliders from the main object and put them on subComponents so I don' think this is needed. - Jeff
+	
 	if (gameObject.GetComponent(FlyingPathFinder) != null)
 		gameObject.GetComponent(FlyingPathFinder).enabled = false;
 	if (gameObject.GetComponent(PathFinder) != null)

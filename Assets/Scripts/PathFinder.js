@@ -76,9 +76,9 @@ function OnTriggerEnter(other : Collider) {
 		other.gameObject.transform.parent.gameObject.GetComponent(SpawnPoint).valid = false;		
 	}
 	
-	if(other.gameObject.tag == "AirTarget") {	
-		Physics.IgnoreCollision(other.collider, collider);	
-	}
+	//if(other.gameObject.tag == "AirTarget") {	
+	//	Physics.IgnoreCollision(other.collider, collider);	
+	//}
 }
 
 function OnTriggerStay(other : Collider) {
