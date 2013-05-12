@@ -1,7 +1,11 @@
 #pragma strict
 var solarBeamTop : GameObject;
 var solarBeamBottom : GameObject;
+var TopLevelThree : GameObject;
+var TopLevelTwo : GameObject;
+
 var target : Transform;
+
 var spawned : boolean = false;
 
 var solarCooldownTimer : int = 60;
@@ -20,9 +24,19 @@ function Update()
 
 function SpawnSolarbeam()
 {
-	if (spawned == false)
+	if (spawned == false && c.scorcherUpgrade == 2)
 	{
 		Instantiate(solarBeamTop, Vector3(target.position.x, target.position.y + 90, target.position.z), Quaternion.identity);
+		Instantiate(solarBeamBottom, target.position, Quaternion.identity);
+	}
+	if (spawned == false && c.scorcherUpgrade == 3)
+	{
+		Instantiate(TopLevelTwo, Vector3(target.position.x, target.position.y + 90, target.position.z), Quaternion.identity);
+		Instantiate(solarBeamBottom, target.position, Quaternion.identity);
+	}
+	if (spawned == false && c.scorcherUpgrade == 4)
+	{
+		Instantiate(TopLevelThree, Vector3(target.position.x, target.position.y + 90, target.position.z), Quaternion.identity);
 		Instantiate(solarBeamBottom, target.position, Quaternion.identity);
 	}
 	c.normalCannonOn = true;

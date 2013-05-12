@@ -78,6 +78,16 @@
      
     function Update()
     {
+    	if ( (Input.GetAxis("Mouse ScrollWheel") < 0) & (vSliderValue < 25) )
+    	{
+    		vSliderValue += 5;
+    	}
+    	
+    	if ( (Input.GetAxis("Mouse ScrollWheel") > 0) & (vSliderValue > 0) )
+    	{
+    		vSliderValue -= 5;
+    	}
+    
     	mainCamera.position.y = (cameraYPositionOriginal + vSliderValue);
     	mainCamera.position.z = (cameraZPositionOriginal - vSliderValue/3.2);
     	mainCamera.rotation.x = (cameraRotationOriginal + vSliderValue/800);
