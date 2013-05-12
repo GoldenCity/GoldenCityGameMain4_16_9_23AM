@@ -98,10 +98,9 @@ function OnTriggerEnter (ob : Collider) {
 //quick remove of dead and destroyed enemies
 function CleanUpList () {
 	
-	for(var enemy in enemiesInRange){
-		if(enemy == null) //if enemy has been destryed or not alive
-	 		enemy = null; //remove enemy from list
-	 		print(enemy.ToString() );
+	for(var e = 0; e < enemiesInRange.length; e++ ){
+		if(enemiesInRange[e] == null || enemiesInRange[e].GetComponent(scriptActorEnemy).alive == false) //if enemy has been destryed or not alive
+	 		enemiesInRange[e] = null; //remove enemy from list
 //	 	else if(enemy.gameObject.GetComponent(scriptActorEnemy).alive == false)
 //	 		enemy = null; 
 	 }
