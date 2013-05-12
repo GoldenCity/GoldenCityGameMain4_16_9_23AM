@@ -59,14 +59,23 @@ var cannonUpgrade : int = 1;
 
 var miniCannon : GameObject;
 var tank: GameObject;
-var miniCannon1 : Transform;
-var miniCannon2 : Transform;
-var miniCannon3 : Transform;
-var miniCannon4 : Transform;
-var tank1 : Transform;
-var tank2 : Transform;
-var tank3 : Transform;
-var tank4 : Transform;
+//var miniCannon1 : Transform;
+//var miniCannon2 : Transform;
+//var miniCannon3 : Transform;
+//var miniCannon4 : Transform;
+//var tank1 : Transform;
+//var tank2 : Transform;
+//var tank3 : Transform;
+//var tank4 : Transform;
+var miniCannon1 : GameObject;
+var miniCannon2 : GameObject;
+var miniCannon3 : GameObject;
+var miniCannon4 : GameObject;
+
+var tank1 : GameObject;
+var tank2 : GameObject;
+var tank3 : GameObject;
+var tank4 : GameObject;
 
 //---------------------------------------
 
@@ -118,6 +127,21 @@ var highPwrUp : double = 4.25; 	//425
 	var customSkinUpgrades : GUISkin;
 	
 	//var guiRectArray : Rect[];
+	
+function Awake () {
+
+		//DEACTIVATE ALL WALL OBJECTS
+		tank1.SetActive(false); 
+		tank2.SetActive(false);
+		tank3.SetActive(false);
+		tank4.SetActive(false);
+		
+		miniCannon1.SetActive(false); 
+		miniCannon2.SetActive(false);
+		miniCannon3.SetActive(false);
+		miniCannon4.SetActive(false);
+}	
+	
 
 function Start ()
 	{
@@ -147,6 +171,7 @@ function Start ()
 		cannonUpgrade = cannonStateScript.levelOfCannon;
 		
 		spawnSolarbeamScript = GameObject.Find("Globals").GetComponent(spawnSolarbeam);
+		
 	}
 	
 function Update()
@@ -887,23 +912,32 @@ function MiniCannons()
 {
 	if (miniCannonsUpgrade == 1)
 	{
-	Instantiate(miniCannon,miniCannon3.position, miniCannon3.rotation);
-	Instantiate(miniCannon,miniCannon4.position, miniCannon4.rotation);
+	//Instantiate(miniCannon,miniCannon3.position, miniCannon3.rotation);
+	//Instantiate(miniCannon,miniCannon4.position, miniCannon4.rotation);
+	miniCannon1.SetActive(true);
+	miniCannon2.SetActive(true);
+	
 	}
 	if (miniCannonsUpgrade == 2)
 	{
-	Instantiate(miniCannon,miniCannon1.position, miniCannon1.rotation);
-	Instantiate(miniCannon,miniCannon2.position, miniCannon2.rotation);
+	//Instantiate(miniCannon,miniCannon1.position, miniCannon1.rotation);
+	//Instantiate(miniCannon,miniCannon2.position, miniCannon2.rotation);
+	miniCannon3.SetActive(true);
+	miniCannon4.SetActive(true);
 	}
 	if (miniCannonsUpgrade == 3)
 	{
-	Instantiate(tank,tank1.position, tank1.rotation);
-	Instantiate(tank,tank2.position, tank2.rotation);
+	//Instantiate(tank,tank1.position, tank1.rotation);
+	//Instantiate(tank,tank2.position, tank2.rotation);
+	tank1.SetActive(true);
+	tank2.SetActive(true);
 	}
 	if (miniCannonsUpgrade == 4)
 	{
-	Instantiate(tank,tank3.position, tank3.rotation);
-	Instantiate(tank,tank4.position, tank4.rotation);
+	//Instantiate(tank,tank3.position, tank3.rotation);
+	//Instantiate(tank,tank4.position, tank4.rotation);
+	tank3.SetActive(true);
+	tank4.SetActive(true);
 	}
 		
 }

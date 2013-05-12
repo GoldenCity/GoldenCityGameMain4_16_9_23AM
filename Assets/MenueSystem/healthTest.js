@@ -78,12 +78,12 @@
      
     function Update()
     {
-    	if ( (Input.GetAxis("Mouse ScrollWheel") < 0) & (vSliderValue < 25) )
+    	if ( (Input.GetAxis("Mouse ScrollWheel") < 0) && (vSliderValue < 25) )
     	{
     		vSliderValue += 5;
     	}
     	
-    	if ( (Input.GetAxis("Mouse ScrollWheel") > 0) & (vSliderValue > 0) )
+    	if ( (Input.GetAxis("Mouse ScrollWheel") > 0) && (vSliderValue > 0) )
     	{
     		vSliderValue -= 5;
     	}

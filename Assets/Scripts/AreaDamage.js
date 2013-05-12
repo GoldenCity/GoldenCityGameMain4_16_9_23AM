@@ -1,6 +1,14 @@
 #pragma strict
 var damage : float = 1;
 
+//var soundEffect : AudioClip;
+
+function Start (){
+
+	//gameObject.audio.PlayOneShot(soundEffect);
+
+}
+
 function OnTriggerEnter(other : Collider)
 {
 	if(other.tag == "Enemy")

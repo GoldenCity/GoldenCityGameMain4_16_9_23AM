@@ -13,6 +13,10 @@ var damageVelocity 	: float = 0.0; 	//relative velocity of collision with cannon
 var healthPoints	: float = 1.0;	//health of the enemy
 var alive 			: boolean = true; //to prevent multi deaths
 
+var miniBDmg 		: int = 1; //damage taken from minibullet
+var tankBDmg 		: int = 5; //damage taken from tank bullet
+var cannonBDmg 		: int = 5; //damage taken from cannon ball
+
 var atGate			: boolean = false;	//is enemy touching gate?
 
 var gateScript		: scriptGate;
@@ -81,9 +85,9 @@ function OnCollisionEnter (other : Collision)
 {
 	var collidedWith : String = other.gameObject.tag;
 	//print(collidedWith);
-	if(collidedWith == "MiniBullet") TakeDamage(1);
-	if(collidedWith == "TankBullet") TakeDamage(5);
-	if(collidedWith == "Projectile") TakeDamage(5);
+	if(collidedWith == "MiniBullet") TakeDamage(miniBDmg);
+	if(collidedWith == "TankBullet") TakeDamage(tankBDmg);
+	if(collidedWith == "Projectile") TakeDamage(cannonBDmg);
 	
 	//if(collidedWith == "Explosion") TakeDamage(2);
 	
@@ -94,7 +98,7 @@ function OnCollisionEnter (other : Collision)
 
 function OnTriggerEnter (other : Collider)
 {
-	var triggeredWith: String = other.gameObject.tag;
+	//var triggeredWith: String = other.gameObject.tag;
 	//print("Triggered with: " + triggeredWith);
  	 	 	
  	if(other.gameObject.tag == "Gate")

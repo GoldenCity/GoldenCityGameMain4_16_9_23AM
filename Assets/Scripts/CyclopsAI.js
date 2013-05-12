@@ -4,6 +4,7 @@ var smogSource1 : Transform;
 var smogSource2 : Transform;
 var smogPrefab  : GameObject;
 var coG 		: Transform; //Center of Gravity
+var sAE 		: scriptActorEnemy;
 private var moveTime = 0.0;
 
 function Start () {
@@ -17,6 +18,8 @@ function Start () {
 	
 	rigidbody.centerOfMass = coG.localPosition; //set the center of gravity 
 	
+	sAE = gameObject.GetComponent(scriptActorEnemy);
+	
 }
 
 function Update () {
@@ -27,6 +30,8 @@ function Update () {
 			SmogOfWar();		
 		}
 	}
+	
+	if (sAE.alive == false) this.enabled = false;
 }
 
 function OnTriggerEnter(objColl : Collider) {

@@ -7,7 +7,7 @@
     var level : int = 1;
     private var lastLevel : int;
     
-    function Start () {
+    function Awake () {
     	lastLevel = level;
     }
     
@@ -37,7 +37,7 @@
         	}
         }
             
-        this.LR.material.mainTextureScale = Vector2(i/10, 1); //adjust the texture scale in proportion to line length    
+        this.LR.material.mainTextureScale = Vector2(i/5, 1); //adjust the texture scale in proportion to line length    
         
     }
      
