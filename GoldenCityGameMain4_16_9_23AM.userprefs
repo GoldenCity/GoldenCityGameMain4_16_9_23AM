@@ -1,8 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\teslaControl.js">
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SolarbeamTwist.js">
     <Files>
-      <File FileName="Assets\teslaControl.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NovaMineSpawn.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SolarbeamTwist.js" Line="14" Column="4" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wallFX.js">
+    <Files>
+      <File FileName="Assets\Scripts\PathFinder.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\HighScoreGUI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Spawner.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="193" Column="1" />
+      <File FileName="Assets\Scripts\IgnoreOtherEnemies.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CyclopsAI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AreaDamage.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\wallFX.js" Line="1" Column="1" />
+>>>>>>> 50e623e161d80d9d84697684d8c605bd6de7e8a5
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
