@@ -115,5 +115,5 @@ function Damage () {
 }
 
 function OnTriggerEnter (other : Collider) {
- 	hitPoint = other.gameObject.transform.position;
+ 	//hitPoint = other.gameObject.transform.position;
 }
