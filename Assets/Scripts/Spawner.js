@@ -8,15 +8,15 @@ class Wave {
 	public var manticore 		: int;
 	public var gruntBoar 		: int;
 	public var nemeanLion 		: int;	
-	
+
 	function Wave() {
-		this.total				= 0;
-		this.harpy 				= 0;
-		this.cyclops 			= 0;
-		this.batteringRam 		= 0;
-		this.manticore 			= 0;
-		this.gruntBoar 			= 0;
-		this.nemeanLion 		= 0;		
+		this.total = 0;
+		this.harpy 				 = 0;
+		this.cyclops 			 = 0;
+		this.batteringRam 		 = 0;
+		this.manticore 			 = 0;
+		this.gruntBoar 			 = 0;
+		this.nemeanLion 		 = 0;		
 	}
 	
 	function Wave(harpy:int, cyclops:int, batteringRam:int, 
@@ -28,7 +28,7 @@ class Wave {
 		this.gruntBoar 			= gruntBoar;
 		this.nemeanLion 		= nemeanLion;
 		
-		this.total = 	this.harpy + this.cyclops + this.batteringRam + 
+		this.total = this.harpy + this.cyclops + this.batteringRam + 
 						this.manticore + this.gruntBoar + this.nemeanLion;	
 	}
 }
@@ -40,10 +40,9 @@ var harpySpawnList 				= new Transform[4];
 
 var waveList : int[];
 var currentWave : int;
-
 private var enemyNum : int = 1;
 private var num = 0;
-
+var waveCount               : int = 0;
 private var harpy 			: int = 0;
 private var cyclops 		: int = 1;
 private var batteringRam 	: int = 2;
@@ -63,7 +62,7 @@ private var ramTimer = 4.1;
 var lionTime = 10;
 private var lionTimer = 4.1;
 
-var spawnAsWaves : boolean = false;
+var spawnAsWaves : boolean = true;
 
 
 function Start () {
@@ -75,10 +74,10 @@ function Start () {
 	//               Harpy, Cyclops, 	Ram, 	Manticore, 	Boar, 	Lion
 	var w0 = new Wave(10, 	3, 			4, 		0, 			0, 		0);
 	
-	waves[0] = w0;
+//	waves[0] = w0;
 	
 	
-	StartWave(waves[0]);	
+	StartWave(waves[waveCount]);	
 }
 
 function StartWave(wave:Wave) {
@@ -154,17 +153,51 @@ function SpawnEnemy () {
 	if (spawnAsWaves == true) {	
 	
 	for (var i = 0; i < waveList.Length; i++) {
-		if ( waveList[i] == harpy ) 		Instantiate(enemyList[harpy], harpySpawnList[Random.Range(0.0, 4.0)].position, Quaternion.identity);		
-		if ( waveList[i] == cyclops ) 		Spawn(cyclops);		
-		if ( waveList[i] == batteringRam ) 	Spawn(batteringRam);		
-		if ( waveList[i] == manticore ) 	Spawn(manticore);		
-		if ( waveList[i] == gruntBoar ) 	Spawn(gruntBoar);		
-		if ( waveList[i] == nemeanLion ) 	Spawn(nemeanLion);
 		
-		WaitForSeconds(1000);			
+//		yield WaitForSeconds (1);
+		if (i == (waveList.length - 1))
+			{
+			yield WaitForSeconds(20);
+			waveCount++;
+			i = 0;
+			StartWave(waves[waveCount]);
+			}
+		
+		if ( waveList[i] == harpy ) {
+									yield WaitForSeconds (1);
+									Instantiate(enemyList[harpy], harpySpawnList[Random.Range(0.0, 4.0)].position, Quaternion.identity);
+									}	
+		if ( waveList[i] == cyclops )
+									{
+									yield WaitForSeconds (10);
+									Spawn(cyclops);	
+									}	
+		if ( waveList[i] == batteringRam )
+									{
+									yield WaitForSeconds (5);
+									Spawn(batteringRam);
+									}		
+		if ( waveList[i] == manticore )
+									{
+									yield WaitForSeconds (15);
+									Spawn(manticore);
+									yield WaitForSeconds (10);
+									}
+		if ( waveList[i] == gruntBoar )
+									{
+									yield WaitForSeconds (2);
+									Spawn(gruntBoar);
+									}		
+		if ( waveList[i] == nemeanLion )
+									{
+									Spawn(nemeanLion);
+									yield WaitForSeconds (2);
+									}
+//		waveCount++;			
 	}
 	
-	}else {
+	}
+	else {
 	
 	
 	harpyTimer += Time.deltaTime;
