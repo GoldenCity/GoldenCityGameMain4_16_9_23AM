@@ -32,7 +32,7 @@ function Update () {
 function OnTriggerEnter(objColl : Collider) {
 	
 	if(objColl.gameObject.tag == "MovingWall") {			
-		Physics.IgnoreCollision(objColl.collider, collider);
+		//Physics.IgnoreCollision(objColl.collider, collider); // Turned off to avoid null pointers - Jeff
 	}
 	
 }

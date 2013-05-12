@@ -1,24 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\healthTest.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\scriptActorEnemy.js">
     <Files>
-      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="1" Column="1" />
-      <File FileName="Assets\MenueSystem\healthTest.js" Line="86" Column="71" />
-      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="146" Column="3" />
-      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="52" Column="25" />
-      <File FileName="Assets\MenueSystem\Credits.js" Line="54" Column="10" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NovaMineTrigger.js">
-    <Files>
-      <File FileName="Assets\Scripts\SolarbeamTwist.js" Line="10" Column="71" />
-      <File FileName="Assets\Defenses\MiniCannon\ScanHorizontal.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Movement.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\spawnSolarbeam.js" Line="6" Column="1" />
-      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="91" Column="6" />
-      <File FileName="Assets\Scripts\NovaMineSpawn.js" Line="14" Column="62" />
-      <File FileName="Assets\Scripts\NovaMineTrigger.js" Line="18" Column="3" />
->>>>>>> Solar-beam level 2 and 3, Nova-Mine level three.
+      <File FileName="Assets\Scripts\PathFinder.js" Line="81" Column="4" />
+      <File FileName="Assets\MenueSystem\HighScoreGUI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Spawner.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\scriptActorEnemy.js" Line="193" Column="1" />
+      <File FileName="Assets\Scripts\IgnoreOtherEnemies.js" Line="9" Column="3" />
+      <File FileName="Assets\Scripts\CyclopsAI.js" Line="35" Column="101" />
+      <File FileName="Assets\Scripts\AreaDamage.js" Line="9" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,0 +1,120 @@
+fileFormatVersion: 2
+guid: 4924e0e6e287b57458cdf2f1d1ceabdf
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: boarMesh
+    100004: ChestJoint
+    100006: group1
+    100008: group2
+    100010: group3
+    100012: group4
+    100014: group5
+    100016: group6
+    100018: group7
+    100020: group8
+    100022: group9
+    100024: HeadEndJoint
+    100026: HeadJo_int
+    100028: LEFT_LegIK
+    100030: LEFTelbowJoint
+    100032: LEFThoofJoint
+    100034: LEFTshoulderJoinf
+    100036: LEFTwristJoint
+    100038: LowerBackJoint
+    100040: RIGHT_LegIK
+    100042: RIGHTelbowJoint
+    100044: RIGHThoofJoint
+    100046: RIGHTshoulderJoinf
+    100048: RIGHTwristJoint
+    100050: TailEndJoint
+    100052: UpperBackJoint
+    100054: wheel1:pCylinder1
+    400000: //RootNode
+    400002: boarMesh
+    400004: ChestJoint
+    400006: group1
+    400008: group2
+    400010: group3
+    400012: group4
+    400014: group5
+    400016: group6
+    400018: group7
+    400020: group8
+    400022: group9
+    400024: HeadEndJoint
+    400026: HeadJo_int
+    400028: LEFT_LegIK
+    400030: LEFTelbowJoint
+    400032: LEFThoofJoint
+    400034: LEFTshoulderJoinf
+    400036: LEFTwristJoint
+    400038: LowerBackJoint
+    400040: RIGHT_LegIK
+    400042: RIGHTelbowJoint
+    400044: RIGHThoofJoint
+    400046: RIGHTshoulderJoinf
+    400048: RIGHTwristJoint
+    400050: TailEndJoint
+    400052: UpperBackJoint
+    400054: wheel1:pCylinder1
+    2300000: boarMesh
+    2300002: wheel1:pCylinder1
+    3300000: boarMesh
+    3300002: wheel1:pCylinder1
+    4300000: boarMesh
+    4300002: wheel1:pCylinder1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
