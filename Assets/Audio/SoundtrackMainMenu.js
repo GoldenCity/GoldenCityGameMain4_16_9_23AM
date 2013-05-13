@@ -25,6 +25,8 @@
      
     var audio1Volume : float = 1.0;
     var audio2Volume : float = 0.0;
+    var audio3Volume : float = 0.0;
+    
     var track2Playing : boolean = false;
     var fadeOutReady = false;
     
@@ -41,23 +43,36 @@
 	
     function Update() 
     {
-    	if (fadeOutReady)
+    	if(!wallState.dead)
     	{
-	    	fadeOut();
-		}
-	    if (audio1Volume <= 0.1)
-	    {
-	    	if(track2Playing == false)
-	   		{
-			    track2Playing = true;
-			    audio.clip = track[1];
-			    audio.Play();
-			    currentTrack = 1;
-			    songWait();
-    		}
-     
-   			 fadeIn();
-
+	    	if (fadeOutReady)
+	    	{
+		    	fadeOut();
+			}
+		    if (audio1Volume <= 0.1)
+		    {
+		    	if(track2Playing == false)
+		   		{
+				    track2Playing = true;
+				    audio.clip = track[1];
+				    audio.Play();
+				    currentTrack = 1;
+				    songWait();
+	    		}
+	   			 fadeIn();
+	    	}
+	    }
+    	
+    	if(wallState.dead)
+    	{
+		    fadeOut2();
+		    if (audio2Volume <= 0.1)
+		    {
+				 audio.clip = track[4];
+				 audio.Play();
+				 currentTrack = 4;
+	   			 fadeIn2();
+	    	}
     	}
     }
      
@@ -69,7 +84,7 @@
      
     function fadeIn() 
     {
-	    if (audio2Volume < 1.0) 
+	    if ( audio2Volume< 1.0) 
 	    {
 		    audio2Volume += 0.2 * Time.deltaTime;
 		    audio.volume = audio2Volume;
@@ -82,6 +97,26 @@
     	{
 		    audio1Volume -= 0.2 * Time.deltaTime;
 		    audio.volume = audio1Volume;
+    	}
+    }
+    
+    //Dont judge me!
+    function fadeIn2() 
+    {
+	    if ( audio3Volume< 1.0) 
+	    {
+		    audio3Volume += 0.2 * Time.deltaTime;
+		    audio.volume = audio3Volume;
+	    }
+    }
+    
+    //Dont judge me!
+    function fadeOut2() 
+    {
+    	if(audio2Volume > 0.1)
+    	{
+		    audio2Volume -= 0.2 * Time.deltaTime;
+		    audio.volume = audio2Volume;
     	}
     }
     
