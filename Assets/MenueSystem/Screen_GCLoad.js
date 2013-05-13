@@ -7,6 +7,8 @@ var background : Texture;
 
 var menuSkin : GUISkin;
 
+static var destination : String = " ";
+
 function Start() 
 {
 	WaitTime();
@@ -14,11 +16,20 @@ function Start()
 
 function Update () 
 {
+	print(Screen_GCLoad.destination);
 	//Option for player to skip info screen
 	if(Input.GetKeyDown("space"))
 	{
-		if((Screen_GCMainMenu.destination == "MainMenu") || (Game_Over.destination == "MainMenu") || (Script_GameMenu.destination == "MainMenu")){Application.LoadLevel("Scene_MainMenu");}
-		if((Screen_GCMainMenu.destination == "Campaign") || (Game_Over.destination == "Campaign")){Application.LoadLevel("Scene_Campaign");}
+		if(Screen_GCLoad.destination == "MainMenu")
+		{
+			Screen_GCLoad.destination = " ";
+			Application.LoadLevel("Scene_MainMenu");
+		}
+		if(Screen_GCLoad.destination == "Campaign")
+		{
+			Screen_GCLoad.destination = " ";
+			Application.LoadLevel("Scene_Campaign");
+		}
 	}
 }
 
@@ -52,18 +63,26 @@ function OnGUI()
 
 function WaitTime()
 {
-	if((Screen_GCMainMenu.destination == "MainMenu") || (Game_Over.destination == "MainMenu"))
+	if(Screen_GCLoad.destination == "MainMenu")
 	{
 		stopMusic();
 	}
 	yield WaitForSeconds(waitTime);
-	if((Screen_GCMainMenu.destination == "MainMenu") || (Game_Over.destination == "MainMenu")){Application.LoadLevel("Scene_MainMenu");}
-	if((Screen_GCMainMenu.destination == "Campaign") || (Game_Over.destination == "Campaign")){Application.LoadLevel("Scene_Campaign");}
+	if(Screen_GCLoad.destination == "MainMenu")
+	{
+		Screen_GCLoad.destination = " ";
+		Application.LoadLevel("Scene_MainMenu");
+	}
+	if(Screen_GCLoad.destination == "Campaign")
+	{
+		Screen_GCLoad.destination = " ";
+		Application.LoadLevel("Scene_Campaign");
+	}
 }
 
 
 function stopMusic()
 {
 	yield WaitForSeconds(2);
-	Destroy(GameObject.FindGameObjectWithTag("AudioPlayer"));
+	Destroy(GameObject.Find("MusicBox"));
 }

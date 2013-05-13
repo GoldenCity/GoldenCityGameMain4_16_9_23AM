@@ -20,7 +20,8 @@ var regenTimer : float; //countdown till ability use
 function Start () 
 {
 	uh = GameObject.Find("Camera_Main").GetComponent(healthTest);
-	
+	wallHealth = 1000;
+	dead = false;
 	theHud = GameObject.Find("Camera_Main").GetComponent(Script_Hud);
 	
 	instanceScript_Hud = GameObject.Find("Globals").GetComponent(Script_Hud);
