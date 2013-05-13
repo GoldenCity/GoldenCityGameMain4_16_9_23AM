@@ -26,6 +26,7 @@ var cannonBoom 			: AudioClip;
 var mine 				: Transform;
 var shotDelay 			: double = 1.0;
 var delay				: double = 0.0;
+var impulse				: int = 50;     
 
 static var hitPoint 	: Vector3;			//point where mouse 'touches' ground
 static var launchVelocity : float = 50.0;	//velocity of projectile when instantiated
@@ -132,6 +133,7 @@ function Update ()
 			{
 				if(shotsLeft > 0)
 				{
+				launchVelocity = impulse;
 				CannonFireFX();
 				Instantiate(projectile, projectileEmitter.position, projectileEmitter.rotation); //create a projectile object at the emitter position and rotation			
 				shotsLeft--;
