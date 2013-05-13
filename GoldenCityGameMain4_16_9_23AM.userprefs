@@ -1,26 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_GameMenu.js">
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_Hud.js">
->>>>>>> c86b07b49c8d538ca33b9ee03592a88ac48ab108
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wheelAnimator.js">
     <Files>
-      <File FileName="Assets\teslaControl.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="51" Column="1" />
-      <File FileName="Assets\MenueSystem\Game_Over.js" Line="18" Column="27" />
-<<<<<<< HEAD
-      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\MenueSystem\Screen_GCLoad.js" Line="68" Column="42" />
-      <File FileName="Assets\Audio\SoundtrackMainMenu.js" Line="67" Column="7" />
-      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="17" Column="2" />
-      <File FileName="Assets\Scripts\wallState.js" Line="44" Column="3" />
-=======
-      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="6" Column="34" />
-      <File FileName="Assets\Scripts\scriptProjectile.js" Line="16" Column="4" />
-      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="150" Column="12" />
-      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
->>>>>>> c86b07b49c8d538ca33b9ee03592a88ac48ab108
+      <File FileName="Assets\Scripts\wheelAnimator.js" Line="17" Column="20" />
+      <File FileName="Assets\MenueSystem\HighScoreGUI.js" Line="34" Column="103" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
