@@ -1,14 +1,13 @@
 #pragma strict
 
 var levelOfWall : int = 1;
-
 var wallHealth : int = 1000;
 var maxWallHealth : int = 1000;
 
+var dead : boolean = false;
+
 private var instanceScript_Hud : Script_Hud;
-
 var uh : healthTest;
-
 var theHud : Script_Hud;
 
 //regenerative nanites
@@ -31,22 +30,25 @@ function Update ()
 {
 	regenLevel = theHud.regenUpgrade;
 	if (theHud.regenUpgrade > 0)
-	{ regenSpeed = (40 - (theHud.regenUpgrade * 10)); }
+	{ 
+		regenSpeed = (40 - (theHud.regenUpgrade * 10)); 
+	}
 	
 	regenTimer -= Time.deltaTime;
 	
 	if (regenTimer <= 0) { PeriodicRegeneration(); }
 	
 	if (wallHealth > maxWallHealth)
-		{
+	{
 		wallHealth = maxWallHealth;
-		}
+	}
 	
 	if (wallHealth <= 0)
-  		{
+  	{
   		wallHealth = 0;
-  		GameOver();
-  		}
+  		dead = true;
+  		Application.LoadLevel("Scene_gameOver");
+  	}
 }
 
 function UpgradeWall()
@@ -79,9 +81,4 @@ function PeriodicRegeneration()
 	{
 	wallHealth += 50;
 	}
-}
-
-function GameOver()
-{
-	
 }

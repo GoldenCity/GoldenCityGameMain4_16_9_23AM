@@ -40,6 +40,7 @@ var c : Script_Hud;
 
 var spawnSolarbeamScript : spawnSolarbeam;
 var spawnMineScript : NovaMineSpawn;
+var gameMenu : Script_GameMenu;
 
 var basicCooldown = 1.0;
 private var basicCooldownTimer = 1.0;
@@ -53,11 +54,19 @@ function Start()
 	
 	spawnSolarbeamScript = GameObject.Find("Globals").GetComponent(spawnSolarbeam);
 	spawnMineScript = GameObject.Find("Globals").GetComponent(NovaMineSpawn);
+	gameMenu = GameObject.Find("Camera_GameMenu").GetComponent(Script_GameMenu);
 }
 
 function Update () 
 { 
-	var ray = Camera.main.ScreenPointToRay (Input.mousePosition); //active camera must be tagged MainCamera!
+	if(!gameMenu.isPaused)
+	{	
+		var ray = Camera.main.ScreenPointToRay (Input.mousePosition); //active camera must be tagged MainCamera!
+	}
+	else
+	{
+	
+	}
 	var hit : RaycastHit;
 	
 	cannonIsOn = true; //c.cannonOn;	
@@ -116,7 +125,7 @@ function Update ()
 			}
 		}
 		
-		if(c.normalCannonOn)
+		if(c.normalCannonOn && !gameMenu.isPaused)
 		//if (cannonIsOn) 
 		{
 			if (Input.GetMouseButtonDown(0) && target.gameObject.activeSelf == true)//fire cannon

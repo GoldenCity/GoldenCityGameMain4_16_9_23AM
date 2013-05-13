@@ -17,8 +17,8 @@ function Update ()
 	//Option for player to skip info screen
 	if(Input.GetKeyDown("space"))
 	{
-		if(Screen_GCMainMenu.destination == "MainMenu"){Application.LoadLevel("Scene_MainMenu");}
-		if(Screen_GCMainMenu.destination == "Campaign"){Application.LoadLevel("Scene_Campaign");}
+		if((Screen_GCMainMenu.destination == "MainMenu") || (Game_Over.destination == "MainMenu") || (Script_GameMenu.destination == "MainMenu")){Application.LoadLevel("Scene_MainMenu");}
+		if((Screen_GCMainMenu.destination == "Campaign") || (Game_Over.destination == "Campaign")){Application.LoadLevel("Scene_Campaign");}
 	}
 }
 
@@ -52,13 +52,13 @@ function OnGUI()
 
 function WaitTime()
 {
-	if(Screen_GCMainMenu.destination == "MainMenu")
+	if((Screen_GCMainMenu.destination == "MainMenu") || (Game_Over.destination == "MainMenu"))
 	{
 		stopMusic();
 	}
 	yield WaitForSeconds(waitTime);
-	if(Screen_GCMainMenu.destination == "MainMenu"){Application.LoadLevel("Scene_MainMenu");}
-	if(Screen_GCMainMenu.destination == "Campaign"){Application.LoadLevel("Scene_Campaign");}
+	if((Screen_GCMainMenu.destination == "MainMenu") || (Game_Over.destination == "MainMenu")){Application.LoadLevel("Scene_MainMenu");}
+	if((Screen_GCMainMenu.destination == "Campaign") || (Game_Over.destination == "Campaign")){Application.LoadLevel("Scene_Campaign");}
 }
 
 
