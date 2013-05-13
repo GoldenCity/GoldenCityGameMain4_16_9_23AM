@@ -20,10 +20,14 @@
 	
 	var cameraRotationOriginal : float;
 	
+	var gameMenu : Script_GameMenu;
+	
 	function Start()
 	{
 		uv = GameObject.Find("Wall").GetComponent(wallState);
 		healthBarLength = uv.wallHealth/5;
+		
+		gameMenu = GameObject.Find("Camera_GameMenu").GetComponent(Script_GameMenu);
 		
 		pos = new Vector2(Screen.width/12,0);
 	   	size = new Vector2(Screen.width/20,Screen.height/20);
@@ -33,7 +37,7 @@
 	   	cameraZPositionOriginal = mainCamera.position.z;
 	   	
 	   	cameraRotationOriginal = mainCamera.rotation.x;
-
+	
 	}
   
     function OnGUI()
@@ -49,14 +53,14 @@
 		// Draws a vertical slider control that goes from  10 (top) to 0 (bottom)
 		GUI.backgroundColor=Color.blue;
 		
-	    vSliderValue = GUI.VerticalSlider (Rect (Screen.width/50, Screen.height/10, Screen.width/20, Screen.height/3.5), vSliderValue, 25.0, 0.0);
-
+		if(!gameMenu.isPaused)
+		{
+	    	vSliderValue = GUI.VerticalSlider (Rect (Screen.width/50, Screen.height/10, Screen.width/20, Screen.height/3.5), vSliderValue, 25.0, 0.0);
+		}
+		else
+		{
 		
-		
-		
-		
-		
-		
+		}
 		//GUI.Label(new Rect (Screen.width-(Screen.width/5),Screen.height/80, Screen.width/4, Screen.height/4),("Souls Collected: " + numberOfSouls));
 		
 		
@@ -78,16 +82,19 @@
      
     function Update()
     {
-    	if ( (Input.GetAxis("Mouse ScrollWheel") < 0) && (vSliderValue < 25) )
+    	if(!gameMenu.isPaused)
     	{
-    		vSliderValue += 5;
+	    	if ( (Input.GetAxis("Mouse ScrollWheel") < 0) && (vSliderValue < 25) )
+	    	{
+	    		vSliderValue += 5;
+	    	}
+	    	
+	    	if ( (Input.GetAxis("Mouse ScrollWheel") > 0) && (vSliderValue > 0) )
+	    	{
+	    		vSliderValue -= 5;
+	    	}
     	}
     	
-    	if ( (Input.GetAxis("Mouse ScrollWheel") > 0) && (vSliderValue > 0) )
-    	{
-    		vSliderValue -= 5;
-    	}
-    
     	mainCamera.position.y = (cameraYPositionOriginal + vSliderValue);
     	mainCamera.position.z = (cameraZPositionOriginal - vSliderValue/3.2);
     	mainCamera.rotation.x = (cameraRotationOriginal + vSliderValue/800);

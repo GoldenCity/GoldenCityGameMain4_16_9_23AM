@@ -121,6 +121,8 @@ var highPwrUp : double = 4.25; 	//425
 	var nm : NovaMineSpawn;
 	var mineUsed;
 	
+	var gameMenu : Script_GameMenu;
+	
 //----------------------------------------
 
 	var customSkin : GUISkin;
@@ -172,6 +174,7 @@ function Start ()
 		
 		spawnSolarbeamScript = GameObject.Find("Globals").GetComponent(spawnSolarbeam);
 		
+		gameMenu = GameObject.Find("Camera_GameMenu").GetComponent(Script_GameMenu);
 	}
 	
 function Update()
@@ -221,23 +224,30 @@ GUI.color = Color.white;
 GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 
 	//Top-Right Menu
-	if (GUI.Button(Rect((Screen.width/20)*19,0,Screen.width/18,Screen.height/16),GUIContent(store, "hoverMenue")))
+	if(!gameMenu.isPaused)
+	{
+		if (GUI.Button(Rect((Screen.width/20)*19,0,Screen.width/18,Screen.height/16),GUIContent(store, "hoverMenue")))
 		{
-			showCannonButtons = false;
-			showWallButtons = false;
-			showAbilityButtons = false;
-		
-			if (showButtons){showButtons = false;}
-			else {showButtons = true;}
-		}
-	
-	if (GUI.tooltip == "hoverMenue")
-		{
-			GUI.Label(new Rect((Screen.width/20)*19,Screen.height/20,Screen.width/20,Screen.height/20), "MENU");
-			//cannonOn = false;
+				showCannonButtons = false;
+				showWallButtons = false;
+				showAbilityButtons = false;
 			
-			//print("hoverMenue");
+				if (showButtons){showButtons = false;}
+				else {showButtons = true;}
 		}
+		
+		if (GUI.tooltip == "hoverMenue")
+		{
+				GUI.Label(new Rect((Screen.width/20)*19,Screen.height/20,Screen.width/20,Screen.height/20), "MENU");
+				//cannonOn = false;
+				
+				//print("hoverMenue");
+		}
+	}
+	else
+	{
+	
+	}
 		
 	//------------------SHOW BUTTONS
 	if (showButtons){
@@ -835,19 +845,26 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	//////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////MAIN MENU////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////
-	GUI.color = Color.white;
-	if (GUI.Button(Rect(0,0,Screen.width/20,Screen.height/20),GUIContent(menuMain,"hoverGameMenue")))
+	if(!gameMenu.isPaused)
+	{
+		GUI.color = Color.white;
+		if (GUI.Button(Rect(0,0,Screen.width/20,Screen.height/20),GUIContent(menuMain,"hoverGameMenue")))
 		{
-    		camera_Main.enabled = false;
-    		Time.timeScale = 0;
-    		camera_GameMenu.enabled = true;
+	    		camera_Main.enabled = false;
+	    		Time.timeScale = 0;
+	    		gameMenu.isPaused = true;
+	    		camera_GameMenu.enabled = true;
 		}
-	if (GUI.tooltip == "hoverGameMenue")
+		if (GUI.tooltip == "hoverGameMenue")
 		{
-			GUI.Label(new Rect(0,Screen.height/20,Screen.width/20,Screen.height/20), "GAME MENU");
-			//cannonOn = false;
+				GUI.Label(new Rect(0,Screen.height/20,Screen.width/20,Screen.height/20), "GAME MENU");
+				//cannonOn = false;
 		}
-		
+	}
+	else
+	{
+	
+	}	
 	//print("ToolTip is: " + GUI.tooltip + " with length: " + GUI.tooltip.Length);
 	//print("Substring: " + GUI.tooltip.Substring(0,5));
 	

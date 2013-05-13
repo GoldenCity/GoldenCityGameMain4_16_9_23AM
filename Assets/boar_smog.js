@@ -13,7 +13,8 @@ function Start () {
 }
 	
 
-function Furt () {
+function Furt () 
+{
 while(-1<Time.time){
 	s1.emit = true;
 	s2.emit = true;

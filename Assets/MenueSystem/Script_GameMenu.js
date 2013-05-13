@@ -1,11 +1,13 @@
 #pragma strict
-
-
 var camera_GameMenu : Camera;
 var camera_Main : Camera;
 
 var screenWidth : int = Screen.width;
 var screenHeight : int = Screen.height;
+
+var isPaused = false;
+
+static var destination : String = " ";
 
 var logo : Texture;
 var resume : Texture;
@@ -22,16 +24,14 @@ function OnGUI()
 		{
 			camera_GameMenu.enabled = false;
 			Time.timeScale = 1;
+			isPaused = false;
 			camera_Main.enabled = true;
 		}
-		
 		if (GUI.Button(Rect((Screen.width/8)*5,Screen.height/6,Screen.width/4,Screen.height/3), quit))
 		{
-			Screen_GCMainMenu.destination = "MainMenu";
+			destination = "MainMenu";
 			Application.LoadLevel("Screen_GoldenCityLoad");
 		}
 		
 	}
-	
-	
 }
