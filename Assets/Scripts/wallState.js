@@ -4,7 +4,7 @@ var levelOfWall : int = 1;
 var wallHealth : int = 1000;
 var maxWallHealth : int = 1000;
 
-var dead : boolean = false;
+static var dead : boolean = false;
 
 private var instanceScript_Hud : Script_Hud;
 var uh : healthTest;
@@ -43,7 +43,7 @@ function Update ()
 		wallHealth = maxWallHealth;
 	}
 	
-	if (wallHealth <= 0)
+	if (wallHealth <= 0 || dead)
   	{
   		wallHealth = 0;
   		dead = true;

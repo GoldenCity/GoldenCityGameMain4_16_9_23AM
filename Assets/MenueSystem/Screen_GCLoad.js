@@ -65,5 +65,5 @@ function WaitTime()
 function stopMusic()
 {
 	yield WaitForSeconds(2);
-	Destroy(GameObject.FindWithTag("AudioPlayer"));
+	Destroy(GameObject.FindGameObjectWithTag("AudioPlayer"));
 }
