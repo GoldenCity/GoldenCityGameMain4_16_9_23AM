@@ -77,6 +77,9 @@ var tank2 : GameObject;
 var tank3 : GameObject;
 var tank4 : GameObject;
 
+
+var teslaCoil1 : GameObject;
+var teslaCoil2 : GameObject;
 //---------------------------------------
 
 var scorcherFireOn = false;
@@ -142,6 +145,9 @@ function Awake () {
 		miniCannon2.SetActive(false);
 		miniCannon3.SetActive(false);
 		miniCannon4.SetActive(false);
+		
+		teslaCoil1.SetActive(false); 
+		teslaCoil2.SetActive(false);
 }	
 	
 

@@ -8,9 +8,12 @@ var groundSplosion 	: GameObject;
 
 var blowUp 			: boolean = false; //should I be blowing up?
 
+var cannon 			: GameObject;
+
 //
 function Start ()
 {
+	//cannonScript = cannon.GetComponent(scriptTrackMouseToGround);
 	impulse = cannonScript.launchVelocity; //grab the launch velocity var from the cannon script
 	rigidbody.AddForce(transform.up*impulse, ForceMode.VelocityChange); //on creation, set velocity on local Y
 	Despawn(despawnTime); //destroy if no other events destroy it first
