@@ -49,6 +49,7 @@ private var basicCooldownTimer = 1.0;
 var shotsLeft = 4;
 var shotsMax = 4;
 
+
 function Start()
 {
 	c = GameObject.Find("Camera_Main").GetComponent(Script_Hud);
