@@ -11,6 +11,8 @@ var teslaScript : teslaControl;
 
 var targetScript : scriptActorEnemy;
 
+var arcObj : GameObject;
+
 var makingDamage : boolean = false;
 
 var player : Transform;
@@ -23,7 +25,11 @@ var dir : Vector3;
 
 var speed = 100;
 
+public var theAngle : int = 45;
+public var segments : int = 10;
+
 function Awake () {
+	arcObj.GetComponent(Lightning).target = this.gameObject;
 	gameObject.SetActive(false);
 }
 
@@ -33,7 +39,10 @@ function Start () {
 }
 
 function Update () {
-	if(target != null){
+	if(target != null){ ///WE HAVE TARGET
+		targetScript = target.GetComponent(scriptActorEnemy);
+		if(targetScript.alive) //Only attach if alive
+			gameObject.transform.position = target.transform.position;
 		if(targetScript.alive && !makingDamage){	
 			InvokeRepeating("MakeDamage",0,dph/teslaScript.dps);
 		}
@@ -43,6 +52,7 @@ function Update () {
 			target = null;
 			//gameObject.transform.parent = null;
 			//gameObject.SetActive(false);
+			teslaScript.GetTarget();
 		}
 		myLight.intensity = (Random.value*intensity); //light effects
 	}
@@ -59,7 +69,7 @@ function Update () {
 	gameObject.transform.LookAt(player);
 	
 	transform.position.y = Mathf.Clamp(transform.position.y, 0.0, 25.0);
-	transform.position.z = Mathf.Clamp(transform.position.z, 0, teslaScript.range);
+	transform.position.z = Mathf.Clamp(transform.position.z, 15, teslaScript.range);
 	transform.position.x = Mathf.Clamp(transform.position.x, teslaCoil.transform.position.x - teslaScript.range/2, teslaCoil.transform.position.x + teslaScript.range/2);
 	
 	
@@ -67,20 +77,26 @@ function Update () {
 } 
 
 function OnEnable () {
-	GetTarget();
+	Jump();
+	arcObj.SetActive(true);
+}
+
+function OnDisable () {
+	arcObj.SetActive(false);
+	transform.position = Vector3.zero;
 }
 
 function OnTriggerStay (obj : Collider) {
 	if (target == null && obj.gameObject.tag == "Enemy") {
 		target = obj.gameObject;
-		targetScript = target.GetComponent(scriptActorEnemy);
-		if(targetScript.alive) //Only attach if alive
-			gameObject.transform.position = target.transform.position;
+//		targetScript = target.GetComponent(scriptActorEnemy);
+//		if(targetScript.alive) //Only attach if alive
+//		gameObject.transform.position = target.transform.position;
 	}
-//	if (target != null && obj.gameObject.tag == "Enemy"){
-//		if(Random.value > .5)
-//			target = obj.gameObject;
-//	}
+	if (target != null && obj.gameObject.tag == "Enemy"){
+		if(Random.value > .5)
+			target = obj.gameObject;
+	}
 	
 }
 
@@ -101,21 +117,74 @@ function MakeDamage () {
 }
 
 function GetTarget() {
-	var enemies = new GameObject.FindGameObjectsWithTag("Enemy");
-	for (var enemy in enemies)
-		if(Vector3.Distance(this.gameObject.transform.parent.position, enemy.transform.position) > teslaScript.range)
-			enemiesTargeted.Push(enemy);
-	//////////////
-	if (enemiesTargeted.length > 0){
-		var l = 0;
-			var rdm = Mathf.RoundToInt(Random.Range(0, enemiesTargeted.length-1) );
-			target = enemiesTargeted[rdm] as GameObject;
-		}
-	transform.position = target.transform.position;
-	
+//	var enemies = new GameObject.FindGameObjectsWithTag("Enemy");
+//	for (var enemy in enemies)
+//		if(Vector3.Distance(this.gameObject.transform.parent.position, enemy.transform.position) > teslaScript.range)
+//			enemiesTargeted.Push(enemy);
+//	//////////////
+//	if (enemiesTargeted.length > 0){
+//		var l = 0;
+//			var rdm = Mathf.RoundToInt(Random.Range(0, enemiesTargeted.length-1) );
+//			target = enemiesTargeted[rdm] as GameObject;
+//		}
+//	transform.position = target.transform.position;
+//	
+	var layer = Random.value;
+	if(layer > .5)
+		transform.position = Vector3(teslaCoil.transform.position.x, teslaCoil.transform.position.y - 3.3,teslaCoil.transform.position.z);
+	else
+		transform.position = Vector3(teslaCoil.transform.position.x, 15,teslaCoil.transform.position.z);
+//	hit : RaycastHit;
+//		
+//	Physics.Raycast
+//	for(var hits in hit){
+//		if(hits.collider.gameObject.tag == "Enemy")
+//			//var obj = GetParent(hits.collider.gameObject as GameObject);
+//			if(!HasParent(hits.collider.gameObject) ); //only want top most objects in hierarchy
+//				targets.Push(hits.collider.gameObject as GameObject);
+//	}
+//	RaycastSweep();
 }
 
 function PickDir() {
 
-	dir = Vector3((Random.value-.5)*2,(Random.value-.3)*1.7,(Random.value) );
+	dir = Vector3((Random.value-.5)*2,(Random.value-.3)*1.7,(Random.value)*2 );
+}
+
+function RaycastSweep()
+{
+var startPos : Vector3 = transform.position; // umm, start position !
+var targetPos : Vector3 = Vector3.zero; // variable for calculated end position
+ 
+var startAngle : int = parseInt( -theAngle * 0.5 ); // half the angle to the Left of the forward
+var finishAngle : int = parseInt( theAngle * 0.5 ); // half the angle to the Right of the forward
+ 
+// the gap between each ray (increment)
+var inc : int = parseInt( theAngle / segments );
+ 
+var hit : RaycastHit;
+ 
+// step through and find each target point
+for ( var i : int = startAngle; i < finishAngle; i += inc ) // Angle from forward
+{
+targetPos = (Quaternion.Euler( 0, i, 0 ) * transform.forward ).normalized * teslaScript.range;
+ 
+// linecast between points
+if ( Physics.Linecast( startPos, targetPos, hit ) )
+{
+Debug.Log( "Hit " + hit.collider.gameObject.name );
+}
+ 
+// to show ray just for testing
+Debug.DrawLine( startPos, targetPos, Color.green );
+}
+}
+
+function Jump() {
+	transform.position.y = Random.Range(0.0, 25.0);
+	transform.position.z = Random.Range(15, teslaScript.range);
+	transform.position.x = Random.Range(teslaCoil.transform.position.x - teslaScript.range/2, teslaCoil.transform.position.x + teslaScript.range/2);
+	yield WaitForSeconds (2*Random.value + .5);
+	if (target == null)
+	OnEnable();
 }

@@ -48,9 +48,12 @@ function Update () {
 	}
 	
 	if(!switchedOn) {
-		if(arcEmitters[0].activeSelf)	
-			for(var a in arcEmitters)
-				a.SetActive(false);
+		if(arcTargets[0].activeSelf){	
+			for(var a = 0; a < arcTargets.length; a++){
+				 arcTargets[a].SetActive(false);
+				//print("switched off" + a);
+			}
+		}
 		powerLevel += (Time.deltaTime / rechargeTime) * powerLevelMax;
 		powerLevel = Mathf.Clamp(powerLevel, 0, powerLevelMax);
 	}	
@@ -129,22 +132,22 @@ function Zap () {
 
 	//if(!arcEmitters[0].activeSelf){
 		//if(enemiesTargeted[0] != null){
-			arcEmitters[0].SetActive(true);
+			//arcEmitters[0].SetActive(true);
 			//arcEmitters[0].GetComponent(Lightning).target = arcTargets[0];
 			arcTargets[0].SetActive(true);
 		//}
 		//else 
 		//	switchedOn = false;
 		if(level == 2) {
-			arcEmitters[1].SetActive(true);
+			//arcEmitters[1].SetActive(true);
 		//	arcEmitters[1].GetComponent(Lightning).target = arcTargets[1];
 			//arcTargets[1].transform.position = enemiesTargeted[1].transform.position;
 			arcTargets[1].SetActive(true);
 			dps = dpsLvl2;
 		}
 		if(level == 3) {
-			arcEmitters[2].SetActive(true);
-			arcEmitters[3].SetActive(true);
+			//arcEmitters[2].SetActive(true);
+			//arcEmitters[3].SetActive(true);
 			//arcEmitters[2].GetComponent(Lightning).target = arcTargets[2]; 
 			//arcTargets[2].transform.position = enemiesTargeted[2].transform.position;
 			//arcEmitters[3].GetComponent(Lightning).target = arcTargets[3]; 
@@ -158,8 +161,8 @@ function Zap () {
 //	GetTarget();
 }
 //
-//private var lastTarget;
-//function GetTarget () {
+private var lastTarget;
+function GetTarget () {
 //	var enemies = new GameObject.FindGameObjectsWithTag("Enemy");
 //	for (var enemy in enemies)
 //		if(Vector3.Distance(this.transform.position, enemy.transform.position) < range &&)
@@ -172,10 +175,36 @@ function Zap () {
 //			enemiesInRange.RemoveAt(rdm);
 //		}
 //	}
+//	var targets = new Array();
 //
-//}
+//	var hit : RaycastHit[];
+//	Physics.SphereCastAll(gameObject.transform.position, range, Vector3.forward,  hit, 0);
+//	for(var hits in hit){
+//		if(hits.collider.gameObject.tag == "Enemy")
+//			//var obj = GetParent(hits.collider.gameObject as GameObject);
+//			if(!HasParent(hits.collider.gameObject) ); //only want top most objects in hierarchy
+//				targets.Push(hits.collider.gameObject as GameObject);
+//	}
+
+}
 //
 //function WhileSwitchedOn () {
 //		//test if targeted enemies are still alive
 //
-//}			
+//}		
+//function GetParent(obj : GameObject) {
+//	var par = obj.transform.parent.gameObject as GameObject;
+//	if(par != null)
+//		GetParent(par as GameObject);
+//	else
+//		return par;
+//
+//}	
+
+function HasParent(obj : GameObject) {
+	var par = obj.transform.parent.gameObject as GameObject;
+	if(par == null)
+		return true;
+	else
+		return false;
+}	

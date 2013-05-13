@@ -24,7 +24,8 @@ var ballArcMin : float = .1; //Size of the arcs on the ball
 var ballArcMax : float = 3;
 //var emitterScript : 
 
-var enemiesInRange = new Array(); //keep a list of enemies
+var enemiesInRange = new GameObject[20]; //keep a list of enemies
+var enemiesTargeted = new GameObject[4]; //keep list of enimies to be targeted
 
 var switchedOn : boolean = false;
 
@@ -44,7 +45,7 @@ function Update () {
 		if(powerLevel <= 0) switchedOn = false;
 		
 		//DO WHILE ON STUFF
-		//WhileSwitchedOn();
+		WhileSwitchedOn();
 	}
 	
 	if(!switchedOn) {
@@ -61,12 +62,10 @@ function Update () {
 	if(level == 2) {
 		c = gameObject.collider as SphereCollider;
 		c.radius = rangeLvl2;
-		range = rangeLvl2;
 	}
 	if(level == 3) {
 		c = gameObject.collider as SphereCollider;
 		c.radius = rangeLvl3;
-		range = rangeLvl3;
 	}
 	
 	//set material of lightning based on power levels
@@ -80,7 +79,7 @@ function Update () {
 			emitter.GetComponent(Lightning).level = emitterLevel;
 	}
 }
-/*
+
 function OnTriggerEnter (ob : Collider) {
 	
 	if(ob.gameObject.tag == "Enemy") {
@@ -95,87 +94,103 @@ function OnTriggerEnter (ob : Collider) {
 		}
 	}
 }
-*/
 
 //quick remove of dead and destroyed enemies
 function CleanUpList () {
 	
-//  for(var go in enemiesTargeted) {
-//  	if (go == null || go.
-//  }
+	for(var e = 0; e < enemiesInRange.length; e++ ){
+		if(enemiesInRange[e] == null || enemiesInRange[e].GetComponent(scriptActorEnemy).alive == false) //if enemy has been destryed or not alive
+	 		enemiesInRange[e] = null; //remove enemy from list
+//	 	else if(enemy.gameObject.GetComponent(scriptActorEnemy).alive == false)
+//	 		enemy = null; 
+	 }
 }
 
 //push any null elements to the back
 //Return active enemy count
-//function SortList () {
-//	 CleanUpList ();
-//	 //Sort list
-//	 var newList = new GameObject[enemiesInRange.length];
-//	 var count = 0; //how many active enemies are there?
-//	 for(var j = 0; j < newList.Length; j++){
-//	 	if(enemiesInRange[count] != null){
-//	 		newList[j] = enemiesInRange[count] as GameObject;
-//	 		count++;
-//	 	}
-//	 }
-//	 enemiesInRange = newList;
-//	 print(" sortList count = " +count);
-//	 return count; //return how many active enemies found
-//}
+function SortList () {
+	 CleanUpList ();
+	 //Sort list
+	 var newList = new GameObject[enemiesInRange.Length];
+	 var count = 0; //how many active enemies are there?
+	 for(var j = 0; j < newList.Length; j++){
+	 	if(enemiesInRange[count] != null){
+	 		newList[j] = enemiesInRange[count];
+	 		count++;
+	 	}
+	 }
+	 enemiesInRange = newList;
+	 print(" sortList count = " +count);
+	 return count; //return how many active enemies found
+}
 
 function Zap () {
 	level = Mathf.Clamp(level, 1, 3);
 	
-
-	//if(!arcEmitters[0].activeSelf){
-		//if(enemiesTargeted[0] != null){
+	GetTarget();
+	if(!arcEmitters[0].activeSelf){
+		if(enemiesTargeted[0] != null){
 			arcEmitters[0].SetActive(true);
-			//arcEmitters[0].GetComponent(Lightning).target = arcTargets[0];
+			arcEmitters[0].GetComponent(Lightning).target = arcTargets[0];
+			arcTargets[0].transform.position = enemiesTargeted[0].transform.position;
 			arcTargets[0].SetActive(true);
-		//}
-		//else 
-		//	switchedOn = false;
+		}
+		else 
+			switchedOn = false;
 		if(level == 2) {
 			arcEmitters[1].SetActive(true);
-		//	arcEmitters[1].GetComponent(Lightning).target = arcTargets[1];
-			//arcTargets[1].transform.position = enemiesTargeted[1].transform.position;
+			arcEmitters[1].GetComponent(Lightning).target = arcTargets[1];
+			arcTargets[1].transform.position = enemiesTargeted[1].transform.position;
 			arcTargets[1].SetActive(true);
 			dps = dpsLvl2;
 		}
 		if(level == 3) {
 			arcEmitters[2].SetActive(true);
 			arcEmitters[3].SetActive(true);
-			//arcEmitters[2].GetComponent(Lightning).target = arcTargets[2]; 
-			//arcTargets[2].transform.position = enemiesTargeted[2].transform.position;
-			//arcEmitters[3].GetComponent(Lightning).target = arcTargets[3]; 
-			//arcTargets[3].transform.position = enemiesTargeted[3].transform.position;
+			arcEmitters[2].GetComponent(Lightning).target = arcTargets[2]; 
+			arcTargets[2].transform.position = enemiesTargeted[2].transform.position;
+			arcEmitters[3].GetComponent(Lightning).target = arcTargets[3]; 
+			arcTargets[3].transform.position = enemiesTargeted[3].transform.position;
 			arcTargets[2].SetActive(true);
 			arcTargets[3].SetActive(true);
 			dps = dpsLvl3;
 		}
-	//}
+	}
 	
-//	GetTarget();
+	GetTarget();
 }
-//
-//private var lastTarget;
-//function GetTarget () {
-//	var enemies = new GameObject.FindGameObjectsWithTag("Enemy");
-//	for (var enemy in enemies)
-//		if(Vector3.Distance(this.transform.position, enemy.transform.position) < range &&)
-//			enemiesInRange.Push(enemy);
-//	//////////////
-//	if (enemiesTargeted.Length > 0){
-//		for (var i = 0; i < enemiesTargeted.Length; i++) {
-//			var rdm = Mathf.RoundToInt(Random.Range(0, enemiesInRange.length-1) );
-//			enemiesTargeted[i] = enemiesInRange[rdm] as GameObject;
-//			enemiesInRange.RemoveAt(rdm);
-//		}
-//	}
-//
-//}
-//
-//function WhileSwitchedOn () {
-//		//test if targeted enemies are still alive
-//
-//}			
+
+private var lastTarget;
+function GetTarget () {
+	//another array of just enemies
+	var count = SortList();
+	
+	if (count == 0) {
+		for(var k in enemiesTargeted)
+			k = null;
+		return;
+	}
+	
+	var activeEnemies = new GameObject[count];
+	for(var e = 0; e < count; e++){
+		activeEnemies[e] = enemiesInRange[e];
+	}
+	//allow double targeting of 1 enemy if there are fewer enemies than available arcs
+	var j = 0;
+	for(var i = 0; i < enemiesTargeted.Length; i++) {
+			j = i % activeEnemies.Length;
+			enemiesTargeted[i] = activeEnemies[j];
+	}
+	
+	for(var target in arcTargets){ //If a target gets destroyed
+		if(target == null)
+		target = Instantiate(arcTarget,this.transform.position, Quaternion.identity);
+		target.transform.parent = this.transform;
+	}
+
+}
+
+function WhileSwitchedOn () {
+		//test if targeted enemies are still alive
+
+}			
