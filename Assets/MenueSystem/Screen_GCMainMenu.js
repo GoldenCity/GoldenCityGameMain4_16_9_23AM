@@ -1,11 +1,5 @@
 #pragma strict
-
-
-//static var destination : String = "";
-
-static var destination : String = "abc";
 //Main Menu
-
 var quit : Texture;
 var creditsTex : Texture;
 var startGame : Texture;
@@ -41,7 +35,7 @@ function OnGUI()
 	//Make Start Game Button
 	if (GUI.Button(Rect((Screen.width/2)-(Screen.width/8),(Screen.height/2)+(Screen.height/8),Screen.width/4,Screen.height/3),startGame))
 	{
-		destination = "Campaign";
+		Screen_GCLoad.destination = "Campaign";
 		soundTrack.fadeOutReady = true;
 		Application.LoadLevel("Screen_GoldenCityLoad");
 	}

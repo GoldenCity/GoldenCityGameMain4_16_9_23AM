@@ -1,9 +1,37 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wheelAnimator.js">
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Screen_GCLoad.js">
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_GameMenu.js">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_Hud.js">
+>>>>>>> c86b07b49c8d538ca33b9ee03592a88ac48ab108
+>>>>>>> 53a13b18e7d6887e6959cc813664eb2435ed8f32
     <Files>
-      <File FileName="Assets\Scripts\wheelAnimator.js" Line="17" Column="20" />
-      <File FileName="Assets\MenueSystem\HighScoreGUI.js" Line="34" Column="103" />
+      <File FileName="Assets\Audio\SoundtrackMainMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Screen_GCLoad.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
+<<<<<<< HEAD
+      <File FileName="Assets\MenueSystem\Game_Over.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
+=======
+>>>>>>> c86b07b49c8d538ca33b9ee03592a88ac48ab108
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Spawner.js">
+    <Files>
+      <File FileName="Assets\MenueSystem\Game_Over.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Screen_GCLoad.js" Line="1" Column="1" />
+      <File FileName="Assets\Audio\SoundtrackMainMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Spawner.js" Line="266" Column="2" />
+>>>>>>> Lots of small Stuff
+>>>>>>> 53a13b18e7d6887e6959cc813664eb2435ed8f32
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
