@@ -5,7 +5,11 @@ var c : float; //circumference
 var side : int;
 
 var manticore : boolean = false;
+
+
 function Start () {
+	this.enabled = false; //FIX THIS THING
+
 	GetDia();
 	
 	GetSide();

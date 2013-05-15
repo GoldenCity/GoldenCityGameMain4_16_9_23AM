@@ -1,10 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_GameMenu.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wheelAnimator.js">
     <Files>
-      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="12" Column="20" />
-      <File FileName="Assets\Scripts\wallState.js" Line="22" Column="63" />
-      <File FileName="Assets\Scripts\Spawner.js" Line="229" Column="45" />
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="109" Column="13" />
+      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\wallState.js" Line="37" Column="17" />
+      <File FileName="Assets\Scripts\Spawner.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\healthTest.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\wallFX.js" Line="81" Column="56" />
+      <File FileName="Assets\Scripts\wheelAnimator.js" Line="11" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

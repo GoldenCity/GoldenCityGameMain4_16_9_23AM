@@ -12,8 +12,9 @@ var theHud : Script_Hud;
 
 //regenerative nanites
 var regenLevel = 0;
-var regenSpeed = 30; //initial cooldown of regen abiltity
+var regenSpeed = 30.0; //initial cooldown of regen abiltity
 var regenTimer : float; //countdown till ability use
+
 //--------------------
 
 
@@ -32,7 +33,8 @@ function Update ()
 	regenLevel = theHud.regenUpgrade;
 	if (theHud.regenUpgrade > 0)
 	{ 
-		regenSpeed = (40 - (theHud.regenUpgrade * 10)); 
+		//regenSpeed = (40 - (theHud.regenUpgrade * 10)); 
+		regenSpeed = 3.0/theHud.regenUpgrade; 
 	}
 	
 	regenTimer -= Time.deltaTime;
@@ -80,6 +82,6 @@ function PeriodicRegeneration()
 	regenTimer = regenSpeed;
 	if (regenTimer !=0)
 	{
-	wallHealth += 50;
+	wallHealth += 8*(theHud.regenUpgrade+1);
 	}
 }
