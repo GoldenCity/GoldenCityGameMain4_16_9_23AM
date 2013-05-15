@@ -1,14 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wheelAnimator.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\HighScoreGUI.js">
     <Files>
-      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="109" Column="13" />
-      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\wallState.js" Line="37" Column="17" />
-      <File FileName="Assets\Scripts\Spawner.js" Line="1" Column="1" />
-      <File FileName="Assets\MenueSystem\healthTest.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\wallFX.js" Line="81" Column="56" />
-      <File FileName="Assets\Scripts\wheelAnimator.js" Line="11" Column="40" />
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="865" Column="25" />
+      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="38" Column="43" />
+      <File FileName="Assets\Scripts\wallState.js" Line="53" Column="20" />
+      <File FileName="Assets\MenueSystem\HighScoreGUI.js" Line="84" Column="16" />
+      <File FileName="Assets\Scripts\GameTimer.js" Line="33" Column="1" />
+      <File FileName="Assets\MenueSystem\Game_Over.js" Line="20" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

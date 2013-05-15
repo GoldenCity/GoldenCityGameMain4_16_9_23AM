@@ -17,7 +17,7 @@ var regenTimer : float; //countdown till ability use
 
 //--------------------
 
-
+var gameEnded;
 function Start () 
 {
 	uh = GameObject.Find("Camera_Main").GetComponent(healthTest);
@@ -26,6 +26,8 @@ function Start ()
 	theHud = GameObject.Find("Camera_Main").GetComponent(Script_Hud);
 	
 	instanceScript_Hud = GameObject.Find("Globals").GetComponent(Script_Hud);
+	
+	gameEnded = GameObject.Find("GameTimer").GetComponent(GameTimer).gameEnded;
 }
 
 function Update ()
@@ -50,6 +52,7 @@ function Update ()
   	{
   		wallHealth = 0;
   		dead = true;
+  		gameEnded = true;
   		Application.LoadLevel("Scene_gameOver");
   	}
 }
