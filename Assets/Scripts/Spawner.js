@@ -226,7 +226,7 @@ ramTimer = 0.0;
 }
 
 if (manticoreTimer >= manticoreTime) {
-Instantiate(enemyList[manticore], pathList[3].position, Quaternion.identity);
+Instantiate(enemyList[manticore], pathList[2].position, Quaternion.identity);
 manticoreTimer = 0.0;
 }
 
