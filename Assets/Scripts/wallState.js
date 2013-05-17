@@ -14,6 +14,8 @@ var theHud : Script_Hud;
 var regenLevel = 0;
 var regenSpeed = 30; //initial cooldown of regen abiltity
 var regenTimer : float; //countdown till ability use
+var nanite : GameObject;
+var naniteSpawns : GameObject[];
 //--------------------
 
 
@@ -78,8 +80,13 @@ function UpgradeWall()
 function PeriodicRegeneration()
 {
 	regenTimer = regenSpeed;
-	if (regenTimer !=0)
+	if (regenLevel !=0)
 	{
 	wallHealth += 50;
+	print("regen");
+	for (var i = 0; i<16; i++)
+		{print("regen2");
+		Instantiate(nanite,naniteSpawns[i].transform.position, Quaternion.Euler(-90,0,0));
+		}
 	}
 }

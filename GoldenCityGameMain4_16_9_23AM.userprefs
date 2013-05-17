@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_GameMenu.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wallState.js">
     <Files>
-      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="12" Column="20" />
-      <File FileName="Assets\Scripts\wallState.js" Line="22" Column="63" />
-      <File FileName="Assets\Scripts\Spawner.js" Line="229" Column="45" />
+      <File FileName="Assets\Scripts\wallState.js" Line="87" Column="22" />
+      <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="10" Column="1" />
+      <File FileName="Assets\Scripts\Spawner.js" Line="229" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
