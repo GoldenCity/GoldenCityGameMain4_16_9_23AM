@@ -11,6 +11,12 @@ var logo : Texture;
 var resume : Texture;
 var quit : Texture;
 
+var timerPause;
+
+function Start() {
+	timerPause = GameObject.Find("GameTimer").GetComponent(GameTimer).gamePaused;
+}
+
 function OnGUI() 
 {
 	if (camera_GameMenu.enabled == true)
@@ -23,11 +29,13 @@ function OnGUI()
 			camera_GameMenu.enabled = false;
 			Time.timeScale = 1;
 			isPaused = false;
+			timerPause = false;
 			camera_Main.enabled = true;
 		}
 		if (GUI.Button(Rect((Screen.width/8)*5,Screen.height/6,Screen.width/4,Screen.height/3), quit))
 		{
 			Screen_GCLoad.destination = "MainMenu";
+			Destroy(GameObject.Find("GameTimer") );			
 			Application.LoadLevel("Screen_GoldenCityLoad");
 		}
 		

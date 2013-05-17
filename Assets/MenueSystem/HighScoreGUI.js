@@ -1,8 +1,14 @@
 #pragma strict
 
-var gamePlaying : boolean;
+var gamePaused : boolean;
 var gameEnded : boolean;
 var calledGameOver : boolean = false;
+var clearHighScores : boolean = false;
+
+var replacing : boolean = false;
+var indexReplaced : int = -1;
+
+var playerInitials : String;
 
 //var startTime : float;
 var hours: int = 0;
@@ -25,8 +31,15 @@ function Awake() {
 }
 
 function Start() {
-	gamePlaying = true;
+	gamePaused = false;
 	gameEnded = false;
+	
+	time = GameObject.Find("GameTimer").GetComponent(GameTimer).time;
+	if (time == null) time = 0.0;
+	
+	Destroy(GameObject.Find("GameTimer") );
+	
+	playerInitials = "AAA";
 	
 	highScoresNames = new String[5];
 	highScoresValues = new float[5];
@@ -42,12 +55,15 @@ function Start() {
 		tempCache = scoreCache[i].Split(","[0]);
 		highScoresNames[i] = tempCache[0];
 		highScoresValues[i] = float.Parse(tempCache[1]);
-	}    	
+	}
+	
+	checkScore();    	
 }
 
+/*
 function FixedUpdate() {
 	if ( gameEnded == false ) {
-		if ( gamePlaying == true ) {
+		if ( gamePaused == false ) {
 			time += Time.deltaTime;
 		}		
 	}else {
@@ -58,22 +74,35 @@ function FixedUpdate() {
 		}
 	}
 }
+*/
 
-function Update () {
-	
+function Update () {	
+	if ( clearHighScores == true ) {
+		storedScores = "---,000000.00|---,000000.00|---,000000.00|---,000000.00|---,000000.00";
+	}
+	if ( Input.GetKeyDown("return") ) {
+		saveScores();
+	} 		
 }
 
 function OnGUI(){	
 	var timeString : String = timeToString(time);
 	
-	GUI.Label(Rect(320, 20, 198, 198), 	yourScore + timeString);
-	GUI.Label(Rect(320, 40, 198, 198), 	title);
-    GUI.Label(Rect(320, 60, 198, 198), 	heading);
-    GUI.Label(Rect(320, 80, 198, 198), 	highScoresNames[0] + "                 " + timeToString(highScoresValues[0]) );
-    GUI.Label(Rect(320, 100, 198, 198), highScoresNames[1] + "                 " + timeToString(highScoresValues[1]) );
-	GUI.Label(Rect(320, 120, 198, 198), highScoresNames[2] + "                 " + timeToString(highScoresValues[2]) );
-	GUI.Label(Rect(320, 140, 198, 198), highScoresNames[3] + "                 " + timeToString(highScoresValues[3]) );
-	GUI.Label(Rect(320, 160, 198, 198), highScoresNames[4] + "                 " + timeToString(highScoresValues[4]) );
+	GUI.Label(Rect((Screen.width /2) - (198 /2), 20, 198, 198),  yourScore + timeString);
+	GUI.Label(Rect((Screen.width /2) - (198 /2), 40, 198, 198),  title);
+    GUI.Label(Rect((Screen.width /2) - (198 /2), 60, 198, 198),  heading);
+    GUI.Label(Rect((Screen.width /2) - (198 /2), 80, 198, 198),  highScoresNames[0] + "                 " + timeToString(highScoresValues[0]) );
+    GUI.Label(Rect((Screen.width /2) - (198 /2), 100, 198, 198), highScoresNames[1] + "                 " + timeToString(highScoresValues[1]) );
+	GUI.Label(Rect((Screen.width /2) - (198 /2), 120, 198, 198), highScoresNames[2] + "                 " + timeToString(highScoresValues[2]) );
+	GUI.Label(Rect((Screen.width /2) - (198 /2), 140, 198, 198), highScoresNames[3] + "                 " + timeToString(highScoresValues[3]) );
+	GUI.Label(Rect((Screen.width /2) - (198 /2), 160, 198, 198), highScoresNames[4] + "                 " + timeToString(highScoresValues[4]) );
+	
+	GUI.Label(Rect((Screen.width /2) - (198 /2), 180, 198, 198), "Enter Name Below:");
+	playerInitials = GUI.TextField(Rect((Screen.width /2) - (198 /2), 200, 40, 20), playerInitials, 3 );
+	
+	if ( replacing == true ) {
+		highScoresNames[indexReplaced] = playerInitials;
+	}
 }
 
 function timeToString(time : float) : String {
@@ -88,8 +117,8 @@ function timeToString(time : float) : String {
 function checkScore() {
 	var name : String = "";
 	var score : float = 0.0;
-	var replacing : boolean = false;
-	var indexReplaced : int = -1;
+	replacing = false;
+	indexReplaced = -1;
 	
 	for(var i : int = 0; i < highScoresValues.Length; i++){		
 		if ( replacing == false ) {

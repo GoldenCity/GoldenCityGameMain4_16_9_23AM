@@ -131,6 +131,8 @@ var highPwrUp : double = 4.25; 	//425
 	var customSkin : GUISkin;
 	var customSkinUpgrades : GUISkin;
 	
+	var timerPause;
+	
 	//var guiRectArray : Rect[];
 	
 function Awake () {
@@ -153,6 +155,7 @@ function Awake () {
 
 function Start ()
 	{
+		timerPause = GameObject.Find("GameTimer").GetComponent(GameTimer).gamePaused;
 		//guiRectArray[0] = new ...;
 		
 		camera_GameMenu.enabled = false;
@@ -859,6 +862,7 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 	    		camera_Main.enabled = false;
 	    		Time.timeScale = 0;
 	    		gameMenu.isPaused = true;
+	    		timerPause = true;
 	    		camera_GameMenu.enabled = true;
 		}
 		if (GUI.tooltip == "hoverGameMenue")

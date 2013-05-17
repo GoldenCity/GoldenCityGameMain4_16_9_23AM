@@ -19,6 +19,10 @@ var wallMatDmg2 : Material;
 var wallMatDmg3 : Material;
 
 var damageSound : AudioClip;
+
+var naniteFX    : GameObject;
+var theHud		 : Script_Hud;
+
 private var hitPoint : Vector3;
 
 private var shake_decay: float;
@@ -27,6 +31,8 @@ private var shake_intensity: float;
 
 function Start () {
 	wallHealthLast = wallState.wallHealth;
+	theHud = GameObject.Find("Camera_Main").GetComponent(Script_Hud);
+	naniteFX.SetActive(false);
 }
 
 /*  
@@ -66,8 +72,18 @@ function Update(){
         shake_intensity -= shake_decay;
         
     }
+    
+    if(theHud.regenUpgrade > 0){
+    	naniteFX.SetActive(true);
+    	var nanites = naniteFX.GetComponent(ParticleSystem);
+    	nanites.emissionRate = theHud.regenUpgrade*theHud.regenUpgrade*100;
+    	nanites.startSize = (theHud.regenUpgrade+3)/2;
+    	if(wallState.wallHealth >= wallState.maxWallHealth)
+    		nanites.enableEmission = false;
+    	else
+    		nanites.enableEmission = true;
+    }
 }
- 
 function Shake(){
     originPosition = transform.position;
     originRotation = transform.rotation;

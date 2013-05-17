@@ -12,13 +12,18 @@ var theHud : Script_Hud;
 
 //regenerative nanites
 var regenLevel = 0;
-var regenSpeed = 30; //initial cooldown of regen abiltity
+var regenSpeed = 30.0; //initial cooldown of regen abiltity
 var regenTimer : float; //countdown till ability use
+<<<<<<< HEAD
 var nanite : GameObject;
 var naniteSpawns : GameObject[];
 //--------------------
+=======
+>>>>>>> 377f4943901f5b5a2ecaf73f3362839c05c8d12b
 
+//--------------------
 
+var gameEnded;
 function Start () 
 {
 	uh = GameObject.Find("Camera_Main").GetComponent(healthTest);
@@ -27,6 +32,8 @@ function Start ()
 	theHud = GameObject.Find("Camera_Main").GetComponent(Script_Hud);
 	
 	instanceScript_Hud = GameObject.Find("Globals").GetComponent(Script_Hud);
+	
+	gameEnded = GameObject.Find("GameTimer").GetComponent(GameTimer).gameEnded;
 }
 
 function Update ()
@@ -34,7 +41,8 @@ function Update ()
 	regenLevel = theHud.regenUpgrade;
 	if (theHud.regenUpgrade > 0)
 	{ 
-		regenSpeed = (40 - (theHud.regenUpgrade * 10)); 
+		//regenSpeed = (40 - (theHud.regenUpgrade * 10)); 
+		regenSpeed = 3.0/theHud.regenUpgrade; 
 	}
 	
 	regenTimer -= Time.deltaTime;
@@ -50,6 +58,7 @@ function Update ()
   	{
   		wallHealth = 0;
   		dead = true;
+  		gameEnded = true;
   		Application.LoadLevel("Scene_gameOver");
   	}
 }
@@ -82,11 +91,15 @@ function PeriodicRegeneration()
 	regenTimer = regenSpeed;
 	if (regenLevel !=0)
 	{
+<<<<<<< HEAD
 	wallHealth += 50;
 	print("regen");
 	for (var i = 0; i<16; i++)
 		{print("regen2");
 		Instantiate(nanite,naniteSpawns[i].transform.position, Quaternion.Euler(-90,0,0));
 		}
+=======
+	wallHealth += 8*(theHud.regenUpgrade+1);
+>>>>>>> 377f4943901f5b5a2ecaf73f3362839c05c8d12b
 	}
 }
