@@ -1,9 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_GameMenu.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PathFinder.js">
     <Files>
-      <File FileName="Assets\Scripts\wallState.js" Line="100" Column="1" />
+      <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
       <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PathFinder.js" Line="17" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
