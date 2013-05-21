@@ -1,14 +1,37 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\gameGenie.js">
+=======
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wallFX.js">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Greek Bath House\Scripts\WaterExplosion.js">
+>>>>>>> Bath House Update.
+>>>>>>> Bath House Update.
     <Files>
       <File FileName="Assets\MenueSystem\Script_Hud.js" Line="57" Column="5" />
       <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
       <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
+<<<<<<< HEAD
       <File FileName="Assets\MenueSystem\healthTest.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\wallFX.js" Line="1" Column="1" />
       <File FileName="Assets\CheatGenie.cs" Line="6" Column="1" />
       <File FileName="Assets\gameGenie.js" Line="34" Column="34" />
+=======
+<<<<<<< HEAD
+      <File FileName="Assets\MenueSystem\healthTest.js" Line="65" Column="3" />
+      <File FileName="Assets\Scripts\wallFX.js" Line="130" Column="13" />
+      <File FileName="Assets\Scripts\scriptProjectile.js" Line="26" Column="2" />
+      <File FileName="Assets\Scripts\destroyParticleEffect.js" Line="8" Column="51" />
+      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="225" Column="96" />
+=======
+      <File FileName="Assets\Scripts\PathFinder.js" Line="17" Column="1" />
+      <File FileName="Assets\Greek Bath House\Scripts\WaterExplosion.js" Line="16" Column="22" />
+      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\scriptProjectile.js" Line="1" Column="1" />
+>>>>>>> Bath House Update.
+>>>>>>> Bath House Update.
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
