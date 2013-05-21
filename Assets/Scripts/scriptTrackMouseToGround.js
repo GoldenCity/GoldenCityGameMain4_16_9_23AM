@@ -222,6 +222,7 @@ function CannonFireFX () {
 		muzzleSmoke.GetComponent(ParticleSystem).Play();
 		muzzleSmoke2.GetComponent(ParticleSystem).Play();
 		//SOUND
+		gameObject.audio.pitch = 1 + ((shotsMax+0.1)/(shotsLeft+0.1))*0.08; //PITCH BENDING SILLYNESS
 		gameObject.audio.clip = cannonBoom;
 		gameObject.audio.Play();
 		

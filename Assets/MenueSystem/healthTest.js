@@ -7,7 +7,10 @@
     var HealthFull : Texture2D;
     
 	var healthBarLength : int;
-	var numberOfSouls : int;
+	var numberOfSouls 	: int;
+	var healthBarMax 	: int;
+	
+	var menuSkin : GUISkin;
 	
 	var uv : wallState;
 	
@@ -26,6 +29,7 @@
 	{
 		uv = GameObject.Find("Wall").GetComponent(wallState);
 		healthBarLength = uv.wallHealth/5;
+		healthBarMax	= uv.wallHealth/5;
 		
 		gameMenu = GameObject.Find("Camera_GameMenu").GetComponent(Script_GameMenu);
 		
@@ -42,12 +46,23 @@
   
     function OnGUI()
     {
+    	GUI.skin = menuSkin;
        	//print("Size.x: " + size.x);
 		//GUI.BeginGroup (new Rect(pos.x, pos.y, size.x, size.y));
      
 		//GUI.Label(new Rect (0,0, size.x, size.y),HealthFull);
-		 
+		
+		size.y = Screen.height*(30.0/630.0);  
+		//size.x = Screen.width*(400.0/858.0); 
+		
+		//HEALTH BAR BACKGROUND
+		GUI.DrawTexture(Rect(pos.x, pos.y, healthBarMax, size.y), HealthEmpty, ScaleMode.StretchToFill, false, 0f);		  
+		
+		//HEALTH BAR FOREGROUND
 		GUI.DrawTexture(Rect(pos.x, pos.y, size.x, size.y), HealthFull, ScaleMode.StretchToFill, false, 0f);
+		
+		//HEALTH BAR FRAME
+//		GUI.Box(Rect(pos.x, pos.y, healthBarMax, size.y), "");
 		
 		
 		// Draws a vertical slider control that goes from  10 (top) to 0 (bottom)
@@ -106,4 +121,7 @@
   		}
   		//HealthFull.Resize(size.x,size.y);
   		//print("Size.x: " + size.x);
+  		healthBarMax = uv.maxWallHealth/5;
+  		
+				
     }

@@ -4,12 +4,14 @@ var level : int = 1;
 
 var powerLevel : float = 0;
 var powerLevelMax : float = 100;
+var powerLevelMax2 : float = 250;
+var powerLevelMax3 : float = 800;
 
 var range : float = 50;
 var rangeLvl2 : float = 75;
 var rangeLvl3 : float = 100;
 
-var dischargeTime : float = 5;
+var dischargeTime : float = 15;
 var rechargeTime : float = 10;
 
 var dps : int = 12; //damage per second 
@@ -41,7 +43,11 @@ function Update () {
 		
 	 	//DRAIN POWER
 		powerLevel -= (Time.deltaTime / dischargeTime) * powerLevelMax;
-		if(powerLevel <= 0) switchedOn = false;
+		
+		if(powerLevel <= 0) {
+			powerLevel = 0;
+			switchedOn = false;
+		}
 		
 		//DO WHILE ON STUFF
 		//WhileSwitchedOn();
@@ -58,153 +64,76 @@ function Update () {
 		powerLevel = Mathf.Clamp(powerLevel, 0, powerLevelMax);
 	}	
 	
+	//SPARKS GROWING ON BALL EFFECT
 	ballArc.particleSystem.startSize = ballArcMin + (ballArcMax*powerLevel)/powerLevelMax;
 	
 	var c : SphereCollider;
-	if(level == 2) {
+	if(level == 2 && range != rangeLvl2) {
 		c = gameObject.collider as SphereCollider;
 		c.radius = rangeLvl2;
 		range = rangeLvl2;
+		
+		powerLevelMax = powerLevelMax2;
 	}
-	if(level == 3) {
+	else if(level == 3 && range != rangeLvl3) {
 		c = gameObject.collider as SphereCollider;
 		c.radius = rangeLvl3;
 		range = rangeLvl3;
+		
+		powerLevelMax = powerLevelMax3;
 	}
 	
-	//set material of lightning based on power levels
-	var emitterLevel = 1;
-	if(powerLevel >= powerLevelMax*0.9)
-		emitterLevel = 3;
-	else if(powerLevel >= powerLevelMax*0.5)
-		emitterLevel = 2;
-	for(var emitter in arcEmitters){
-		if(emitter.activeSelf)
-			emitter.GetComponent(Lightning).level = emitterLevel;
-	}
+
 }
-/*
+
 function OnTriggerEnter (ob : Collider) {
 	
 	if(ob.gameObject.tag == "Enemy") {
-		CleanUpList(); //remove dead enemies
-		var i = 0;
-		while(i < enemiesInRange.Length){ //Find empty space in list and add
-			if(enemiesInRange[i] == null){
-				enemiesInRange[i] = ob.gameObject;
-				break;
+		var enemy = ob.gameObject.transform.root.gameObject; //get top-most obj in hierarchy(the one with scriptActorEnemy it is assumed )
+		for(var eIndex = 0; eIndex < enemiesInRange.length; eIndex++ ){ //compare to list and ignore if already in list
+			var eListed : GameObject = enemiesInRange[eIndex] as GameObject;
+			if(eListed == enemy){
+				return;
 			}
-			else i++;	
+		}
+		CleanUpList(); 
+		enemiesInRange.push(enemy); //add enemy to lisr
+	}
+}
+
+
+//quick remove of destroyed enemies
+function CleanUpList () {
+
+    var eir = enemiesInRange.length;
+    
+    if(eir <= 0) return;
+    
+	for(var i = 0; i < eir; i++) {
+		if (enemiesInRange[i] as GameObject == null ){
+			enemiesInRange.RemoveAt(i); //REMOVE MISSING OBJECTS
+			eir = enemiesInRange.length;//reset target
+			i--;	//step back index
 		}
 	}
 }
-*/
 
-//quick remove of dead and destroyed enemies
-function CleanUpList () {
-	
-//  for(var go in enemiesTargeted) {
-//  	if (go == null || go.
-//  }
-}
 
-//push any null elements to the back
-//Return active enemy count
-//function SortList () {
-//	 CleanUpList ();
-//	 //Sort list
-//	 var newList = new GameObject[enemiesInRange.length];
-//	 var count = 0; //how many active enemies are there?
-//	 for(var j = 0; j < newList.Length; j++){
-//	 	if(enemiesInRange[count] != null){
-//	 		newList[j] = enemiesInRange[count] as GameObject;
-//	 		count++;
-//	 	}
-//	 }
-//	 enemiesInRange = newList;
-//	 print(" sortList count = " +count);
-//	 return count; //return how many active enemies found
-//}
 
 function Zap () {
+
 	level = Mathf.Clamp(level, 1, 3);
 	
-
-	//if(!arcEmitters[0].activeSelf){
-		//if(enemiesTargeted[0] != null){
-			//arcEmitters[0].SetActive(true);
-			//arcEmitters[0].GetComponent(Lightning).target = arcTargets[0];
 			arcTargets[0].SetActive(true);
-		//}
-		//else 
-		//	switchedOn = false;
+
 		if(level == 2) {
-			//arcEmitters[1].SetActive(true);
-		//	arcEmitters[1].GetComponent(Lightning).target = arcTargets[1];
-			//arcTargets[1].transform.position = enemiesTargeted[1].transform.position;
 			arcTargets[1].SetActive(true);
 			dps = dpsLvl2;
 		}
 		if(level == 3) {
-			//arcEmitters[2].SetActive(true);
-			//arcEmitters[3].SetActive(true);
-			//arcEmitters[2].GetComponent(Lightning).target = arcTargets[2]; 
-			//arcTargets[2].transform.position = enemiesTargeted[2].transform.position;
-			//arcEmitters[3].GetComponent(Lightning).target = arcTargets[3]; 
-			//arcTargets[3].transform.position = enemiesTargeted[3].transform.position;
 			arcTargets[2].SetActive(true);
 			arcTargets[3].SetActive(true);
 			dps = dpsLvl3;
 		}
-	//}
-	
-//	GetTarget();
 }
-//
-private var lastTarget;
-function GetTarget () {
-//	var enemies = new GameObject.FindGameObjectsWithTag("Enemy");
-//	for (var enemy in enemies)
-//		if(Vector3.Distance(this.transform.position, enemy.transform.position) < range &&)
-//			enemiesInRange.Push(enemy);
-//	//////////////
-//	if (enemiesTargeted.Length > 0){
-//		for (var i = 0; i < enemiesTargeted.Length; i++) {
-//			var rdm = Mathf.RoundToInt(Random.Range(0, enemiesInRange.length-1) );
-//			enemiesTargeted[i] = enemiesInRange[rdm] as GameObject;
-//			enemiesInRange.RemoveAt(rdm);
-//		}
-//	}
-//	var targets = new Array();
-//
-//	var hit : RaycastHit[];
-//	Physics.SphereCastAll(gameObject.transform.position, range, Vector3.forward,  hit, 0);
-//	for(var hits in hit){
-//		if(hits.collider.gameObject.tag == "Enemy")
-//			//var obj = GetParent(hits.collider.gameObject as GameObject);
-//			if(!HasParent(hits.collider.gameObject) ); //only want top most objects in hierarchy
-//				targets.Push(hits.collider.gameObject as GameObject);
-//	}
 
-}
-//
-//function WhileSwitchedOn () {
-//		//test if targeted enemies are still alive
-//
-//}		
-//function GetParent(obj : GameObject) {
-//	var par = obj.transform.parent.gameObject as GameObject;
-//	if(par != null)
-//		GetParent(par as GameObject);
-//	else
-//		return par;
-//
-//}	
-
-function HasParent(obj : GameObject) {
-	var par = obj.transform.parent.gameObject as GameObject;
-	if(par == null)
-		return true;
-	else
-		return false;
-}	

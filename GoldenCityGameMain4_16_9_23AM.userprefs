@@ -1,10 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PathFinder.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\wallFX.js">
     <Files>
-      <File FileName="Assets\Scripts\wallState.js" Line="1" Column="1" />
+      <File FileName="Assets\MenueSystem\Script_Hud.js" Line="218" Column="1" />
+      <File FileName="Assets\Scripts\wallState.js" Line="98" Column="119" />
       <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PathFinder.js" Line="17" Column="1" />
+      <File FileName="Assets\MenueSystem\healthTest.js" Line="65" Column="3" />
+      <File FileName="Assets\Scripts\wallFX.js" Line="130" Column="13" />
+      <File FileName="Assets\Scripts\scriptProjectile.js" Line="26" Column="2" />
+      <File FileName="Assets\Scripts\destroyParticleEffect.js" Line="8" Column="51" />
+      <File FileName="Assets\Scripts\scriptTrackMouseToGround.js" Line="225" Column="96" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

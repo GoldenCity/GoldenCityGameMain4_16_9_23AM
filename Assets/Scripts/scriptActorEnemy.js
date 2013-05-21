@@ -184,6 +184,7 @@ function Die ()
 	Instantiate(_soulEffect, gameObject.transform.position, Quaternion.Euler(-90,0,0));
 	Instantiate(splosion, transform.position, transform.rotation);
 	
+	
 	yield WaitForSeconds(.75); //delay to allow sound effect to play
 	Destroy(gameObject);
 	enemyList[enemyID] = -1; //represent a dead enemy as -1 in list

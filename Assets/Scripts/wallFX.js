@@ -127,6 +127,7 @@ function Damage () {
 	//////////////////
 	//Play Sound
 	//////////////////
+	gameObject.audio.pitch = 1 + (Random.value-.5)/5;
 	gameObject.audio.PlayOneShot(damageSound);
 }
 

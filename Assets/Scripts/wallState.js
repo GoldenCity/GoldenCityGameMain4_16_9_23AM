@@ -87,17 +87,18 @@ function UpgradeWall()
 function PeriodicRegeneration()
 {
 	regenTimer = regenSpeed;
-	if (regenLevel !=0)
+	if (regenLevel !=0 && wallHealth < maxWallHealth)
 	{
 
-	wallHealth += 50;
-	print("regen");
-	for (var i = 0; i<16; i++)
-		{print("regen2");
-		Instantiate(nanite,naniteSpawns[i].transform.position, Quaternion.Euler(-90,0,0));
-		}
-
-	wallHealth += 8*(theHud.regenUpgrade+1);
+		//wallHealth += 50;
+		print("regen");
+		for (var i = 0; i<16; i++)
+			{print("regen2");
+			
+			//Instantiate(nanite,naniteSpawns[i].transform.position, Quaternion.Euler(-90,0,0)); disabled till something better
+			}
+	
+		wallHealth += 8*(theHud.regenUpgrade+1);
 
 	}
 }
