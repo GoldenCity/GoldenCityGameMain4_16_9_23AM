@@ -16,7 +16,7 @@ function Start()
 
 function Update () 
 {
-	print(Screen_GCLoad.destination);
+//	print(Screen_GCLoad.destination);
 	//Option for player to skip info screen
 	if(Input.GetKeyDown("space"))
 	{

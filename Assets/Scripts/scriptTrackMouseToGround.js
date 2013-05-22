@@ -27,6 +27,7 @@ var mine 				: Transform;
 var shotDelay 			: double = 1.0;
 var delay				: double = 0.0;
 var impulse				: int = 50;     
+var minDistance 		: float = 20;
 
 static var hitPoint 	: Vector3;			//point where mouse 'touches' ground
 static var launchVelocity : float = 50.0;	//velocity of projectile when instantiated
@@ -75,7 +76,7 @@ function Update ()
 	//print("CannonON is: " + cannonIsOn);
 	if (Physics.Raycast (ray, hit, 1000, mask.value)) 
 	{
-
+		
     	hitPoint = hit.point;
     	    	
     	info = "";
@@ -85,10 +86,10 @@ function Update ()
     	hitPointY = hitPoint.y;
     	hitPointZ = hitPoint.z;
     	
-    	if (hitPoint.z < 20) { //turns cannon off if mouse is at a certain point
+    	if (hitPoint.z < minDistance) { //turns cannon off if mouse is at a certain point
     		cannonIsOn = false;
     	}
-    	if (hitPoint.z < 25) { //fixes z point so that cannon will not continue to follow mouse 
+    	if (hitPoint.z < 25 && hitPoint.y < transform.position.y) { //fixes z point so that cannon will not continue to follow mouse 
     		hitPoint.z = 25;
     	}
     	
@@ -104,12 +105,13 @@ function Update ()
 	    }    	    	    
 	}
 	
-	Debug.DrawRay (ray.origin, ray.direction * 1000, Color.yellow);
+	if(c.hover != "")
+		cannonIsOn = false;
+	//Debug.DrawRay (ray.origin, ray.direction * 1000, Color.yellow);
 	
 	if (cannonIsOn)
 	{
 		target.gameObject.SetActive(true);
-		
 		//target.active = true;
 		if(c.scorcherFireOn)
 		{
@@ -222,7 +224,7 @@ function CannonFireFX () {
 		muzzleSmoke.GetComponent(ParticleSystem).Play();
 		muzzleSmoke2.GetComponent(ParticleSystem).Play();
 		//SOUND
-		gameObject.audio.pitch = 1 + ((shotsMax+0.1)/(shotsLeft+0.1))*0.08; //PITCH BENDING SILLYNESS
+		gameObject.audio.pitch = .8 + ((shotsMax+0.1)/(shotsLeft+0.1))*0.08; //PITCH BENDING SILLYNESS
 		gameObject.audio.clip = cannonBoom;
 		gameObject.audio.Play();
 		

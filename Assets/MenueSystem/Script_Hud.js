@@ -4,8 +4,11 @@
 // CONSTANTS
 //privte var mbLIGHTNINGABILITY = "lightningAbility";
 
+var hover : String; //Store the current tool tip
+
 //SMALL VERSION
 //UPGRADES
+
 var store : Texture;
 var menuMain : Texture;
 var cannonBtnTexture : Texture;
@@ -198,12 +201,22 @@ function Update()
 //		cannonOn = true;
 //	}
 	solarUsed = sb.spawned;
-	mineUsed = nm.spawned;
+	mineUsed = nm.spawned;	
+	
+	//turn off buttons if clicking outside of menu
+	if(Input.GetMouseButtonDown(0) && showButtons && hover == "") { 
+		showButtons = false;
+		showCannonButtons = false;
+		showWallButtons = false;
+		showAbilityButtons = false;
+	}
 }
 
 
 function OnGUI() 
 {	
+	
+
 	//trackOnGui++;
 	
 //		if(Event.current.type == EventType.Repaint))
@@ -890,8 +903,8 @@ GUI.skin.label.fontSize = ( (Screen.width * 13) / 1132 );
 //		{
 //			cannonOn = true;
 //		}
-
-
+	if(!Input.GetMouseButton(0) || Input.GetMouseButtonUp(0))
+   		hover = GUI.tooltip; 
 	
 	GUI.EndGroup();
 }
