@@ -10,12 +10,13 @@ var menuSkin : GUISkin;
 var soundTrack : SoundtrackMainMenu;
 var credits : Credits;
 
+var musicBox : GameObject;
+
 function Start()
 {
-	soundTrack = GameObject.Find("MusicBox").GetComponent(SoundtrackMainMenu);
-	
+	Meistro();
+	soundTrack = GameObject.Find("musicBox(Clone)").GetComponent(SoundtrackMainMenu);
 	credits = GameObject.Find("Main Camera").GetComponent(Credits);
-	
 }
 
 function OnGUI() 
@@ -77,5 +78,19 @@ function OnGUI()
 
 	//GUI.EndGroup();
 	}
-	
 }
+
+	function Meistro()
+	{
+		var find = GameObject.Find("MusicBox");
+		
+		if(find != null)
+		{
+			Destroy(find);
+			Instantiate(musicBox, this.transform.position, Quaternion.identity);
+		}
+		else
+		{
+			Instantiate(musicBox, this.transform.position, Quaternion.identity);
+		}
+	}

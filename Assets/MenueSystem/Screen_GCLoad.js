@@ -11,6 +11,7 @@ static var destination : String = " ";
 
 function Start() 
 {
+	//yield StartCoroutine(WaitTime());
 	WaitTime();
 }
 
@@ -20,16 +21,15 @@ function Update ()
 	//Option for player to skip info screen
 	if(Input.GetKeyDown("space"))
 	{
-		if(Screen_GCLoad.destination == "MainMenu")
+		if(destination == "MainMenu")
 		{
-			Screen_GCLoad.destination = " ";
 			Application.LoadLevel("Scene_MainMenu");
 		}
-		if(Screen_GCLoad.destination == "Campaign")
+		if(destination == "Campaign")
 		{
-			Screen_GCLoad.destination = " ";
 			Application.LoadLevel("Scene_Campaign");
 		}
+		destination = " ";
 	}
 }
 
@@ -63,26 +63,16 @@ function OnGUI()
 
 function WaitTime()
 {
-	if(Screen_GCLoad.destination == "MainMenu")
+	if(destination == "MainMenu")
 	{
-		stopMusic();
-	}
-	yield WaitForSeconds(waitTime);
-	if(Screen_GCLoad.destination == "MainMenu")
-	{
-		Screen_GCLoad.destination = " ";
+		Destroy(GameObject.Find("musicBox(Clone)"));
+		//yield WaitForSeconds(3); Source of the problem
 		Application.LoadLevel("Scene_MainMenu");
 	}
-	if(Screen_GCLoad.destination == "Campaign")
+	if(destination == "Campaign")
 	{
-		Screen_GCLoad.destination = " ";
+		//yield WaitForSeconds(3); Source of the problem
 		Application.LoadLevel("Scene_Campaign");
 	}
-}
-
-
-function stopMusic()
-{
-	yield WaitForSeconds(2);
-	Destroy(GameObject.Find("MusicBox"));
+	destination = " ";
 }
