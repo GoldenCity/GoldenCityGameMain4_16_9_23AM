@@ -3,9 +3,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\MenueSystem\Script_GameMenu.js">
     <Files>
       <File FileName="Assets\Scripts\scriptProjectile.js" Line="65" Column="1" />
-      <File FileName="Assets\MenueSystem\Screen_GCLoad.js" Line="15" Column="13" />
       <File FileName="Assets\MenueSystem\Script_GameMenu.js" Line="1" Column="1" />
-      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="18" Column="47" />
+      <File FileName="Assets\MenueSystem\Screen_GCMainMenu.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
